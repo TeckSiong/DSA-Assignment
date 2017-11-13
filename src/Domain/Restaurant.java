@@ -7,6 +7,7 @@ package Domain;
 import java.util.*;
 import Java.RestaurantOwner;
 import Java.FoodMenu;
+import Java.MainMenu;
 /**
  *
  * @author Jeffrey
@@ -263,7 +264,8 @@ public class Restaurant {
        }
        }else if(choose.equals("3"))
        {
-           return;
+           MainMenu m = new MainMenu();
+           m.main();
        }else
        {
            System.out.println("Invalid Input");
