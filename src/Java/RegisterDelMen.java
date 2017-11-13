@@ -1,6 +1,7 @@
 package Java;
 
 import Domain.DeliveryMen;
+import Domain.HRExecutive;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -12,8 +13,51 @@ public class RegisterDelMen {
     Scanner scan = new Scanner(System.in);
     ArrayList<String> check = new ArrayList();
     ArrayList<DeliveryMen> ad = new ArrayList();
-    String ans;
+    ArrayList<HRExecutive> hr = new ArrayList();
+    String ans, id, psw;
     int c;
+
+    public void HRDeteils() {
+        hr.add(new HRExecutive(301001, "ABC123", "Mark"));
+        hr.add(new HRExecutive(301002, "AAA123", "Sam"));
+        hr.add(new HRExecutive(301003, "ABB123", "Lily"));
+        hr.add(new HRExecutive(301004, "ACC123", "John"));
+        hr.add(new HRExecutive(301005, "AAB123", "Jerry"));
+        login();
+    }
+
+    public void login() {
+        System.out.println("====================================================");
+        System.out.println("Login");
+        System.out.println("Type 'exit' to main menu~");
+        System.out.println("====================================================");
+        System.out.print("Enter your ID       : ");
+        id = scan.nextLine();
+        int count = 0;
+        if (!id.equals("exit")) {
+            for (int i = 0; i < 10; i++) {
+                if (Integer.parseInt(id) == (hr.get(i).getHrID())) {
+                    System.out.print("Enter your password : ");
+                    psw = scan.nextLine();
+                    count = 1;
+                    if (psw.equals(hr.get(i).getHrPassword())) {
+                        System.out.println("");
+                        menu();
+                        count = 1;
+                    }
+                    if (count == 1) {
+                        System.out.println("Invalid ID or Password!");
+                        System.out.println("");
+                        login();
+                    }
+                }
+            }
+        } else {
+            MainMenu m = new MainMenu();
+            m.main();
+        }
+
+    }
 
     public void menu() {
         System.out.println("====================================================");
@@ -21,6 +65,7 @@ public class RegisterDelMen {
         System.out.println("====================================================");
         System.out.println("1. Register Delivery Men");
         System.out.println("2. Update Delivery Men Information");
+        System.out.println("0. Exit");
         System.out.println("====================================================");
         System.out.print("Enter Your Action : ");
         int s = scan.nextInt();
@@ -32,6 +77,12 @@ public class RegisterDelMen {
                 break;
 
             case 2:
+                break;
+
+            case 0:
+                System.out.println("");
+                MainMenu m = new MainMenu();
+                m.main();
                 break;
 
             default:
@@ -56,11 +107,11 @@ public class RegisterDelMen {
         System.out.println("Delivery Men Registration");
         System.out.println("Enter 'exit' to cancel the registration");
         System.out.println("----------------------------------------------------");
-        System.out.print("Enter Delivery Men Name : ");
+        System.out.print("Enter Delivery Men Name   : ");
         ans = scan.nextLine();
         if (!"exit".equals(ans)) {
             check.add(ans);
-            System.out.print("Enter Contact Number : ");
+            System.out.print("Enter Contact Number      : ");
             ans = scan.nextLine();
             if (!"exit".equals(ans)) {
                 Pattern pattern = Pattern.compile("\\d{3}-\\d{7,8}");
@@ -71,7 +122,7 @@ public class RegisterDelMen {
                     RegisterDelMen();
                 } else {
                     check.add(ans);
-                    System.out.print("Enter Home Address : ");
+                    System.out.print("Enter Home Address        : ");
                     ans = scan.nextLine();
                     if (!"exit".equals(ans)) {
                         check.add(ans);
@@ -94,14 +145,14 @@ public class RegisterDelMen {
         System.out.println("====================================================");
         System.out.println("Please confirm the information~");
         System.out.println("====================================================");
-        System.out.println("ID Number : " + DeliveryMen.getDelmenID());
-        System.out.println("Name : " + check.get(0));
-        System.out.println("Contact Number : " + check.get(1));
-        System.out.println("Home Address : " + check.get(2));
-        System.out.println("Join Date : " + getDateTime());
-        System.out.println("Status : Available");
+        System.out.println("ID Number       : " + DeliveryMen.getDelmenID());
+        System.out.println("Name            : " + check.get(0));
+        System.out.println("Contact Number  : " + check.get(1));
+        System.out.println("Home Address    : " + check.get(2));
+        System.out.println("Join Date       : " + getDateTime());
+        System.out.println("Status          : Available");
         System.out.println("====================================================");
-        System.out.println("Confirm? (Y/N)");
+        System.out.print("Confirm? (Y/N) > ");
         ans = scan.nextLine();
         switch (ans) {
             case "Y":
@@ -110,7 +161,21 @@ public class RegisterDelMen {
                 System.out.println("Register Sucessful!");
                 System.out.println("");
                 check.clear();
-                RegisterDelMen();
+                System.out.print("Continue to register? [Y/N] > ");
+                String con = scan.nextLine();
+                switch (con) {
+                    case "Y":
+                        RegisterDelMen();
+                        System.out.println("");
+                        break;
+                    case "N":
+                        System.out.println("Thanks for using our system~");
+                        System.out.println("");
+                        menu();
+                        break;
+                    default:
+                        break;
+                }
                 break;
             case "N":
                 System.out.println("Register Unsucessful!");
@@ -119,7 +184,7 @@ public class RegisterDelMen {
                 RegisterDelMen();
                 break;
             default:
-                System.out.println("Invalid input! (Y/N)");
+                System.out.println("Invalid input! [Y/N]");
                 System.out.println("");
                 result();
                 break;
@@ -143,7 +208,7 @@ public class RegisterDelMen {
                 m.main();
                 break;
             default:
-                System.out.println("Invalid input! (Y/N)");
+                System.out.println("Invalid input! [Y/N]");
                 System.out.println("");
                 exit();
                 break;
