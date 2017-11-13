@@ -79,7 +79,7 @@ public class MakeSchedule {
         Schedule o = new Schedule(input.get(0),input.get(1),
                 input.get(2),input.get(3),input.get(4));
         Ro.add(o);
-         System.out.println("\nYou Are successfully Make an Schedule Order \n");
+        System.out.println("\nYou Are successfully Make an Schedule Order \n");
         System.out.println("Summary Of Schedule Order");
         System.out.println("OrderID         : "+ Ro.get(0).getOrderID());
         System.out.println("Receiver Name   : "+ Ro.get(0).getCustName());
