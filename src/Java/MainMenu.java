@@ -1,5 +1,6 @@
 package Java;
 
+import Domain.Restaurant;
 import java.util.Scanner;
 
 /**
@@ -30,6 +31,8 @@ public class MainMenu {
                 
             case 2:
                 System.out.println("");
+                Restaurant r = new Restaurant();
+                r.Login();
                 break;
                 
             case 3 :
