@@ -1,6 +1,6 @@
 package Java;
 
-import Domain.Restaurant;
+import Java.Restaurant;
 import java.util.Scanner;
 
 /**

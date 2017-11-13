@@ -5,8 +5,8 @@
  */
 package Java;
 import Domain.Food;
-import Domain.Restaurant;
-import Java.RestaurantOwner;
+import Java.Restaurant;
+import Domain.RestaurantOwner;
 import java.util.*;
 /**
  *
