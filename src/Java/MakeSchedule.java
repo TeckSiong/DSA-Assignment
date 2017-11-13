@@ -31,15 +31,15 @@ public class MakeSchedule {
     {
         System.out.println("Make Schedule Order\n(Type \"exit\" at any input to Cancel schedule order");
         System.out.println("--------------------------------");
-        System.out.print("Please input orderID you want to schedule :");
+        System.out.print("Please input orderID you want to schedule     :");
         input.add(scan.nextLine());
         if(checkExit(input))
             return;
-        System.out.print("Please input Receiver Name : ");
+        System.out.print("Please input Receiver Name                    :");
         input.add(scan.nextLine());
         if(checkExit(input))
             return;
-       System.out.print("Please input Receiver Address : ");
+        System.out.print("Please input Receiver Address                 :");
         input.add(scan.nextLine());
         
         
@@ -48,9 +48,9 @@ public class MakeSchedule {
         do{
              if(count>0)
               {
-                  System.out.println("Time Not Valid");
+                  System.out.println("Date Not Valid");
               }
-         System.out.print("Please input correct date : (Format yyyy-MM-dd)");
+         System.out.print("Please input correct date (Format yyyy-MM-dd) :");
           temp = scan.nextLine();
           if(checkExit(input))
             return;
@@ -65,7 +65,7 @@ public class MakeSchedule {
               {
                   System.out.println("Time Not Valid");
               }
-         System.out.print("Please input Available Time : (Format HH:MM)");
+         System.out.print("Please input Available Time  (Format HH:MM)   :");
           temp = scan.nextLine();
           if(checkExit(input))
             return;
