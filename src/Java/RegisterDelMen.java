@@ -139,6 +139,8 @@ public class RegisterDelMen {
             case "N":
                 System.out.println("Thanks for using our system~");
                 System.out.println("");
+                MainMenu m = new MainMenu();
+                m.main();
                 break;
             default:
                 System.out.println("Invalid input! (Y/N)");
