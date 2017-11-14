@@ -7,6 +7,7 @@ package Java;
 import Domain.Food;
 import Java.Restaurant;
 import Domain.RestaurantOwner;
+import Domain.orders;
 import java.util.*;
 /**
  *
@@ -17,6 +18,12 @@ public class FoodMenu {
     public Scanner scan = new Scanner(System.in);
     public static ArrayList<Food> AllFood = new ArrayList<>();
     ArrayList<Food> flist = new ArrayList<>();
+    
+    public static ArrayList<orders> orders = new ArrayList<>();
+    ArrayList<orders> orders1 = new ArrayList<>();
+    
+    int classify = 1 ;
+    
     public void addFood()
     {
         String option;
@@ -303,6 +310,11 @@ public class FoodMenu {
              System.out.print(i+" "+Restaurant.Ro.get(i).getRestaurantName()+"\n");
          }
          int x=0;
+         
+         
+         int count = 0;
+         ArrayList<Integer> show = new ArrayList<>();
+         
          do{try{
          CompanyName = Restaurant.Ro.get(scan.nextInt()).getId();scan.nextLine();x=0;}catch(Exception e){System.out.println("Please input again");x=1;scan.nextLine();}}while(x==1);
           System.out.println("Food Name        Category         Quantity           Price");
@@ -312,18 +324,69 @@ public class FoodMenu {
             
              if(d==1 && AllFood.get(i).getCompanyID()==CompanyName && AllFood.get(i).getDayAvailable().equals("Sunday"))
              { flist.add(AllFood.get(i));
-                 System.out.println(flist.size()+"       "+AllFood.get(i).getFoodName()+"           "+AllFood.get(i).getCategory()+"     "+AllFood.get(i).getQuantity()+"         RM"+AllFood.get(i).getPrice());}
+                 System.out.println(flist.size()+ i +"       "+AllFood.get(i).getFoodName()+"           "+AllFood.get(i).getCategory()+"     "+AllFood.get(i).getQuantity()+"         RM"+AllFood.get(i).getPrice());
+             show.add(i);
+             count = count + i;
+             }
              if((d==2 || d==3)&& AllFood.get(i).getCompanyID()==CompanyName && (AllFood.get(i).getDayAvailable().equals("Monday & Tuesday")))
              {flist.add(AllFood.get(i));
-                    System.out.println(flist.size()+"       "+AllFood.get(i).getFoodName()+"           "+AllFood.get(i).getCategory()+"     "+AllFood.get(i).getQuantity()+"         RM"+AllFood.get(i).getPrice());}
+                    System.out.println(flist.size()+ i +"       "+AllFood.get(i).getFoodName()+"           "+AllFood.get(i).getCategory()+"     "+AllFood.get(i).getQuantity()+"         RM"+AllFood.get(i).getPrice());
+             show.add(i);
+             count = count + i;
+             }
                  if((d==4 || d==5) && AllFood.get(i).getCompanyID()==CompanyName && (AllFood.get(i).getDayAvailable().equals("Wednesday & Thursday")))
                  {flist.add(AllFood.get(i)); 
-                  System.out.println(flist.size()+"      "+AllFood.get(i).getFoodName()+"             "+AllFood.get(i).getCategory()+"     "+AllFood.get(i).getQuantity()+"         RM"+AllFood.get(i).getPrice());}
+                  System.out.println(flist.size()+ i +"      "+AllFood.get(i).getFoodName()+"             "+AllFood.get(i).getCategory()+"     "+AllFood.get(i).getQuantity()+"         RM"+AllFood.get(i).getPrice());
+                 show.add(i);
+                 count = count + i;
+                 }
                      if((d==6 || d==7) && AllFood.get(i).getCompanyID()==CompanyName && (AllFood.get(i).getDayAvailable().equals("Friday & Saturday")))
                      { flist.add(AllFood.get(i));
-                      System.out.println(flist.size()+"      "+AllFood.get(i).getFoodName()+"            "+AllFood.get(i).getCategory()+"     "+AllFood.get(i).getQuantity()+"         RM"+AllFood.get(i).getPrice());}
+                      System.out.println(flist.size()+ i +"      "+AllFood.get(i).getFoodName()+"            "+AllFood.get(i).getCategory()+"     "+AllFood.get(i).getQuantity()+"         RM"+AllFood.get(i).getPrice());
+                     show.add(i);
+                     count = count + i;
+                     }
            
-                         }  System.out.println("Please choose a sort options : 1. Sort By Name 2. Sort By Categories 3. Sort By Price");
+                         }  
+         
+         
+         
+         String aaa = " ";
+         int abc;
+         int quant;
+         double total = 0;
+         
+         do{
+         System.out.println("Please place your order :");
+         abc = scan.nextInt();
+         
+ if(abc <= count){
+         for(int s = 0 ; s< show.size();s++){
+             if(abc == show.get(s)){
+                 
+         System.out.println("Kindly key in quantity :");
+         quant = scan.nextInt();
+                 
+         orders od = new orders(classify,Restaurant.Ro.get(CompanyName).getRestaurantName(),AllFood.get(s).getFoodName(),AllFood.get(s).getQuantity(),AllFood.get(s).getPrice());
+         
+         orders.add(od);
+         
+         total = total + (quant * AllFood.get(s).getPrice());
+         
+         break;
+             }
+         }}else
+     System.out.println("Incorrect input...\n\n");
+         
+         
+         System.out.println("Do you wish to make another oder ? (Y/N)");
+         aaa = scan.nextLine();
+         }while(aaa.equals("Y"));
+         
+         classify++;
+         
+         
+         /*System.out.println("Please choose a sort options : 1. Sort By Name 2. Sort By Categories 3. Sort By Price");
                           options=scan.nextLine();
                          switch(options)
                          {
@@ -343,7 +406,7 @@ public class FoodMenu {
                                  displayMenu();
                                  break;
                                   
-                         }
+                         }*/
      
      
      }
