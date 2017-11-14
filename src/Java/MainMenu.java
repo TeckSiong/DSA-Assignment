@@ -26,7 +26,7 @@ public class MainMenu {
             case 1:
                 System.out.println("");
                 RegisterDelMen d = new RegisterDelMen();
-                d.menu();
+                d.HRDeteils();
                 break;
                 
             case 2:
