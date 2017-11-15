@@ -65,6 +65,7 @@ public class RegisterDelMen {
         System.out.println("====================================================");
         System.out.println("1. Register Delivery Men");
         System.out.println("2. Update Delivery Men Information");
+        System.out.println("3. Assign Jobs");
         System.out.println("0. Exit");
         System.out.println("====================================================");
         System.out.print("Enter Your Action : ");
@@ -79,6 +80,14 @@ public class RegisterDelMen {
             case 2:
                 break;
 
+            case 3:
+                System.out.println("");
+                AssignDeliveryJob w = new AssignDeliveryJob();
+                w.adStart();
+                RegisterDelMen r = new RegisterDelMen();
+                r.menu();
+                break;
+
             case 0:
                 System.out.println("");
                 MainMenu m = new MainMenu();
@@ -86,7 +95,7 @@ public class RegisterDelMen {
                 break;
 
             default:
-                System.out.println("Invalid Input [1/2]");
+                System.out.println("Invalid Input [1/2/3]");
                 System.out.println("");
                 menu();
                 break;

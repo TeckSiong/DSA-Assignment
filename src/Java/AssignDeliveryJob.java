@@ -178,23 +178,15 @@ public class AssignDeliveryJob {
         
         System.out.println();
         System.out.println("The delivery jobs have assigned!!");
-        System.out.println();
         
  
     }
     
     
-    
-    
-    
-
-
-    public static void main(String[] args) {
-       
+    public void adStart(){
         AssignDeliveryJob o = new AssignDeliveryJob();
         o.Order();
         o.delivery();
         o.assignjob();
     }
-    
 }
