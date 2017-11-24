@@ -12,7 +12,7 @@ public class RegisterDelMen {
 
     Scanner scan = new Scanner(System.in);
     ArrayList<String> check = new ArrayList();
-    ArrayList<DeliveryMen> ad = new ArrayList();
+    public static ArrayList<DeliveryMen> ad = new ArrayList();
     ArrayList<HRExecutive> hr = new ArrayList();
     String ans, id, psw;
     int c;
@@ -78,6 +78,9 @@ public class RegisterDelMen {
                 break;
 
             case 2:
+                System.out.println("");
+                updDelmenConInfo u = new updDelmenConInfo();
+                u.updDelmenConInfo();
                 break;
 
             case 3:
@@ -155,6 +158,7 @@ public class RegisterDelMen {
         System.out.println("Please confirm the information~");
         System.out.println("====================================================");
         System.out.println("ID Number       : " + DeliveryMen.getDelmenID());
+        System.out.println("Password        : ABC123");
         System.out.println("Name            : " + check.get(0));
         System.out.println("Contact Number  : " + check.get(1));
         System.out.println("Home Address    : " + check.get(2));
