@@ -14,6 +14,7 @@ public class updDelmenConInfo {
     String ans;
     int i;
     int c;
+    int count = 0;
 
     public void updDelmenConInfo() {
 
@@ -23,7 +24,6 @@ public class updDelmenConInfo {
         System.out.println("----------------------------------------------------");
         System.out.print("Enter Delivery men's ID : ");
         ans = scan.nextLine();
-        int count = 0;
         if (!ans.equals("exit")) {
             for (i = 0; i < RegisterDelMen.ad.size(); i++) {
                 if (Integer.parseInt(ans) == RegisterDelMen.ad.get(i).getDelmenId()) {
@@ -191,6 +191,7 @@ public class updDelmenConInfo {
             case "N":
                 System.out.println("Thanks for using our system~");
                 System.out.println("");
+                count = 0;
                 updDelmenConInfo();
                 break;
             default:
