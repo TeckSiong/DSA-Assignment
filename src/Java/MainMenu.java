@@ -8,7 +8,7 @@ import java.util.Scanner;
  * @author Teck Siong
  */
 public class MainMenu {
-
+    UpdateSchedule u = new UpdateSchedule();
     Scanner scan = new Scanner(System.in);
 
     public void main() {
@@ -54,6 +54,7 @@ public class MainMenu {
         System.out.println("====================================================");
         System.out.println("1. Make Schedule Order");
         System.out.println("2. Place Order");
+        System.out.println("3. Update Schedule Order");
         System.out.println("0. Exit");
         System.out.println("====================================================");
         System.out.print("Enter Your Action : ");
@@ -71,6 +72,13 @@ public class MainMenu {
                 System.out.println("");
                 FoodMenu f = new FoodMenu();
                 f.displayMenu();
+                break;
+                
+            case 3:
+                System.out.println("");
+                
+                u.UpdateSchedule();
+                customer();
                 break;
 
             case 0:
