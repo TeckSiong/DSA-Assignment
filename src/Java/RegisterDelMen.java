@@ -66,6 +66,7 @@ public class RegisterDelMen {
         System.out.println("1. Register Delivery Men");
         System.out.println("2. Update Delivery Men Information");
         System.out.println("3. Assign Jobs");
+        System.out.println("4. Get customer delivery information");
         System.out.println("0. Exit");
         System.out.println("====================================================");
         System.out.print("Enter Your Action : ");
@@ -91,6 +92,12 @@ public class RegisterDelMen {
                 r.menu();
                 break;
 
+            case 4:
+                System.out.println("");
+                getDelivery g = new getDelivery();
+                g.start();
+                break;
+                
             case 0:
                 System.out.println("");
                 MainMenu m = new MainMenu();
