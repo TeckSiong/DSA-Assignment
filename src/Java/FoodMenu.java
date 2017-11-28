@@ -109,7 +109,7 @@ public class FoodMenu {
          int grabFoods=0;
         // System.out.println("Food Name        Category         Quantity           Price          Day");
           //System.out.println("=========        ========         ========           =====         ===");
-          System.out.printf("%20s %20s %20s %20s %20s\n","Foodname","Category","Quantity","Price","Day");
+          System.out.printf("%20s %20s %20s %20s %20s\n","Foodname","Category","Quantity","Price(RM)","Day");
           System.out.printf("%20s %20s %20s %20s %20s\n\n","========","========","========","=====","===");
          
          for(int i=0;i<AllFood.size();i++)
@@ -117,7 +117,7 @@ public class FoodMenu {
              if(AllFood.get(i).getCompanyID()==Restaurant.ID)
              { 
                  //System.out.println(j+"       "+AllFood.get(i).getFoodName()+"           "+AllFood.get(i).getCategory()+"     "+AllFood.get(i).getQuantity()+"         RM"+AllFood.get(i).getPrice()+"         "+     AllFood.get(i).getDayAvailable());
-                System.out.printf("%10s %10s %20s %20s %20s %20s\n",j,AllFood.get(i).getFoodName(),AllFood.get(i).getCategory(),AllFood.get(i).getQuantity(),"RM"+AllFood.get(i).getPrice(), AllFood.get(i).getDayAvailable());
+                System.out.printf("%10s %10s %20s %20s  %20.2f %20s\n",j,AllFood.get(i).getFoodName(),AllFood.get(i).getCategory(),AllFood.get(i).getQuantity(),AllFood.get(i).getPrice(), AllFood.get(i).getDayAvailable());
                  j++;
                  name.add(AllFood.get(i).getFoodName());
              }
@@ -323,7 +323,7 @@ public class FoodMenu {
          CompanyName = Restaurant.Ro.get(scan.nextInt()).getId();scan.nextLine();x=0;}catch(Exception e){System.out.println("Please input again");x=1;scan.nextLine();}}while(x==1);
         //  System.out.println("Food Name        Category         Quantity           Price");
          // System.out.println("=========        ========         ========           =====");
-         System.out.printf("%20s %20s %20s %20s\n","Foodname","Category","Quantity","Price");
+         System.out.printf("%20s %20s %20s %20s\n","Foodname","Category","Quantity","Price(RM)");
          System.out.printf("%20s %20s %20s %20s\n\n","========","========","========","=====");
          for(int i=0;i<AllFood.size();i++)
          {
@@ -331,14 +331,14 @@ public class FoodMenu {
              if(d==1 && AllFood.get(i).getCompanyID()==CompanyName && AllFood.get(i).getDayAvailable().equals("Sunday"))
              { flist.add(AllFood.get(i));
               //   System.out.println(flist.size()+ i +"       "+AllFood.get(i).getFoodName()+"           "+AllFood.get(i).getCategory()+"     "+AllFood.get(i).getQuantity()+"         RM"+AllFood.get(i).getPrice());
-            System.out.printf("%10s %10s %20s %20s %20s\n", flist.size(),AllFood.get(i).getFoodName(),AllFood.get(i).getCategory(),AllFood.get(i).getQuantity(),"Rm"+AllFood.get(i).getPrice());
+            System.out.printf("%10s %10s %20s %20s %20.2f\n", flist.size(),AllFood.get(i).getFoodName(),AllFood.get(i).getCategory(),AllFood.get(i).getQuantity(),AllFood.get(i).getPrice());
               show.add(i);
              count = count + i;
              }
              if((d==2 || d==3)&& AllFood.get(i).getCompanyID()==CompanyName && (AllFood.get(i).getDayAvailable().equals("Monday & Tuesday")))
              {flist.add(AllFood.get(i));
                   //  System.out.println(flist.size()+ i +"       "+AllFood.get(i).getFoodName()+"           "+AllFood.get(i).getCategory()+"     "+AllFood.get(i).getQuantity()+"         RM"+AllFood.get(i).getPrice());
-              System.out.printf("%10s %10s %20s %20s %20s\n", flist.size(),AllFood.get(i).getFoodName(),AllFood.get(i).getCategory(),AllFood.get(i).getQuantity(),"Rm"+AllFood.get(i).getPrice());
+              System.out.printf("%10s %10s %20s %20s %20.2f\n", flist.size(),AllFood.get(i).getFoodName(),AllFood.get(i).getCategory(),AllFood.get(i).getQuantity(),AllFood.get(i).getPrice());
             
                   show.add(i);
              count = count + i;
@@ -346,7 +346,7 @@ public class FoodMenu {
                  if((d==4 || d==5) && AllFood.get(i).getCompanyID()==CompanyName && (AllFood.get(i).getDayAvailable().equals("Wednesday & Thursday")))
                  {flist.add(AllFood.get(i)); 
                   //System.out.println(flist.size()+ i +"      "+AllFood.get(i).getFoodName()+"             "+AllFood.get(i).getCategory()+"     "+AllFood.get(i).getQuantity()+"         RM"+AllFood.get(i).getPrice());
-                 System.out.printf("%10s %10s %20s %20s %20s\n", flist.size(),AllFood.get(i).getFoodName(),AllFood.get(i).getCategory(),AllFood.get(i).getQuantity(),"Rm"+AllFood.get(i).getPrice());
+                 System.out.printf("%10s %10s %20s %20s %20.2f\n", flist.size(),AllFood.get(i).getFoodName(),AllFood.get(i).getCategory(),AllFood.get(i).getQuantity(),AllFood.get(i).getPrice());
             
                   show.add(i);
                  count = count + i;
@@ -354,7 +354,7 @@ public class FoodMenu {
                      if((d==6 || d==7) && AllFood.get(i).getCompanyID()==CompanyName && (AllFood.get(i).getDayAvailable().equals("Friday & Saturday")))
                      { flist.add(AllFood.get(i));
                      // System.out.println(flist.size()+ i +"      "+AllFood.get(i).getFoodName()+"            "+AllFood.get(i).getCategory()+"     "+AllFood.get(i).getQuantity()+"         RM"+AllFood.get(i).getPrice());
-                    System.out.printf("%10s %10s %20s %20s %20s\n", flist.size(),AllFood.get(i).getFoodName(),AllFood.get(i).getCategory(),AllFood.get(i).getQuantity(),"Rm"+AllFood.get(i).getPrice());
+                    System.out.printf("%10s %10s %20s %20s %20.2f\n", flist.size(),AllFood.get(i).getFoodName(),AllFood.get(i).getCategory(),AllFood.get(i).getQuantity(),AllFood.get(i).getPrice());
             
                      show.add(i);
                      count = count + i;
