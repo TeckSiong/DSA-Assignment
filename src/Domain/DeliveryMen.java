@@ -10,12 +10,13 @@ public class DeliveryMen {
     private String homeAddress;
     private String joinDate;
     private String status;
-
-    public DeliveryMen() {
-
+    private int trip;
+    
+    public DeliveryMen(){
+        
     }
 
-    public DeliveryMen(int delmenId, String password, String delmenName, String ContactNum, String homeAddress, String jonDate, String status) {
+    public DeliveryMen(int delmenId, String password, String delmenName, String ContactNum, String homeAddress, String jonDate, String status, int trip) {
         this.delmenId = delmenId;
         this.password = password;
         this.delmenName = delmenName;
@@ -23,6 +24,7 @@ public class DeliveryMen {
         this.homeAddress = homeAddress;
         this.joinDate = jonDate;
         this.status = status;
+        this.trip = trip;
         delmenID++;
     }
 
@@ -89,4 +91,14 @@ public class DeliveryMen {
     public void setStatus(String status) {
         this.status = status;
     }
+    
+    public int getTrip(){
+        return trip;
+    }
+    
+    public void setTrip(int trip){
+        this.trip = trip;
+        
+    }
+    
 }

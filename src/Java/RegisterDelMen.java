@@ -113,11 +113,11 @@ public class RegisterDelMen {
     }
 
     public void DeliveryMenDetails() {
-        ad.add(new DeliveryMen(601001, "ABC123", "Jorn Lim", "011-12345678", "Pertaling Jaya", "13/11/2016", "Available"));
-        ad.add(new DeliveryMen(601002, "Hii123", "Mark", "018-1234567", "Wangsa Maju", "10/11/2016", "Available"));
-        ad.add(new DeliveryMen(601003, "Waa123", "Jolin", "017-1234567", "Setapak", "17/11/2016", "Available"));
-        ad.add(new DeliveryMen(601004, "Qzz123", "Sam", "016-1234567", "Seremban", "21/11/2016", "Available"));
-        ad.add(new DeliveryMen(601005, "Zaa123", "Zack", "013-1234567", "Port Dickson", "30/11/2016", "Available"));
+        ad.add(new DeliveryMen(601001, "ABC123", "Jorn Lim", "011-12345678", "Pertaling Jaya", "13/11/2016", "Available",2));
+        ad.add(new DeliveryMen(601002, "Hii123", "Mark    ", "018-1234567", "Wangsa Maju", "10/11/2016", "Available",3));
+        ad.add(new DeliveryMen(601003, "Waa123", "Jolin   ", "017-1234567", "Setapak", "17/11/2016", "Available",3));
+        ad.add(new DeliveryMen(601004, "Qzz123", "Sam     ", "016-1234567", "Seremban", "21/11/2016", "Available",4));
+        ad.add(new DeliveryMen(601005, "Zaa123", "Zack    ", "013-1234567", "Port Dickson", "30/11/2016", "Available",5));
         RegisterDelMen();
     }
 
@@ -176,7 +176,7 @@ public class RegisterDelMen {
         ans = scan.nextLine();
         switch (ans) {
             case "Y":
-                DeliveryMen dm = new DeliveryMen(DeliveryMen.getDelmenID(), "ABC123", check.get(0), check.get(1), check.get(2), getDateTime(), "Available");
+                DeliveryMen dm = new DeliveryMen(DeliveryMen.getDelmenID(), "ABC123", check.get(0), check.get(1), check.get(2), getDateTime(), "Available",0);
                 ad.add(dm);
                 System.out.println("Register Sucessful!");
                 System.out.println("");
