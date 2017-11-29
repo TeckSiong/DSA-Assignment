@@ -86,6 +86,7 @@ public class MainMenu {
                 System.out.println("");
 
                 TrackOrderStatus a1 = new TrackOrderStatus();
+                a1.d();;
                 a1.OrderStatus();
 
                 break;
