@@ -55,6 +55,7 @@ public class MainMenu {
         System.out.println("1. Make Schedule Order");
         System.out.println("2. Place Order");
         System.out.println("3. Update Schedule Order");
+        System.out.println("4. Check order remaing time");
         System.out.println("0. Exit");
         System.out.println("====================================================");
         System.out.print("Enter Your Action : ");
@@ -79,6 +80,14 @@ public class MainMenu {
                 
                 u.UpdateSchedule();
                 customer();
+                break;
+                
+            case 4:
+                System.out.println("");
+
+                TrackOrderStatus a1 = new TrackOrderStatus();
+                a1.OrderStatus();
+
                 break;
 
             case 0:
