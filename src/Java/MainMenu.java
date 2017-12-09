@@ -18,6 +18,7 @@ public class MainMenu {
         System.out.println("1. Staff");
         System.out.println("2. Restaurant Owner");
         System.out.println("3. Customer");
+        System.out.println("4. Delivey Men");
         System.out.println("===========================================");
         System.out.println("");
         System.out.print("Please select your status : ");
@@ -38,6 +39,12 @@ public class MainMenu {
             case 3:
                 System.out.println("");
                 customer();
+                break;
+                
+            case 4:
+                System.out.println("");
+                DMLogin dm = new DMLogin();
+                dm.login();
                 break;
 
             default:

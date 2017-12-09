@@ -70,11 +70,11 @@ public class AssignDeliveryJob {
         
     }
     public void list(){
-        ad.add(new DeliveryMen(601001, "ABC123", "Jorn Lim", "011-12345678", "Pertaling Jaya", "13/11/2016", "Available",2));
-        ad.add(new DeliveryMen(601002, "Hii123", "Mark    ", "018-1234567", "Wangsa Maju", "10/11/2016", "Available",3));
-        ad.add(new DeliveryMen(601003, "Waa123", "Jolin   ", "017-1234567", "Setapak", "17/11/2016", "Available",3));
-        ad.add(new DeliveryMen(601004, "Qzz123", "Sam     ", "016-1234567", "Seremban", "21/11/2016", "Available",4));
-        ad.add(new DeliveryMen(601005, "Zaa123", "Zack    ", "013-1234567", "Port Dickson", "30/11/2016", "Available",5));
+        ad.add(new DeliveryMen(601001, "ABC123", "Jorn Lim", "011-12345678", "Pertaling Jaya", "13/11/2016", "Available",2, "Active"));
+        ad.add(new DeliveryMen(601002, "Hii123", "Mark    ", "018-1234567", "Wangsa Maju", "10/11/2016", "Available",3, "Active"));
+        ad.add(new DeliveryMen(601003, "Waa123", "Jolin   ", "017-1234567", "Setapak", "17/11/2016", "Available",3, "Active"));
+        ad.add(new DeliveryMen(601004, "Qzz123", "Sam     ", "016-1234567", "Seremban", "21/11/2016", "Available",4, "Active"));
+        ad.add(new DeliveryMen(601005, "Zaa123", "Zack    ", "013-1234567", "Port Dickson", "30/11/2016", "Available",5, "Active"));
     }
     
     

@@ -11,12 +11,13 @@ public class DeliveryMen {
     private String joinDate;
     private String status;
     private int trip;
+    private String acc;
     
     public DeliveryMen(){
         
     }
 
-    public DeliveryMen(int delmenId, String password, String delmenName, String ContactNum, String homeAddress, String jonDate, String status, int trip) {
+    public DeliveryMen(int delmenId, String password, String delmenName, String ContactNum, String homeAddress, String jonDate, String status, int trip, String acc) {
         this.delmenId = delmenId;
         this.password = password;
         this.delmenName = delmenName;
@@ -25,6 +26,7 @@ public class DeliveryMen {
         this.joinDate = jonDate;
         this.status = status;
         this.trip = trip;
+        this.acc = acc;
         delmenID++;
     }
 
@@ -99,6 +101,14 @@ public class DeliveryMen {
     public void setTrip(int trip){
         this.trip = trip;
         
+    }
+
+    public String getAcc() {
+        return acc;
+    }
+
+    public void setAcc(String acc) {
+        this.acc = acc;
     }
     
 }

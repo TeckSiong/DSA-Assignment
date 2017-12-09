@@ -25,7 +25,8 @@ public class RegisterDelMen {
         hr.add(new HRExecutive(301005, "AAB123", "Jerry"));
         login();
     }
-
+    
+    int count = 0;
     public void login() {
         System.out.println("====================================================");
         System.out.println("Login");
@@ -33,8 +34,8 @@ public class RegisterDelMen {
         System.out.println("====================================================");
         System.out.print("Enter your ID       : ");
         id = scan.nextLine();
-        int count = 0;
         if (!id.equals("exit")) {
+            count = 1;
             for (int i = 0; i < 10; i++) {
                 if (Integer.parseInt(id) == (hr.get(i).getHrID())) {
                     System.out.print("Enter your password : ");
@@ -43,7 +44,6 @@ public class RegisterDelMen {
                     if (psw.equals(hr.get(i).getHrPassword())) {
                         System.out.println("");
                         menu();
-                        count = 1;
                     }
                     if (count == 1) {
                         System.out.println("Invalid ID or Password!");
@@ -113,11 +113,11 @@ public class RegisterDelMen {
     }
 
     public void DeliveryMenDetails() {
-        ad.add(new DeliveryMen(601001, "ABC123", "Jorn Lim", "011-12345678", "Pertaling Jaya", "13/11/2016", "Available",2));
-        ad.add(new DeliveryMen(601002, "Hii123", "Mark    ", "018-1234567", "Wangsa Maju", "10/11/2016", "Available",3));
-        ad.add(new DeliveryMen(601003, "Waa123", "Jolin   ", "017-1234567", "Setapak", "17/11/2016", "Available",3));
-        ad.add(new DeliveryMen(601004, "Qzz123", "Sam     ", "016-1234567", "Seremban", "21/11/2016", "Available",4));
-        ad.add(new DeliveryMen(601005, "Zaa123", "Zack    ", "013-1234567", "Port Dickson", "30/11/2016", "Available",5));
+        ad.add(new DeliveryMen(601001, "ABC123", "Jorn Lim", "011-12345678", "Pertaling Jaya", "13/11/2016", "Available",2, "Active"));
+        ad.add(new DeliveryMen(601002, "Hii123", "Mark    ", "018-1234567", "Wangsa Maju", "10/11/2016", "Available",3, "Active"));
+        ad.add(new DeliveryMen(601003, "Waa123", "Jolin   ", "017-1234567", "Setapak", "17/11/2016", "Available",3, "Active"));
+        ad.add(new DeliveryMen(601004, "Qzz123", "Sam     ", "016-1234567", "Seremban", "21/11/2016", "Available",4, "Active"));
+        ad.add(new DeliveryMen(601005, "Zaa123", "Zack    ", "013-1234567", "Port Dickson", "30/11/2016", "Available",5, "Active"));
         RegisterDelMen();
     }
 
@@ -171,12 +171,13 @@ public class RegisterDelMen {
         System.out.println("Home Address    : " + check.get(2));
         System.out.println("Join Date       : " + getDateTime());
         System.out.println("Status          : Available");
+        System.out.println("Account         : Active");
         System.out.println("====================================================");
         System.out.print("Confirm? (Y/N) > ");
         ans = scan.nextLine();
         switch (ans) {
             case "Y":
-                DeliveryMen dm = new DeliveryMen(DeliveryMen.getDelmenID(), "ABC123", check.get(0), check.get(1), check.get(2), getDateTime(), "Available",0);
+                DeliveryMen dm = new DeliveryMen(DeliveryMen.getDelmenID(), "ABC123", check.get(0), check.get(1), check.get(2), getDateTime(), "Available", 0, "Active");
                 ad.add(dm);
                 System.out.println("Register Sucessful!");
                 System.out.println("");

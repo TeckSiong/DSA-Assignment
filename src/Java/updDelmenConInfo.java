@@ -15,6 +15,7 @@ public class updDelmenConInfo {
     int i;
     int c;
     int count = 0;
+    int acc;
 
     public void updDelmenConInfo() {
 
@@ -54,10 +55,14 @@ public class updDelmenConInfo {
                 updDelmenConInfo();
                 break;
             case "N":
+                System.out.println("");
                 System.out.println("Thanks for using our system~");
                 System.out.println("");
+                MainMenu mm = new MainMenu();
+                mm.main();
                 break;
             default:
+                System.out.println("");
                 System.out.println("Invalid input! (Y/N)");
                 System.out.println("");
                 exit();
@@ -75,13 +80,14 @@ public class updDelmenConInfo {
         System.out.println("Home Address    : " + RegisterDelMen.ad.get(i).getHomeAddress());
         System.out.println("Join Date       : " + RegisterDelMen.ad.get(i).getJoinDate());
         System.out.println("Status          : " + RegisterDelMen.ad.get(i).getStatus());
+        System.out.println("Account         : " + RegisterDelMen.ad.get(i).getAcc());
         System.out.println("====================================================");
         System.out.println("");
         System.out.println("************************");
         System.out.println("Update for > ");
         System.out.println("1. Contact Number");
         System.out.println("2. Home Address");
-        //System.out.println("3. Status");
+        System.out.println("3. Status");
         System.out.println("0. Exit");
         System.out.println("************************");
         String update = scan.nextLine();
@@ -126,10 +132,11 @@ public class updDelmenConInfo {
                     exit();
                 }
                 break;
-            /*case "3":
+            case "3":
                 System.out.println("*******************************************");
                 System.out.println("1. Retired");
                 System.out.println("2. Resigned");
+                System.out.println("3. Others");
                 System.out.println("0. Exit");
                 System.out.println("*******************************************");
                 System.out.print("Select the working status : ");
@@ -139,6 +146,7 @@ public class updDelmenConInfo {
                         System.out.println("");
                         System.out.println("Update Successful!");
                         RegisterDelMen.ad.get(i).setStatus("Retired");
+                        RegisterDelMen.ad.get(i).setAcc("Deactivate");
                         System.out.println("");
                         finalResult();
                         break;
@@ -146,22 +154,62 @@ public class updDelmenConInfo {
                         System.out.println("");
                         System.out.println("Update Successful!");
                         RegisterDelMen.ad.get(i).setStatus("Resigned");
+                        RegisterDelMen.ad.get(i).setAcc("Deactivate");
                         System.out.println("");
                         finalResult();
                         break;
+                    case 3:
+                        System.out.println("");
+                        System.out.print("Others > ");
+                        String other = scan.nextLine();
+                        other = scan.nextLine();
+                        RegisterDelMen.ad.get(i).setStatus(other);
+                        System.out.println("");
+                        System.out.println("Account status > ");
+                        System.out.println("1. Active");
+                        System.out.println("2. Deactive");
+                        System.out.println("0. Cancel");
+                        acc = scan.nextInt();
+                        System.out.println("");
+                        account();
+
                     case 0:
                         System.out.println("");
                         exit();
                         break;
                 }
-                break;*/
+                break;
             case "0":
                 exit();
                 break;
             default:
-                System.out.println("Invalid input! (1/2/0)");
+                System.out.println("Invalid input! (1/2/3/0)");
                 System.out.println("");
                 result();
+                break;
+        }
+    }
+
+    public void account() {
+        switch (acc) {
+            case 1:
+                finalResult();
+                break;
+
+            case 2:
+                RegisterDelMen.ad.get(i).setAcc("Deactivate");
+                finalResult();
+                break;
+
+            case 0:
+                System.out.println("");
+                exit();
+                break;
+
+            default:
+                System.out.println("Invalid input! (1/2/0)");
+                System.out.println("");
+                account();
                 break;
         }
     }
@@ -177,6 +225,7 @@ public class updDelmenConInfo {
         System.out.println("Home Address    : " + RegisterDelMen.ad.get(i).getHomeAddress());
         System.out.println("Join Date       : " + RegisterDelMen.ad.get(i).getJoinDate());
         System.out.println("Status          : " + RegisterDelMen.ad.get(i).getStatus());
+        System.out.println("Account         : " + RegisterDelMen.ad.get(i).getAcc());
         System.out.println("====================================================");
         System.out.println("");
         System.out.println("****************************************************");
