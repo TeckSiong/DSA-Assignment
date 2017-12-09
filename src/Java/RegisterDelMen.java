@@ -35,7 +35,6 @@ public class RegisterDelMen {
         System.out.print("Enter your ID       : ");
         id = scan.nextLine();
         if (!id.equals("exit")) {
-            count = 1;
             for (int i = 0; i < 10; i++) {
                 if (Integer.parseInt(id) == (hr.get(i).getHrID())) {
                     System.out.print("Enter your password : ");

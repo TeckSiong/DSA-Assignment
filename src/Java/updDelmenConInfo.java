@@ -137,6 +137,7 @@ public class updDelmenConInfo {
                 System.out.println("1. Retired");
                 System.out.println("2. Resigned");
                 System.out.println("3. Others");
+                System.out.println("4. Available");
                 System.out.println("0. Exit");
                 System.out.println("*******************************************");
                 System.out.print("Select the working status : ");
@@ -172,6 +173,15 @@ public class updDelmenConInfo {
                         acc = scan.nextInt();
                         System.out.println("");
                         account();
+                        
+                    case 4:
+                        System.out.println("");
+                        System.out.println("Update Successful!");
+                        RegisterDelMen.ad.get(i).setStatus("Available");
+                        RegisterDelMen.ad.get(i).setAcc("Active");
+                        System.out.println("");
+                        finalResult();
+                        break;
 
                     case 0:
                         System.out.println("");
