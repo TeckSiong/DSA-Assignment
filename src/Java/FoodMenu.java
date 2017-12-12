@@ -70,7 +70,7 @@ public class FoodMenu {
        do{
         
         System.out.println("\nDo you want to add more food? Y/N");
-        option = scan.nextLine();}while(!option.equals("Y")&&!option.equals("N"));}while(option.equals("Y"));
+        option = scan.nextLine();}while(!option.equals("Y")&& !option.equals("N"));}while(option.equals("Y"));
         MainMenu();
     }
     
