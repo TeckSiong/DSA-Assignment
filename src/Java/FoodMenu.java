@@ -107,11 +107,14 @@ public class FoodMenu {
          int option=0;
          int j=0;
          int grabFoods=0;
-        // System.out.println("Food Name        Category         Quantity           Price          Day");
-          //System.out.println("=========        ========         ========           =====         ===");
-          System.out.printf("%20s %20s %20s %20s %20s\n","Foodname","Category","Quantity","Price(RM)","Day");
-          System.out.printf("%20s %20s %20s %20s %20s\n\n","========","========","========","=====","===");
-         
+        // System.out.println("Food Name        Category         Quantity           Price         Display Day");
+          //System.out.println("=========        ========         ========           =====         ===========");
+          System.out.printf("%20s %20s %20s %20s %20s\n","Foodname","Category","Quantity","Price(RM)","Display Day");
+          System.out.printf("%20s %20s %20s %20s %20s\n\n","========","========","========","=====","===========");
+         if(AllFood.isEmpty())
+         {
+             System.out.println("Empty Food List");
+         }
          for(int i=0;i<AllFood.size();i++)
          {
              if(AllFood.get(i).getCompanyID()==Restaurant.ID)
@@ -317,6 +320,7 @@ public class FoodMenu {
          
          
          int count = 0;
+         String status = "";
          ArrayList<Integer> show = new ArrayList<>();
          
          do{try{
@@ -325,17 +329,26 @@ public class FoodMenu {
          // System.out.println("=========        ========         ========           =====");
          System.out.printf("%20s %20s %20s %20s\n","Foodname","Category","Quantity","Price(RM)");
          System.out.printf("%20s %20s %20s %20s\n\n","========","========","========","=====");
+         for(int i=0;i<Restaurant.Ro.size();i++)
+         {
+             if(CompanyName==Restaurant.Ro.get(i).getId())
+              status = Restaurant.Ro.get(i).getStatus();
+         }
+         if(AllFood.isEmpty())
+         {
+             System.out.println("Empty Food List");
+         }
          for(int i=0;i<AllFood.size();i++)
          {
             
-             if(d==1 && AllFood.get(i).getCompanyID()==CompanyName && AllFood.get(i).getDayAvailable().equals("Sunday"))
+             if(d==1 && AllFood.get(i).getCompanyID()==CompanyName && status.equals("Activated") &&AllFood.get(i).getDayAvailable().equals("Sunday"))
              { flist.add(AllFood.get(i));
               //   System.out.println(flist.size()+ i +"       "+AllFood.get(i).getFoodName()+"           "+AllFood.get(i).getCategory()+"     "+AllFood.get(i).getQuantity()+"         RM"+AllFood.get(i).getPrice());
             System.out.printf("%10s %10s %20s %20s %20.2f\n", flist.size(),AllFood.get(i).getFoodName(),AllFood.get(i).getCategory(),AllFood.get(i).getQuantity(),AllFood.get(i).getPrice());
               show.add(i);
              count = count + i;
              }
-             if((d==2 || d==3)&& AllFood.get(i).getCompanyID()==CompanyName && (AllFood.get(i).getDayAvailable().equals("Monday & Tuesday")))
+             if((d==2 || d==3)&& AllFood.get(i).getCompanyID()==CompanyName && status.equals("Activated")&& (AllFood.get(i).getDayAvailable().equals("Monday & Tuesday")))
              {flist.add(AllFood.get(i));
                   //  System.out.println(flist.size()+ i +"       "+AllFood.get(i).getFoodName()+"           "+AllFood.get(i).getCategory()+"     "+AllFood.get(i).getQuantity()+"         RM"+AllFood.get(i).getPrice());
               System.out.printf("%10s %10s %20s %20s %20.2f\n", flist.size(),AllFood.get(i).getFoodName(),AllFood.get(i).getCategory(),AllFood.get(i).getQuantity(),AllFood.get(i).getPrice());
@@ -343,7 +356,7 @@ public class FoodMenu {
                   show.add(i);
              count = count + i;
              }
-                 if((d==4 || d==5) && AllFood.get(i).getCompanyID()==CompanyName && (AllFood.get(i).getDayAvailable().equals("Wednesday & Thursday")))
+                 if((d==4 || d==5) && AllFood.get(i).getCompanyID()==CompanyName && status.equals("Activated")&& (AllFood.get(i).getDayAvailable().equals("Wednesday & Thursday")))
                  {flist.add(AllFood.get(i)); 
                   //System.out.println(flist.size()+ i +"      "+AllFood.get(i).getFoodName()+"             "+AllFood.get(i).getCategory()+"     "+AllFood.get(i).getQuantity()+"         RM"+AllFood.get(i).getPrice());
                  System.out.printf("%10s %10s %20s %20s %20.2f\n", flist.size(),AllFood.get(i).getFoodName(),AllFood.get(i).getCategory(),AllFood.get(i).getQuantity(),AllFood.get(i).getPrice());
@@ -351,7 +364,7 @@ public class FoodMenu {
                   show.add(i);
                  count = count + i;
                  }
-                     if((d==6 || d==7) && AllFood.get(i).getCompanyID()==CompanyName && (AllFood.get(i).getDayAvailable().equals("Friday & Saturday")))
+                     if((d==6 || d==7) && AllFood.get(i).getCompanyID()==CompanyName &&status.equals("Activated")&& (AllFood.get(i).getDayAvailable().equals("Friday & Saturday")))
                      { flist.add(AllFood.get(i));
                      // System.out.println(flist.size()+ i +"      "+AllFood.get(i).getFoodName()+"            "+AllFood.get(i).getCategory()+"     "+AllFood.get(i).getQuantity()+"         RM"+AllFood.get(i).getPrice());
                     System.out.printf("%10s %10s %20s %20s %20.2f\n", flist.size(),AllFood.get(i).getFoodName(),AllFood.get(i).getCategory(),AllFood.get(i).getQuantity(),AllFood.get(i).getPrice());

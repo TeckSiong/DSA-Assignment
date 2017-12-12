@@ -24,6 +24,7 @@ public class Restaurant {
     public static int ID;
     public static String password;
     public static String RESTAURANT_NAME;
+    public boolean loginDeActivated = false;
     
    public void registrationRestaurantOwner()
     {
@@ -102,8 +103,9 @@ public class Restaurant {
         RestaurantOwner o = new RestaurantOwner(id,input.get(0),input.get(1),
                 input.get(2),input.get(3),input.get(4),input.get(5)+" - "+input.get(6));
         Ro.add(o);
-        id++;
-         System.out.println("\nYou Are successfully Register New Account, Your ID Is "+Ro.get(0).getId()+"\n");
+        
+         System.out.println("\nYou Are successfully Register New Account, Your ID Is "+id+"\n");
+         id++;
         System.out.println("Summary Of Registration Of Restaurant Owner");
         System.out.println("Restaurant Name : "+input.get(0) );
         System.out.println("Contact No      : "+ input.get(1));
@@ -167,7 +169,7 @@ public class Restaurant {
                  { 
                      System.out.println("Are you sure ? Y/N");
                      if(scan.nextLine().equals("Y"))
-                     {DeactivatedAccount(0);
+                     {DeactivatedAccount(i);
                      return;}
                      else if(scan.nextLine().equals("N"))
                      {
@@ -234,6 +236,7 @@ public class Restaurant {
        }else if(choose.equals("2"))
        {
            boolean login=false;
+           
        System.out.println("Login Page");
        System.out.println("==========");
        System.out.print("Please input a ID       : ");
@@ -242,24 +245,36 @@ public class Restaurant {
        String pass=scan.nextLine();
        for(int i=0;i<Ro.size();i++)
        {
-           System.out.println(Ro.get(i).getId()+""+ Ro.get(i).getPassword());
-           if(ID.equals(Ro.get(i).getId()+"") && pass.equals(Ro.get(i).getPassword()) && Ro.get(i).getStatus().equals("Activated"))
+          // System.out.println(Ro.get(i).getId()+""+ Ro.get(i).getPassword());
+           if(ID.equals(Ro.get(i).getId()+"") && pass.equals(Ro.get(i).getPassword()))
            {
+               if(Ro.get(i).getStatus().equals("Deactivated")){
+               loginDeActivated = true;
+                   
+                   System.out.println(Ro.get(i).getStatus());
+               }else{
                System.out.println("Login Sucessfully");
                this.ID=Ro.get(i).getId();
                password=Ro.get(i).getPassword();
                RESTAURANT_NAME=Ro.get(i).getRestaurantName();
                FoodMenu f = new FoodMenu();
                f.MainMenu();
-               login=true;
+               
+               login=true;}
                
            }
 
        }
        
        if(login==false)
-       {System.out.println("Login Failed, Password or ID Invalid");
-       
+       {
+           if(loginDeActivated)
+           {
+               System.out.println("Sorry you have already deactivated your account");
+               loginDeActivated=false;
+           }else
+           System.out.println("Login Failed, Password or ID Invalid");
+            
         Login();
        }
        }else if(choose.equals("3"))
