@@ -65,9 +65,6 @@ public class UpdateSchedule {
               }
            }
         }
-        
-        
-        
         System.out.print("Please input Receiver Name                    :");
         input.add(scan.nextLine());
         if(checkExit(input))
@@ -133,6 +130,60 @@ public class UpdateSchedule {
         scan.nextLine();
         
     }
+   
+   
+   public void cancelSchedule(){
+       if(!alreadyExecute){
+        Ro.add(o);
+        Ro.add(o2);
+        alreadyExecute = true;
+        }
+       boolean validation = false;
+       input.clear();
+       
+       System.out.println("     OrderID     Receiver Name     Receiver Address     Order Date     Order Time");
+        for(int i = 0 ; i<Ro.size();i++){
+            System.out.printf("  %10s %15s %20s %15s %15s \n",Ro.get(i).getOrderID(),Ro.get(i).getCustName(),Ro.get(i).getCustAddress(),Ro.get(i).getScheduleOrderDate(),Ro.get(i).getScheduleOrderTime());
+        }
+        
+        System.out.println("Cancel Schedule Order\n(Type \"exit\" at any input to Cancel schedule order");
+        System.out.println("--------------------------------");
+        System.out.print("Please input orderID you want to cancel     :");
+        input.add(scan.nextLine());
+        if(checkExit(input))
+            return;
+        if(validation==false){
+            for(int i = 0 ; i<Ro.size();i++){
+            if(Ro.get(i).getOrderID().compareTo(input.get(0))==0){
+                validation = true;
+                }
+            }
+        }
+        
+        if(validation == false){
+            for(int i = 0 ; i<Ro.size();i++){
+             if(Ro.get(i).getOrderID().compareTo(input.get(0))!=0){
+                    System.out.println("The order id you key in is invalid!!!");
+                 return;
+              }
+           }
+        }
+        for(int i = 0;i< Ro.size();i++){
+            if(input.get(0).equals(Ro.get(i).getOrderID())){
+                Ro.remove(i);
+            }
+        }
+        System.out.println("     OrderID     Receiver Name     Receiver Address     Order Date     Order Time");
+        for(int i = 0 ; i<Ro.size();i++){
+            System.out.printf("  %10s %15s %20s %15s %15s \n",Ro.get(i).getOrderID(),Ro.get(i).getCustName(),Ro.get(i).getCustAddress(),Ro.get(i).getScheduleOrderDate(),Ro.get(i).getScheduleOrderTime());
+        }
+        
+        System.out.println("\nPress any key to continue");
+        scan.nextLine();
+        
+       
+       
+   }
    
    public static boolean isValidDate(String inDate) {
     SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
