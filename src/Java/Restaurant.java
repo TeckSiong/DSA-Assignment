@@ -191,6 +191,8 @@ public class Restaurant {
    public void DeactivatedAccount(int account)
    {
        Ro.get(account).setStatus("Deactivated");
+        Ro.get(account).setRestaurantName(Ro.get(account).getRestaurantName() + "(Deactivated)");
+      System.out.println("Deactivated Completed");
        Login();
    }
    

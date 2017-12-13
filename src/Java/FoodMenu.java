@@ -243,7 +243,7 @@ public class FoodMenu {
    {
        String style="";
        int choose;
-       System.out.print("Please choose a Day (1.Monday & Tuesday or 2.Wednesday & Thursday or 3.Friday & Saturday or 4.Sunday "
+       System.out.print("Please choose a Day (1.Monday & Tuesday or 2.Wednesday & Thursday or 3.Friday & Saturday or 4.Sunday or 4.Sunday 5.No Display"
                 );
        choose = scan.nextInt();
        scan.nextLine();
@@ -258,8 +258,11 @@ public class FoodMenu {
             case 3:
                  style="Friday & Saturday";
                 break;
+           case 4:
+                 style = "Sunday";
+                   break;
             default:
-                   style = "Sunday";
+                   style = "None";
                    break;
                 
                
