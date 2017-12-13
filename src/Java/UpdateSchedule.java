@@ -152,7 +152,9 @@ public class UpdateSchedule {
         input.add(scan.nextLine());
         if(checkExit(input))
             return;
-        if(validation==false){
+        String options="";
+         do{
+             if(validation==false){
             for(int i = 0 ; i<Ro.size();i++){
             if(Ro.get(i).getOrderID().compareTo(input.get(0))==0){
                 validation = true;
@@ -168,11 +170,21 @@ public class UpdateSchedule {
               }
            }
         }
+         System.out.printf("Are you sure you want to delete this order? Yes/No ：");
+         options=scan.nextLine();
+         if(options.toLowerCase().equals("yes"))
+         {
         for(int i = 0;i< Ro.size();i++){
             if(input.get(0).equals(Ro.get(i).getOrderID())){
                 Ro.remove(i);
             }
         }
+         }
+         else if(!options.toLowerCase().equals("yes")&& !options.toLowerCase().equals("no"))
+         System.out.println("Invalid Input...");}while(!options.toLowerCase().equals("yes")&& !options.toLowerCase().equals("no"));
+        
+        
+        
         System.out.println("     OrderID     Receiver Name     Receiver Address     Order Date     Order Time");
         for(int i = 0 ; i<Ro.size();i++){
             System.out.printf("  %10s %15s %20s %15s %15s \n",Ro.get(i).getOrderID(),Ro.get(i).getCustName(),Ro.get(i).getCustAddress(),Ro.get(i).getScheduleOrderDate(),Ro.get(i).getScheduleOrderTime());
