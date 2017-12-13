@@ -12,14 +12,14 @@ package Domain;
 public class orders {
     
     private int classify;
-    private String restaurantName;
+    private int restaurantName;
     private String name;
     private int quantity;
     private double price;
     
     public orders(){}
     
-    public orders(int clas, String res, String name, int quant, double price){
+    public orders(int clas, int res, String name, int quant, double price){
         this.classify = clas;
         this.restaurantName = res;
         this.name = name;
@@ -36,11 +36,11 @@ public class orders {
         this.classify = classify;
     }
     
-    public String getrestaurantName() {
+    public int getrestaurantName() {
         return restaurantName;
     }
 
-    public void setrestaurantName(String restaurantName) {
+    public void setrestaurantName(int restaurantName) {
         this.restaurantName = restaurantName;
     }
     

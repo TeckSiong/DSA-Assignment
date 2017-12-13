@@ -377,7 +377,8 @@ public class FoodMenu {
          
          
          
-         String aaa = " ";
+         
+        int aaa = 0;
          int abc;
          int quant;
          double total = 0;
@@ -386,30 +387,44 @@ public class FoodMenu {
          System.out.println("Please place your order :");
          abc = scan.nextInt();
          
- if(abc <= count){
-         for(int s = 0 ; s< show.size();s++){
-             if(abc == show.get(s)){
+         abc = abc - 1;
+         String name = flist.get(abc).getFoodName();
+         
+ if(name != " "){
+         for(int s = 0 ; s< AllFood.size();s++){
+             if(name.equals( AllFood.get(s).getFoodName())){
                  
          System.out.println("Kindly key in quantity :");
          quant = scan.nextInt();
                  
-         orders od = new orders(classify,Restaurant.Ro.get(CompanyName).getRestaurantName(),AllFood.get(s).getFoodName(),AllFood.get(s).getQuantity(),AllFood.get(s).getPrice());
+         orders od = new orders(classify,AllFood.get(s).getCompanyID(),AllFood.get(s).getFoodName(),quant,AllFood.get(s).getPrice());
          
          orders.add(od);
          
          total = total + (quant * AllFood.get(s).getPrice());
          
-         break;
+         
              }
          }}else
      System.out.println("Incorrect input...\n\n");
          
          
-         System.out.println("Do you wish to make another oder ? (Y/N)");
-         aaa = scan.nextLine();
-         }while(aaa.equals("Y"));
+         System.out.println("Do you wish to make another oder ? (1 = exit)");
+         aaa = scan.nextInt();
+         
+         }while(aaa==0);
          
          classify++;
+         
+         System.out.println("\n\n\n=============== Order Summary ===============\n\n\n");
+         System.out.println("Food     " + "Quantity       " + "Price (RM)  \n");
+         for(int y = 0; y < orders.size();y++)
+         System.out.println(orders.get(y).getname()+ "           " +  orders.get(y).getquantity() +"              "+ (orders.get(y).getprice()*orders.get(y).getquantity())+ "\n");
+         
+         System.out.println("=============== Total amount need to pay : ===============\n");
+         System.out.println("                                          " + total);
+         
+         
          
          
          /*System.out.println("Please choose a sort options : 1. Sort By Name 2. Sort By Categories 3. Sort By Price");
