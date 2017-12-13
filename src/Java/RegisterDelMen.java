@@ -85,8 +85,8 @@ public class RegisterDelMen {
 
             case 3:
                 System.out.println("");
-                AssignDeliveryJob w = new AssignDeliveryJob();
-                w.adStart();
+                TrackDeliveryStatus a = new TrackDeliveryStatus();
+                a.CheckStatus();
                 RegisterDelMen r = new RegisterDelMen();
                 r.menu();
                 break;

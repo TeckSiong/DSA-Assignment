@@ -69,12 +69,15 @@ public class AssignDeliveryJob {
         
         
     }
-    public void list(){
-        ad.add(new DeliveryMen(601001, "ABC123", "Jorn Lim", "011-12345678", "Pertaling Jaya", "13/11/2016", "Available",2, "Active"));
-        ad.add(new DeliveryMen(601002, "Hii123", "Mark    ", "018-1234567", "Wangsa Maju", "10/11/2016", "Available",3, "Active"));
-        ad.add(new DeliveryMen(601003, "Waa123", "Jolin   ", "017-1234567", "Setapak", "17/11/2016", "Available",3, "Active"));
-        ad.add(new DeliveryMen(601004, "Qzz123", "Sam     ", "016-1234567", "Seremban", "21/11/2016", "Available",4, "Active"));
-        ad.add(new DeliveryMen(601005, "Zaa123", "Zack    ", "013-1234567", "Port Dickson", "30/11/2016", "Available",5, "Active"));
+    public ArrayList<DeliveryMen> list(){
+        
+        ad.add(new DeliveryMen(601001, "ABC123", "Jorn Lim", "011-12345678", "Pertaling Jaya", "13/11/2016", "Available    ",2,"Active"));
+        ad.add(new DeliveryMen(601002, "Hii123", "Mark    ", "018-1234567", "Wangsa Maju", "10/11/2016", "Not Available",3,"Active"));
+        ad.add(new DeliveryMen(601003, "Waa123", "Jolin   ", "017-1234567", "Setapak", "17/11/2016", "Available    ",3,"Active"));
+        ad.add(new DeliveryMen(601004, "Qzz123", "Sam     ", "016-1234567", "Seremban", "21/11/2016", "Not Available",4,"Active"));
+        ad.add(new DeliveryMen(601005, "Zaa123", "Zack    ", "013-1234567", "Port Dickson", "30/11/2016", "Not Available",5,"Active"));
+        
+        return ad;
     }
     
     
@@ -91,16 +94,16 @@ public class AssignDeliveryJob {
         
         System.out.println("Available delivery men");
         System.out.println();
-        System.out.println("No Delivery men      ");
-        System.out.println("== ===============   ");
+        System.out.println("No Delivery men      "+"  "+"Trip");
+        System.out.println("== ===============   "+"  "+"====");
         
         
         
         for(int c = 0; c < ad.size();c++){
             int cc = c+1;
-            if(ad.get(c).getStatus()== "Available"){
+            if(ad.get(c).getStatus()== "Available    "){
                 
-                System.out.println(cc + "  " + ad.get(c).getDelmenName());
+                System.out.println(cc + "  " + ad.get(c).getDelmenName()+"             "+ad.get(c).getTrip());
                 
             }
             //
@@ -138,6 +141,7 @@ public class AssignDeliveryJob {
                     def = ad.get(l).getDelmenName();
                     adeliveryman.add(def);
                     ad.get(l).setStatus(a);
+                    ad.get(l).setTrip(+1);
                     
                     System.out.println();
                     
@@ -178,15 +182,23 @@ public class AssignDeliveryJob {
         
         System.out.println();
         System.out.println("The delivery jobs have assigned!!");
+        System.out.println();
         
  
     }
     
     
-    public void adStart(){
+    
+    
+    
+
+
+    public void adStart() {
+       
         AssignDeliveryJob o = new AssignDeliveryJob();
         o.Order();
         o.delivery();
         o.assignjob();
     }
+    
 }
