@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 package Java;
+import ADT.ADTTheListInterface;
+import ADT.ADTTheList;
 import java.util.*;
 import Domain.RestaurantOwner;
 import Java.FoodMenu;
@@ -19,8 +21,8 @@ public class Restaurant {
     public static int count=0;
     public String temp;
     public static int id=1000;
-    public ArrayList<String> input = new ArrayList<>();
-    public static ArrayList<RestaurantOwner> Ro = new ArrayList<>();
+    public ADTTheListInterface<String> input = new ADTTheList<>();
+    public static ADTTheListInterface<RestaurantOwner> Ro = new ADTTheList<>();
     public static int ID;
     public static String password;
     public static String RESTAURANT_NAME;
@@ -37,9 +39,8 @@ public class Restaurant {
         if(name.isEmpty())
             System.out.println("Please input a name");
         }while(name.isEmpty());
-        input.add(name);
-        if(checkExit(input))
-            return;
+        input.addItem(name);
+        
         String contact="";
         do{
         System.out.print("Please input Contact No : ");
@@ -47,19 +48,19 @@ public class Restaurant {
         if(!contact.matches("[1-9][0-9]{9,14}"))
             System.out.println("Contact Not Valid Please Input 10-15 contact Number");
         }while(!contact.matches("[1-9][0-9]{9,14}"));
-        input.add(contact);
-        if(checkExit(input))
-            return;
+        input.addItem(contact);
+       
         name="";
+       
         do{
+            
        System.out.print("Please input Password : ");
         name=scan.nextLine();
         if(name.isEmpty())
             System.out.println("Please input a password");
         }while(name.isEmpty());
-        input.add(name);
-        if(checkExit(input))
-            return;
+        input.addItem(name);
+        
         name="";
         do{
          System.out.print("Please input Address : ");
@@ -67,12 +68,10 @@ public class Restaurant {
         if(name.isEmpty())
            System.out.println("Please input an address");
          }while(name.isEmpty());
-        input.add(name);
-        if(checkExit(input))
-            return;
-        input.add(chooseStyleMethod());
-        if(checkExit(input))
-            return;
+        input.addItem(name);
+       
+        input.addItem(chooseStyleMethod());
+       
          do{
              if(count>0)
               {
@@ -80,12 +79,11 @@ public class Restaurant {
               }
          System.out.print("Please input Available Time : Start TIme (Format HH:MM)");
           temp = scan.nextLine();
-          if(checkExit(input))
-            return;
+          
          count++;
          }while(!checkTime(temp));
          count=0;
-         input.add(temp);
+         input.addItem(temp);
          System.out.print("Please input Available Time : To");
           do{
               if(count>0)
@@ -94,37 +92,37 @@ public class Restaurant {
               }
          System.out.print("Please input Available Time : End TIme (Format HH:MM");
         temp = scan.nextLine();
-        if(checkExit(input))
-            return;
+        
          count++;
         }while(!checkTime(temp));
          count=0;
-         input.add(temp);
-        RestaurantOwner o = new RestaurantOwner(id,input.get(0),input.get(1),
-                input.get(2),input.get(3),input.get(4),input.get(5)+" - "+input.get(6));
-        Ro.add(o);
+         input.addItem(temp);
+        RestaurantOwner o = new RestaurantOwner(id,input.returnItem(0),input.returnItem(1),
+                input.returnItem(2),input.returnItem(3),input.returnItem(4),input.returnItem(5)+" - "+input.returnItem(6));
+        Ro.addItem(o);
         
          System.out.println("\nYou Are successfully Register New Account, Your ID Is "+id+"\n");
          id++;
         System.out.println("Summary Of Registration Of Restaurant Owner");
-        System.out.println("Restaurant Name : "+input.get(0) );
-        System.out.println("Contact No      : "+ input.get(1));
-        System.out.println("Password        : "+ input.get(2));
-        System.out.println("Address         :"+ input.get(3));
-        System.out.println("Style           :"+ input.get(4));
+        System.out.println("Restaurant Name : "+input.returnItem(0) );
+        System.out.println("Contact No      : "+ input.returnItem(1));
+        System.out.println("Password        : "+ input.returnItem(2));
+        System.out.println("Address         :"+ input.returnItem(3));
+        System.out.println("Style           :"+ input.returnItem(4));
         System.out.println("Status           : Activated");
-        System.out.println("Available Time  :"+input.get(5)+"-"+input.get(6));
+        System.out.println("Available Time  :"+input.returnItem(5)+"-"+input.returnItem(6));
         System.out.println("\nPress any key to continue");
-        input.clear();
+        input.clearAll();
         scan.nextLine();
         
        
     }
    
-   public static boolean checkExit(ArrayList l)
+   public static boolean checkExit(ADTTheListInterface<String> l)
    {
+       ADTTheList f = (ADTTheList) l ;
        boolean exit = false;
-       if(l.contains("exit"))
+       if(f.contains("exit"))
           exit=true;
        return exit;
    }
@@ -153,17 +151,17 @@ public class Restaurant {
    
    public void DisplayAccountInfo()
    {
-       for(int i=0;i<Ro.size();i++){
-           if(Ro.get(i).getId()==ID)
+       for(int i=0;i<Ro.getSize();i++){
+           if(Ro.returnItem(i).getId()==ID)
            {
-                System.out.println("ID               : "+Ro.get(i).getId());
-               System.out.println("Name              : "+Ro.get(i).getRestaurantName());
-               System.out.println("Address           : "+Ro.get(i).getAddress());
-               System.out.println("Contact No        : "+Ro.get(i).getContactNo());
-               System.out.println("Password          : "+Ro.get(i).getPassword());
-               System.out.println("Status            : "+Ro.get(i).getStatus());
-                System.out.println("Style            : "+Ro.get(i).getStyle());
-                 System.out.println("Available Time  : "+Ro.get(i).getAvailableTime());
+                System.out.println("ID               : "+Ro.returnItem(i).getId());
+               System.out.println("Name              : "+Ro.returnItem(i).getRestaurantName());
+               System.out.println("Address           : "+Ro.returnItem(i).getAddress());
+               System.out.println("Contact No        : "+Ro.returnItem(i).getContactNo());
+               System.out.println("Password          : "+Ro.returnItem(i).getPassword());
+               System.out.println("Status            : "+Ro.returnItem(i).getStatus());
+                System.out.println("Style            : "+Ro.returnItem(i).getStyle());
+                 System.out.println("Available Time  : "+Ro.returnItem(i).getAvailableTime());
                  System.out.println("Options : 1. Deactivated Account  2. Update Details 3.Exit");
                  if(scan.nextLine().equals("1"))
                  { 
@@ -190,8 +188,8 @@ public class Restaurant {
    
    public void DeactivatedAccount(int account)
    {
-       Ro.get(account).setStatus("Deactivated");
-        Ro.get(account).setRestaurantName(Ro.get(account).getRestaurantName() + "(Deactivated)");
+       Ro.returnItem(account).setStatus("Deactivated");
+        Ro.returnItem(account).setRestaurantName(Ro.returnItem(account).getRestaurantName() + "(Deactivated)");
       System.out.println("Deactivated Completed");
        Login();
    }
@@ -245,20 +243,20 @@ public class Restaurant {
        String ID=scan.nextLine();
        System.out.print("Please input a Password : ");
        String pass=scan.nextLine();
-       for(int i=0;i<Ro.size();i++)
+       for(int i=0;i<Ro.getSize();i++)
        {
           // System.out.println(Ro.get(i).getId()+""+ Ro.get(i).getPassword());
-           if(ID.equals(Ro.get(i).getId()+"") && pass.equals(Ro.get(i).getPassword()))
+           if(ID.equals(Ro.returnItem(i).getId()+"") && pass.equals(Ro.returnItem(i).getPassword()))
            {
-               if(Ro.get(i).getStatus().equals("Deactivated")){
+               if(Ro.returnItem(i).getStatus().equals("Deactivated")){
                loginDeActivated = true;
                    
-                   System.out.println(Ro.get(i).getStatus());
+                   System.out.println(Ro.returnItem(i).getStatus());
                }else{
                System.out.println("Login Sucessfully");
-               this.ID=Ro.get(i).getId();
-               password=Ro.get(i).getPassword();
-               RESTAURANT_NAME=Ro.get(i).getRestaurantName();
+               this.ID=Ro.returnItem(i).getId();
+               password=Ro.returnItem(i).getPassword();
+               RESTAURANT_NAME=Ro.returnItem(i).getRestaurantName();
                FoodMenu f = new FoodMenu();
                f.MainMenu();
                

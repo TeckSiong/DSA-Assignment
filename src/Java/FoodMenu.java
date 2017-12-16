@@ -4,6 +4,9 @@
  * and open the template in the editor.
  */
 package Java;
+import ADT.BubbleSort;
+import ADT.ADTTheListInterface;
+import ADT.ADTTheList;
 import Domain.Food;
 import Java.Restaurant;
 import Domain.RestaurantOwner;
@@ -16,8 +19,8 @@ import java.util.*;
 public class FoodMenu {
     
     public Scanner scan = new Scanner(System.in);
-    public static ArrayList<Food> AllFood = new ArrayList<>();
-    ArrayList<Food> flist = new ArrayList<>();
+    public static ADTTheListInterface<Food> AllFood = new ADTTheList<>();
+    ADTTheListInterface<Food> flist = new ADTTheList<>();
     
     public static ArrayList<orders> orders = new ArrayList<>();
     ArrayList<orders> orders1 = new ArrayList<>();
@@ -57,7 +60,7 @@ public class FoodMenu {
         if(checkExit(f.getDayAvailable()+""))
             return;
         f.setCompanyID(Restaurant.ID);
-        AllFood.add(f);
+        AllFood.addItem(f);
        
         System.out.println("\nYou Are successfully add new food, Food ID Is "+f.getFoodID()+"\n");
         System.out.println("Summary Of new Food");
@@ -102,8 +105,8 @@ public class FoodMenu {
     }
      public void displayAllFood()
      {
-         System.out.print(AllFood.size());
-         ArrayList<String> name = new ArrayList<>();
+         System.out.print(AllFood.getSize());
+         ADTTheList<String> name = new ADTTheList<String>();
          int option=0;
          int j=0;
          int grabFoods=0;
@@ -111,18 +114,18 @@ public class FoodMenu {
           //System.out.println("=========        ========         ========           =====         ===========");
           System.out.printf("%20s %20s %20s %20s %20s\n","Foodname","Category","Quantity","Price(RM)","Display Day");
           System.out.printf("%20s %20s %20s %20s %20s\n\n","========","========","========","=====","===========");
-         if(AllFood.isEmpty())
+         if(AllFood.checkEmpty())
          {
              System.out.println("Empty Food List");
          }
-         for(int i=0;i<AllFood.size();i++)
+         for(int i=0;i<AllFood.getSize();i++)
          {
-             if(AllFood.get(i).getCompanyID()==Restaurant.ID)
+             if(AllFood.returnItem(i).getCompanyID()==Restaurant.ID)
              { 
                  //System.out.println(j+"       "+AllFood.get(i).getFoodName()+"           "+AllFood.get(i).getCategory()+"     "+AllFood.get(i).getQuantity()+"         RM"+AllFood.get(i).getPrice()+"         "+     AllFood.get(i).getDayAvailable());
-                System.out.printf("%10s %10s %20s %20s  %20.2f %20s\n",j,AllFood.get(i).getFoodName(),AllFood.get(i).getCategory(),AllFood.get(i).getQuantity(),AllFood.get(i).getPrice(), AllFood.get(i).getDayAvailable());
+                System.out.printf("%10s %10s %20s %20s  %20.2f %20s\n",j,AllFood.returnItem(i).getFoodName(),AllFood.returnItem(i).getCategory(),AllFood.returnItem(i).getQuantity(),AllFood.returnItem(i).getPrice(), AllFood.returnItem(i).getDayAvailable());
                  j++;
-                 name.add(AllFood.get(i).getFoodName());
+                 name.addItem(AllFood.returnItem(i).getFoodName());
              }
          }
          do{
@@ -133,11 +136,11 @@ public class FoodMenu {
              scan.nextLine();
              displayAllFood();
          }
-         if(option<=name.size())
+         if(option<=name.getSize())
          {
-             for(int i=0;i<AllFood.size();i++)
-             {if(name.get(option).equals(AllFood.get(i).getFoodName()))
-             {System.out.println("Food That you selected : "+AllFood.get(i).getFoodName());
+             for(int i=0;i<AllFood.getSize();i++)
+             {if(name.returnItem(option).equals(AllFood.returnItem(i).getFoodName()))
+             {System.out.println("Food That you selected : "+AllFood.returnItem(i).getFoodName());
                grabFoods=i;}
              }
              
@@ -145,13 +148,13 @@ public class FoodMenu {
          {
             MainMenu();
          }
-         }while(option>name.size());
-         if(!name.isEmpty())
+         }while(option>name.getSize());
+         if(!name.checkEmpty())
          {
          System.out.println("1. Delete Food  2. Update Food  3.Exit");
          String grab = scan.nextLine();
-         do{if(grab.equals("1")){deleteFood(grabFoods);displayAllFood();}else if(grab.equals("2")){updateFood(grabFoods);displayAllFood();}else if(grab.equals("3")){return;}else{System.out.println("Invalid Input");}}while(!grab.equals("1") &&!grab.equals("2")&& !grab.equals("2")&&!grab.equals("3"));}else{return;}
-         name.clear();
+         do{if(grab.equals("1")){deleteFood(grabFoods);displayAllFood();}else if(grab.equals("2")){updateFood(grabFoods);displayAllFood();}else if(grab.equals("3")){displayAllFood();}else{System.out.println("Invalid Input");}}while(!grab.equals("1") &&!grab.equals("2")&& !grab.equals("2")&&!grab.equals("3"));}else{return;}
+         name.clearAll();
      }
      
      public void updateFood(int option)
@@ -159,12 +162,12 @@ public class FoodMenu {
         String choose="";
         String name="";
         do{
-        System.out.println("  Food ID       : "+AllFood.get(option).getFoodID());
-        System.out.println("1.Food Name     :"+AllFood.get(option).getFoodName());
-        System.out.println("2.Category      : "+AllFood.get(option).getCategory());
-        System.out.println("3.Quantity      : "+AllFood.get(option).getQuantity());
-        System.out.println("4.Price         :"+AllFood.get(option).getPrice());
-        System.out.println("5.Day Available : "+AllFood.get(option).getDayAvailable());
+        System.out.println("  Food ID       : "+AllFood.returnItem(option).getFoodID());
+        System.out.println("1.Food Name     :"+AllFood.returnItem(option).getFoodName());
+        System.out.println("2.Category      : "+AllFood.returnItem(option).getCategory());
+        System.out.println("3.Quantity      : "+AllFood.returnItem(option).getQuantity());
+        System.out.println("4.Price         :"+AllFood.returnItem(option).getPrice());
+        System.out.println("5.Day Available : "+AllFood.returnItem(option).getDayAvailable());
         System.out.print("Please select a option to Edit : ");
         choose=scan.nextLine();
         if(choose.equals("1"))
@@ -172,7 +175,7 @@ public class FoodMenu {
             System.out.print("Please input a food name : ");
             name=scan.nextLine();
             if(!name.isEmpty())
-                AllFood.get(option).setFoodName(name);
+                AllFood.returnItem(option).setFoodName(name);
             name="";
         }
         else if(choose.equals("2"))
@@ -181,19 +184,19 @@ public class FoodMenu {
              
             name=chooseCategory();
             if(!name.isEmpty())
-                AllFood.get(option).setCategory(name);
+                AllFood.returnItem(option).setCategory(name);
         }
         else if(choose.equals("3"))
         {
-             AllFood.get(option).setQuantity(checkIntInput("Please input a quantity : "));
+             AllFood.returnItem(option).setQuantity(checkIntInput("Please input a quantity : "));
         }
         else if(choose.equals("4"))
         {
-            AllFood.get(option).setPrice(checkInput("Please input a price : "));
+            AllFood.returnItem(option).setPrice(checkInput("Please input a price : "));
         }
         else if(choose.equals("5"))
         {
-            AllFood.get(option).setDayAvailable(chooseAvailableDay());
+            AllFood.returnItem(option).setDayAvailable(chooseAvailableDay());
         }else
             System.out.println("Invalid Input");}while(choose.isEmpty()||(!choose.equals("1")&& !choose.equals("2")&& !choose.equals("3") && !choose.equals("4") && !choose.equals("5")));
      }
@@ -205,7 +208,7 @@ public class FoodMenu {
          System.out.println("Are you sure you want to delete ? Y/N");
          options=scan.nextLine();
          if(options.equals("Y"))
-         AllFood.remove(option);
+         AllFood.deleteItem(option);
          else if(!options.equals("Y")&& !options.equals("N"))
          System.out.println("Invalid Input...");}while(!options.equals("Y")&& !options.equals("N"));
      }
@@ -305,7 +308,7 @@ public class FoodMenu {
          
         
          String options;
-        
+         int option=0;
         
          int CompanyName=0;
          
@@ -315,9 +318,9 @@ public class FoodMenu {
          System.out.print("Today Menu List : \n");
          System.out.print("Select Company Name : \n");
          
-         for(int i=0;i<Restaurant.Ro.size();i++)
+         for(int i=0;i<Restaurant.Ro.getSize();i++)
          {
-             System.out.print(i+" "+Restaurant.Ro.get(i).getRestaurantName()+"\n");
+             System.out.print(i+" "+Restaurant.Ro.returnItem(i).getRestaurantName()+"\n");
          }
          int x=0;
          
@@ -327,60 +330,73 @@ public class FoodMenu {
          ArrayList<Integer> show = new ArrayList<>();
          
          do{try{
-         CompanyName = Restaurant.Ro.get(scan.nextInt()).getId();scan.nextLine();x=0;}catch(Exception e){System.out.println("Please input again");x=1;scan.nextLine();}}while(x==1);
+         CompanyName = Restaurant.Ro.returnItem(scan.nextInt()).getId();scan.nextLine();x=0;}catch(Exception e){System.out.println("Please input again");x=1;scan.nextLine();}}while(x==1);
         //  System.out.println("Food Name        Category         Quantity           Price");
          // System.out.println("=========        ========         ========           =====");
          System.out.printf("%20s %20s %20s %20s\n","Foodname","Category","Quantity","Price(RM)");
          System.out.printf("%20s %20s %20s %20s\n\n","========","========","========","=====");
-         for(int i=0;i<Restaurant.Ro.size();i++)
+         for(int i=0;i<Restaurant.Ro.getSize();i++)
          {
-             if(CompanyName==Restaurant.Ro.get(i).getId())
-              status = Restaurant.Ro.get(i).getStatus();
+             if(CompanyName==Restaurant.Ro.returnItem(i).getId())
+              status = Restaurant.Ro.returnItem(i).getStatus();
          }
-         if(AllFood.isEmpty())
+         if(AllFood.checkEmpty())
          {
              System.out.println("Empty Food List");
          }
-         for(int i=0;i<AllFood.size();i++)
+         for(int i=0;i<AllFood.getSize();i++)
          {
             
-             if(d==1 && AllFood.get(i).getCompanyID()==CompanyName && status.equals("Activated") &&AllFood.get(i).getDayAvailable().equals("Sunday"))
-             { flist.add(AllFood.get(i));
+             if(d==1 && AllFood.returnItem(i).getCompanyID()==CompanyName && status.equals("Activated") &&AllFood.returnItem(i).getDayAvailable().equals("Sunday"))
+             { flist.addItem(AllFood.returnItem(i));
               //   System.out.println(flist.size()+ i +"       "+AllFood.get(i).getFoodName()+"           "+AllFood.get(i).getCategory()+"     "+AllFood.get(i).getQuantity()+"         RM"+AllFood.get(i).getPrice());
-            System.out.printf("%10s %10s %20s %20s %20.2f\n", flist.size(),AllFood.get(i).getFoodName(),AllFood.get(i).getCategory(),AllFood.get(i).getQuantity(),AllFood.get(i).getPrice());
+            System.out.printf("%10s %10s %20s %20s %20.2f\n", flist.getSize(),AllFood.returnItem(i).getFoodName(),AllFood.returnItem(i).getCategory(),AllFood.returnItem(i).getQuantity(),AllFood.returnItem(i).getPrice());
               show.add(i);
              count = count + i;
              }
-             if((d==2 || d==3)&& AllFood.get(i).getCompanyID()==CompanyName && status.equals("Activated")&& (AllFood.get(i).getDayAvailable().equals("Monday & Tuesday")))
-             {flist.add(AllFood.get(i));
+             if((d==2 || d==3)&& AllFood.returnItem(i).getCompanyID()==CompanyName && status.equals("Activated")&& (AllFood.returnItem(i).getDayAvailable().equals("Monday & Tuesday")))
+             {flist.addItem(AllFood.returnItem(i));
                   //  System.out.println(flist.size()+ i +"       "+AllFood.get(i).getFoodName()+"           "+AllFood.get(i).getCategory()+"     "+AllFood.get(i).getQuantity()+"         RM"+AllFood.get(i).getPrice());
-              System.out.printf("%10s %10s %20s %20s %20.2f\n", flist.size(),AllFood.get(i).getFoodName(),AllFood.get(i).getCategory(),AllFood.get(i).getQuantity(),AllFood.get(i).getPrice());
+              System.out.printf("%10s %10s %20s %20s %20.2f\n", flist.getSize(),AllFood.returnItem(i).getFoodName(),AllFood.returnItem(i).getCategory(),AllFood.returnItem(i).getQuantity(),AllFood.returnItem(i).getPrice());
             
                   show.add(i);
              count = count + i;
              }
-                 if((d==4 || d==5) && AllFood.get(i).getCompanyID()==CompanyName && status.equals("Activated")&& (AllFood.get(i).getDayAvailable().equals("Wednesday & Thursday")))
-                 {flist.add(AllFood.get(i)); 
+                 if((d==4 || d==5) && AllFood.returnItem(i).getCompanyID()==CompanyName && status.equals("Activated")&& (AllFood.returnItem(i).getDayAvailable().equals("Wednesday & Thursday")))
+                 {flist.addItem(AllFood.returnItem(i)); 
                   //System.out.println(flist.size()+ i +"      "+AllFood.get(i).getFoodName()+"             "+AllFood.get(i).getCategory()+"     "+AllFood.get(i).getQuantity()+"         RM"+AllFood.get(i).getPrice());
-                 System.out.printf("%10s %10s %20s %20s %20.2f\n", flist.size(),AllFood.get(i).getFoodName(),AllFood.get(i).getCategory(),AllFood.get(i).getQuantity(),AllFood.get(i).getPrice());
+                 System.out.printf("%10s %10s %20s %20s %20.2f\n", flist.getSize(),AllFood.returnItem(i).getFoodName(),AllFood.returnItem(i).getCategory(),AllFood.returnItem(i).getQuantity(),AllFood.returnItem(i).getPrice());
             
                   show.add(i);
                  count = count + i;
                  }
-                     if((d==6 || d==7) && AllFood.get(i).getCompanyID()==CompanyName &&status.equals("Activated")&& (AllFood.get(i).getDayAvailable().equals("Friday & Saturday")))
-                     { flist.add(AllFood.get(i));
+                     if((d==6 || d==7) && AllFood.returnItem(i).getCompanyID()==CompanyName &&status.equals("Activated")&& (AllFood.returnItem(i).getDayAvailable().equals("Friday & Saturday")))
+                     { flist.addItem(AllFood.returnItem(i));
                      // System.out.println(flist.size()+ i +"      "+AllFood.get(i).getFoodName()+"            "+AllFood.get(i).getCategory()+"     "+AllFood.get(i).getQuantity()+"         RM"+AllFood.get(i).getPrice());
-                    System.out.printf("%10s %10s %20s %20s %20.2f\n", flist.size(),AllFood.get(i).getFoodName(),AllFood.get(i).getCategory(),AllFood.get(i).getQuantity(),AllFood.get(i).getPrice());
+                    System.out.printf("%10s %10s %20s %20s %20.2f\n", flist.getSize(),AllFood.returnItem(i).getFoodName(),AllFood.returnItem(i).getCategory(),AllFood.returnItem(i).getQuantity(),AllFood.returnItem(i).getPrice());
             
                      show.add(i);
                      count = count + i;
                      }
            
                          }  
-         
-         
-         
-         
+        
+         int icount=0;
+         do{
+              System.out.println("1. Place Order 2. Sort Order");
+             try{
+                  option = scan.nextInt();
+                  scan.nextLine();
+                  icount=1;
+             }catch(Exception ex)
+             {
+                 System.out.println("Invalid Input...");
+                 icount=0;
+             }
+                 }while(icount==0);
+            icount=0;
+          if(option==1)
+          {
         int aaa = 0;
          int abc;
          int quant;
@@ -391,20 +407,20 @@ public class FoodMenu {
          abc = scan.nextInt();
          
          abc = abc - 1;
-         String name = flist.get(abc).getFoodName();
+         String name = flist.returnItem(abc).getFoodName();
          
  if(name != " "){
-         for(int s = 0 ; s< AllFood.size();s++){
-             if(name.equals( AllFood.get(s).getFoodName())){
+         for(int s = 0 ; s< AllFood.getSize();s++){
+             if(name.equals( AllFood.returnItem(s).getFoodName())){
                  
          System.out.println("Kindly key in quantity :");
          quant = scan.nextInt();
                  
-         orders od = new orders(classify,AllFood.get(s).getCompanyID(),AllFood.get(s).getFoodName(),quant,AllFood.get(s).getPrice());
+         orders od = new orders(classify,AllFood.returnItem(s).getCompanyID(),AllFood.returnItem(s).getFoodName(),quant,AllFood.returnItem(s).getPrice());
          
          orders.add(od);
          
-         total = total + (quant * AllFood.get(s).getPrice());
+         total = total + (quant * AllFood.returnItem(s).getPrice());
          
          
              }
@@ -427,30 +443,32 @@ public class FoodMenu {
          System.out.println("=============== Total amount need to pay : ===============\n");
          System.out.println("                                          " + total);
          
-         
-         
-         
-         /*System.out.println("Please choose a sort options : 1. Sort By Name 2. Sort By Categories 3. Sort By Price");
+         }else
+          { System.out.println("Please choose a sort options : 1. Sort By Name 2. Sort By Categories 3. Sort By Price");
                           options=scan.nextLine();
                          switch(options)
                          {
                              case "1":
-                                  Collections.sort(AllFood,Comparator.comparing(Food::getFoodName));
-                                  flist.clear();
+                                  if(!AllFood.checkEmpty())
+                                  BubbleSort.bubble_srt((ADTTheList)AllFood,1);
+                                  flist.clearAll();
                                   displayMenu();
                                   break;
                              case "2":
-                                 Collections.sort(AllFood,Comparator.comparing(Food::getCategory));
-                                 flist.clear();
+                                 
+                                 if(!AllFood.checkEmpty())
+                                  BubbleSort.bubble_srt((ADTTheList)AllFood,2);
+                                 flist.clearAll();
                                  displayMenu();
                                  break;
                              default:
-                                 Collections.sort(AllFood,Comparator.comparing(Food::getPrice));
-                                 flist.clear();
+                                  if(!AllFood.checkEmpty())
+                                  BubbleSort.bubble_srt((ADTTheList)AllFood,3);
+                                 flist.clearAll();
                                  displayMenu();
                                  break;
                                   
-                         }*/
+                         }}
      
      
      }
