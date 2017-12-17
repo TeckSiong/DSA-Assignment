@@ -10,16 +10,10 @@ import ADT.ADTTheList;
 import Domain.Food;
 
 
-public  class BubbleSort {
+public class BubbleSort<T> implements BubbleSortInterface<T>{
     
- 
-  static ADTTheList<Food> ls = new ADTTheList<Food>();
-   
-     
-  
-    // logic to sort the elements
-    
-    public static void bubble_srt(ADTTheListInterface<Food> ls, int option) {
+
+    public void bubble_srt(ADTTheListInterface<Food> ls, int option) {
         
         if(option==1)
         {
@@ -34,7 +28,7 @@ public  class BubbleSort {
                     swap(i, k, (ADTTheList<Food>) ls);
                 }
             }
-            //printNumbers(ls);
+            
         }
         }else if(option==2)
         {
@@ -63,19 +57,19 @@ public  class BubbleSort {
             }
            
         }}
-         printNumbers((ADTTheList<Food>) ls);
+         //printList((ADTTheList<Food>) ls);
     }
   
-    private static void swap(int i, int j, ADTTheList<Food> ls) {
+    private void swap(int i, int j, ADTTheList<Food> ls) {
   
         Food temp;
         temp = ls.returnItem(i);
-        ls.setItem(i, ls.returnItem(j)); //use for loop to travel the node and set ele
-        ls.setItem(j, temp);  // getMethod use forloop to travel the node
+        ls.setItem(i, ls.returnItem(j)); 
+        ls.setItem(j, temp); 
     }
     
   
-    private static void printNumbers(ADTTheList<Food> input) {
+    private  void printList(ADTTheList<Food> input) {
           
         for (int i = 0; i < input.getSize(); i++) {
             System.out.print(input.returnItem(i).getFoodName() + ", ");

@@ -4,9 +4,10 @@
  * and open the template in the editor.
  */
 package Java;
-import ADT.BubbleSort;
+
 import ADT.ADTTheListInterface;
 import ADT.ADTTheList;
+import ADT.BubbleSort;
 import Domain.Food;
 import Java.Restaurant;
 import Domain.RestaurantOwner;
@@ -383,6 +384,8 @@ public class FoodMenu {
         
          int icount=0;
          do{
+             System.out.println("\nPress any key to continue");
+             scan.nextLine();
               System.out.println("1. Place Order 2. Sort Order");
              try{
                   option = scan.nextInt();
@@ -446,24 +449,26 @@ public class FoodMenu {
          }else
           { System.out.println("Please choose a sort options : 1. Sort By Name 2. Sort By Categories 3. Sort By Price");
                           options=scan.nextLine();
+                              BubbleSort bs = new BubbleSort();
                          switch(options)
                          {
+                         
                              case "1":
                                   if(!AllFood.checkEmpty())
-                                  BubbleSort.bubble_srt((ADTTheList)AllFood,1);
+                                  bs.bubble_srt(AllFood,1);
                                   flist.clearAll();
                                   displayMenu();
                                   break;
                              case "2":
                                  
                                  if(!AllFood.checkEmpty())
-                                  BubbleSort.bubble_srt((ADTTheList)AllFood,2);
+                                 bs.bubble_srt(AllFood,2);
                                  flist.clearAll();
                                  displayMenu();
                                  break;
                              default:
                                   if(!AllFood.checkEmpty())
-                                  BubbleSort.bubble_srt((ADTTheList)AllFood,3);
+                                  bs.bubble_srt(AllFood,3);
                                  flist.clearAll();
                                  displayMenu();
                                  break;

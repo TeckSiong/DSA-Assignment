@@ -5,6 +5,7 @@
  */
 package ADT;
 
+import Domain.Food;
 import java.util.NoSuchElementException;
 
 /**
@@ -17,7 +18,7 @@ public class ADTTheList<T> implements ADTTheListInterface<T>{
     Node head;
     Node tail;
 
-    
+
     class Node{
         Node prev;
         Node next;
@@ -68,17 +69,15 @@ public class ADTTheList<T> implements ADTTheListInterface<T>{
     }
 
     @Override
-    public boolean addItem(T item) {
-        boolean verify=false;
+    public void addItem(T item) {
+       
        Node tmp = new Node(item, null, tail);
        
         if(tail != null) {tail.next = tmp;}
         tail = tmp;
         if(head == null) { head = tmp;}
         size++;
-        verify=true;
         
-        return verify;
     }
 
 
@@ -90,8 +89,8 @@ public class ADTTheList<T> implements ADTTheListInterface<T>{
     }
 
     @Override
-    public boolean addItem(int Position, T item) {
-    boolean isSuccessful = true;
+    public void addItem(int Position, T item) {
+    
     Node newNode = new Node();
     newNode.data = item;
     newNode.next = null;
@@ -115,7 +114,7 @@ public class ADTTheList<T> implements ADTTheListInterface<T>{
     newNode.next = prev.next;
     prev.next = newNode;}}
     size++;
-    return isSuccessful;
+    
     }
 
    
@@ -239,6 +238,9 @@ public class ADTTheList<T> implements ADTTheListInterface<T>{
     }
 
      
+
+
+
 
 
 }

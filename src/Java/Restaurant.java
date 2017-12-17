@@ -163,7 +163,8 @@ public class Restaurant {
                 System.out.println("Style            : "+Ro.returnItem(i).getStyle());
                  System.out.println("Available Time  : "+Ro.returnItem(i).getAvailableTime());
                  System.out.println("Options : 1. Deactivated Account  2. Update Details 3.Exit");
-                 if(scan.nextLine().equals("1"))
+                 String cc = scan.nextLine();
+                 if(cc.equals("1"))
                  { 
                      System.out.println("Are you sure ? Y/N");
                      if(scan.nextLine().equals("Y"))
@@ -178,7 +179,41 @@ public class Restaurant {
                          DisplayAccountInfo();
                      }
                  
-                 }else if(scan.nextLine().equals("2")){}else{return;}
+                 }else if(cc.equals("2")){
+                    
+                    System.out.println("1.name 2.Password 3. Address 4.Cancel");
+                    String choose = scan.nextLine();
+                    if(choose.equals("1"))
+                    {
+                        System.out.print("Please input a name : ");
+                        String name=scan.nextLine();
+                        if(!name.isEmpty())
+                        Ro.returnItem(i).setRestaurantName(name);
+                        name="";
+                        DisplayAccountInfo();
+                    }else if(choose.equals("2"))
+                    {
+                        System.out.print("Please input a password : ");
+                        String name=scan.nextLine();
+                        if(!name.isEmpty())
+                        Ro.returnItem(i).setPassword(name);
+                        name="";
+                        DisplayAccountInfo();
+                    }else if(choose.equals("3"))
+                    {
+                        System.out.print("Please input an address : ");
+                        String name=scan.nextLine();
+                        if(!name.isEmpty())
+                        Ro.returnItem(i).setAddress(name);
+                        name="";
+                        DisplayAccountInfo();
+                    }else
+                    {
+                        DisplayAccountInfo();
+                    }
+                 
+                    
+                 }else{return;}
            }
        }
        FoodMenu f = new FoodMenu();
