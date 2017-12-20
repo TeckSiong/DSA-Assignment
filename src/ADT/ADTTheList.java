@@ -56,7 +56,7 @@ public class ADTTheList<T> implements ADTTheListInterface<T>{
 
     if ((index >= 0) && (index < size)) {
       Node currentNode = head;
-      for (int i = 0; i < index ; ++i) {
+      for (int i = 0; i <index ; ++i) {
         // System.out.println("Trace| currentNode.data = " + currentNode.data + "\t, i = " + i);
         currentNode = currentNode.next;		// advance currentNode to next node
       }
@@ -238,7 +238,6 @@ public class ADTTheList<T> implements ADTTheListInterface<T>{
     }
 
      
-
 
 
 

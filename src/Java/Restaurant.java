@@ -9,7 +9,7 @@ import ADT.ADTTheList;
 import java.util.*;
 import Domain.RestaurantOwner;
 import Java.FoodMenu;
-import Java.MainMenu;
+
 /**
  *
  * @author Jeffrey
@@ -314,8 +314,8 @@ public class Restaurant {
        }
        }else if(choose.equals("3"))
        {
-           MainMenu m = new MainMenu();
-           m.main();
+          // MainMenu m = new MainMenu();
+         //  m.main();
        }else
        {
            System.out.println("Invalid Input");

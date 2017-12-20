@@ -11,7 +11,7 @@ import ADT.BubbleSort;
 import Domain.Food;
 import Java.Restaurant;
 import Domain.RestaurantOwner;
-import Domain.orders;
+//import Domain.orders;
 import java.util.*;
 /**
  *
@@ -23,8 +23,8 @@ public class FoodMenu {
     public static ADTTheListInterface<Food> AllFood = new ADTTheList<>();
     ADTTheListInterface<Food> flist = new ADTTheList<>();
     
-    public static ArrayList<orders> orders = new ArrayList<>();
-    ArrayList<orders> orders1 = new ArrayList<>();
+ //   public static ArrayList<orders> orders = new ArrayList<>();
+  //  ArrayList<orders> orders1 = new ArrayList<>();
     
     int classify = 1 ;
     
@@ -419,9 +419,9 @@ public class FoodMenu {
          System.out.println("Kindly key in quantity :");
          quant = scan.nextInt();
                  
-         orders od = new orders(classify,AllFood.returnItem(s).getCompanyID(),AllFood.returnItem(s).getFoodName(),quant,AllFood.returnItem(s).getPrice());
+     //    orders od = new orders(classify,AllFood.returnItem(s).getCompanyID(),AllFood.returnItem(s).getFoodName(),quant,AllFood.returnItem(s).getPrice());
          
-         orders.add(od);
+      //   orders.add(od);
          
          total = total + (quant * AllFood.returnItem(s).getPrice());
          
@@ -440,8 +440,8 @@ public class FoodMenu {
          
          System.out.println("\n\n\n=============== Order Summary ===============\n\n\n");
          System.out.println("Food     " + "Quantity       " + "Price (RM)  \n");
-         for(int y = 0; y < orders.size();y++)
-         System.out.println(orders.get(y).getname()+ "           " +  orders.get(y).getquantity() +"              "+ (orders.get(y).getprice()*orders.get(y).getquantity())+ "\n");
+     //    for(int y = 0; y < orders.size();y++)
+     //    System.out.println(orders.get(y).getname()+ "           " +  orders.get(y).getquantity() +"              "+ (orders.get(y).getprice()*orders.get(y).getquantity())+ "\n");
          
          System.out.println("=============== Total amount need to pay : ===============\n");
          System.out.println("                                          " + total);
