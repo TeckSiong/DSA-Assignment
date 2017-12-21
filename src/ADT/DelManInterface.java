@@ -5,7 +5,7 @@
  */
 package ADT;
 
-import Domain.DeliveryMan;
+import Domain.ProductStatus;
 
 /**
  *
@@ -23,6 +23,6 @@ public interface DelManInterface<T> {
 }
 
 interface SortInterface<T>{
-    void bubble_srt(DelManInterface<DeliveryMan> ls);
+    void bubble_srt(DelManInterface<ProductStatus> ls);
     
 }

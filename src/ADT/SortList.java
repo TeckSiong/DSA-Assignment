@@ -5,39 +5,39 @@
  */
 package ADT;
 
-import Domain.DeliveryMan;
+import Domain.ProductStatus;
 
 public class SortList<T> implements SortInterface<T>{
 
     @Override
-    public void bubble_srt(DelManInterface<DeliveryMan> ls) {
+    public void bubble_srt(DelManInterface<ProductStatus> ds) {
         
        
-        int n = ls.getSize();
+        int n = ds.getSize();
         int k;
         
         for (int m = n; m >= 0; m--) {
             for (int i = 0; i < n - 1; i++) {
                 k = i + 1;
             
-                if (ls.getData(i).getTrip() < ls.getData(k).getTrip()) {
-                    swap(i, k, (DelManADT<DeliveryMan>) ls);
+                if (ds.getData(i).getTrip() < ds.getData(k).getTrip()) {
+                    swap(i, k, (DelManADT<ProductStatus>) ds);
                 }
             }
             
         }
     }
   
-    private void swap(int i, int j, DelManADT<DeliveryMan> ls) {
+    private void swap(int i, int j, DelManADT<ProductStatus> ls) {
   
-        DeliveryMan temp;
+        ProductStatus temp;
         temp = ls.getData(i);
         ls.setItem(i, ls.getData(j)); 
         ls.setItem(j, temp); 
     }
     
   
-    private  void printList(DelManADT<DeliveryMan> input) {
+    private  void printList(DelManADT<ProductStatus> input) {
           
         for (int i = 0; i < input.getSize(); i++) {
             System.out.print(input.getData(i).getTrip());

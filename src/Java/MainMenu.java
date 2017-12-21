@@ -6,6 +6,7 @@
 package Java;
 
 import ADT.MainMenuADT;
+import ADT.MenuInterface;
 import java.util.Scanner;
 
 /**
@@ -14,7 +15,7 @@ import java.util.Scanner;
  */
 public class MainMenu {
 
-    public static MainMenuADT<Domain.HRExecutive> hList = new MainMenuADT<>();
+    public static MenuInterface<Domain.HRExecutive> hList = new MainMenuADT<>();
     Scanner scan = new Scanner(System.in);
     String id, psw;
     int count = 1;
@@ -41,6 +42,12 @@ public class MainMenu {
                 System.out.println("");
                 DelManMaintain r = new DelManMaintain();
                 r.updDelMan();
+                break;
+
+            case "4":
+                System.out.println("");
+                DMLogin dm = new DMLogin();
+                dm.login();
                 break;
 
             case "3":
@@ -113,7 +120,7 @@ public class MainMenu {
         System.out.println("0. Exit");
         System.out.println("====================================================");
         System.out.print("Enter Your Action : ");
-        String s = scan.nextLine();
+        String s = scan.next();
         switch (s) {
             case "1":
                 System.out.println("");
