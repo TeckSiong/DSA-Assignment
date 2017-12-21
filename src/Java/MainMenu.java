@@ -43,43 +43,60 @@ public class MainMenu {
                 r.updDelMan();
                 break;
 
+            case "3":
+                System.out.println("");
+                custLogin custL = new custLogin();
+                custL.Login();
+                break;
+
+            case "4":
+                System.out.println("");
+                deliveryman();
+                break;
+                
+                default:
+                System.out.println("Invalid Input [1/2/3]");
+                System.out.println("");
+                MainMenu();
+                break;
+
         }
     }
-    
-    public void addStaff(){
+
+    public void addStaff() {
         Domain.HRExecutive.HRStaffDetails();
         HRStaffLogin();
     }
 
     public void HRStaffLogin() {
 
-            System.out.println("==================================================");
-            System.out.println("Staff Login (e - exit)");
-            System.out.println("==================================================");
-            System.out.print("ID Number: ");
-            id = scan.next();
-            if (!id.equals("e")) {
-                for (i = 0; i < hList.getSize(); i++) {
-                    if (Integer.parseInt(id) == hList.getData(i).getHrID()) {
-                        System.out.print("Enter your password : ");
-                        psw = scan.next();
-                        if (psw.equals(hList.getData(i).getHrPassword())) {
-                            System.out.println("");
-                            staffMenu();
-                        }
+        System.out.println("==================================================");
+        System.out.println("Staff Login (e - exit)");
+        System.out.println("==================================================");
+        System.out.print("ID Number: ");
+        id = scan.next();
+        if (!id.equals("e")) {
+            for (i = 0; i < hList.getSize(); i++) {
+                if (Integer.parseInt(id) == hList.getData(i).getHrID()) {
+                    System.out.print("Enter your password : ");
+                    psw = scan.next();
+                    if (psw.equals(hList.getData(i).getHrPassword())) {
+                        System.out.println("");
+                        staffMenu();
                     }
                 }
-                count = 1;
-                if (count == 1) {
-                    System.out.println("Invalid ID or Password!");
-                    System.out.println("");
-                    HRStaffLogin();
-                }
-
-            } else {
-                MainMenu();
             }
-        
+            count = 1;
+            if (count == 1) {
+                System.out.println("Invalid ID or Password!");
+                System.out.println("");
+                HRStaffLogin();
+            }
+
+        } else {
+            MainMenu();
+        }
+
     }
 
     public void staffMenu() {
@@ -124,7 +141,7 @@ public class MainMenu {
             case "5":
                 dm.trackStatus();
                 break;
-                
+
             case "6":
                 dm.report();
                 break;
@@ -140,5 +157,105 @@ public class MainMenu {
                 staffMenu();
                 break;
         }
+    }
+
+    public void customer() {
+        System.out.println("====================================================");
+        System.out.println("Select Your Action~");
+        System.out.println("====================================================");
+        System.out.println("1. Make Schedule Order");
+        System.out.println("2. Place Order");
+        System.out.println("3. Update Schedule Order");
+        System.out.println("4. Check order remaing time");
+        System.out.println("5. Cancel Schedule Order");
+        System.out.println("0. Exit");
+        System.out.println("====================================================");
+        System.out.print("Enter Your Action : ");
+        int s = scan.nextInt();
+        scan.nextLine();
+        switch (s) {
+            /*
+            case 1:
+                System.out.println("");
+                MakeSchedule q = new MakeSchedule();
+                q.MakeScheduleOrder();
+                customer();
+                break;*/
+
+            case 2:
+                System.out.println("");
+                foodOrder f = new foodOrder();
+                f.order();
+                break;
+/*
+            case 3:
+                System.out.println("");
+
+                u.UpdateSchedule();
+                customer();
+                break;
+
+            case 4:
+                System.out.println("");
+
+                TrackOrderStatus a1 = new TrackOrderStatus();
+                a1.d();
+                ;
+                a1.OrderStatus();
+
+                break;
+
+            case 5:
+                System.out.println("");
+                u.cancelSchedule();
+
+                customer();
+                break;*/
+
+            case 0:
+                System.out.println("");
+                
+                MainMenu();
+                break;
+
+            default:
+                System.out.println("Invalid Input [1/2]");
+                System.out.println("");
+                customer();
+                break;
+        }
+    }
+
+    public void deliveryman() {
+
+        System.out.println("====================================================");
+        System.out.println("Select Your Action~");
+        System.out.println("====================================================");
+        System.out.println("1. Get customer details");
+
+        System.out.println("0. Exit");
+        System.out.println("====================================================");
+        System.out.print("Enter Your Action : ");
+        int s = scan.nextInt();
+        scan.nextLine();
+        switch (s) {
+            case 1:
+                System.out.println("");
+                custLogin dm = new custLogin();
+                dm.getno();
+                break;
+
+            case 0:
+                System.out.println("");
+                MainMenu();
+                break;
+
+            default:
+                System.out.println("Invalid Input [1/2]");
+                System.out.println("");
+                customer();
+                break;
+        }
+
     }
 }

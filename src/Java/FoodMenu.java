@@ -382,72 +382,7 @@ public class FoodMenu {
            
                          }  
         
-         int icount=0;
-         do{
-             System.out.println("\nPress any key to continue");
-             scan.nextLine();
-              System.out.println("1. Place Order 2. Sort Order");
-             try{
-                  option = scan.nextInt();
-                  scan.nextLine();
-                  icount=1;
-             }catch(Exception ex)
-             {
-                 System.out.println("Invalid Input...");
-                 icount=0;
-             }
-                 }while(icount==0);
-            icount=0;
-          if(option==1)
-          {
-        int aaa = 0;
-         int abc;
-         int quant;
-         double total = 0;
-         
-         do{
-         System.out.println("Please place your order :");
-         abc = scan.nextInt();
-         
-         abc = abc - 1;
-         String name = flist.returnItem(abc).getFoodName();
-         
- if(name != " "){
-         for(int s = 0 ; s< AllFood.getSize();s++){
-             if(name.equals( AllFood.returnItem(s).getFoodName())){
-                 
-         System.out.println("Kindly key in quantity :");
-         quant = scan.nextInt();
-                 
-     //    orders od = new orders(classify,AllFood.returnItem(s).getCompanyID(),AllFood.returnItem(s).getFoodName(),quant,AllFood.returnItem(s).getPrice());
-         
-      //   orders.add(od);
-         
-         total = total + (quant * AllFood.returnItem(s).getPrice());
-         
-         
-             }
-         }}else
-     System.out.println("Incorrect input...\n\n");
-         
-         
-         System.out.println("Do you wish to make another oder ? (1 = exit)");
-         aaa = scan.nextInt();
-         
-         }while(aaa==0);
-         
-         classify++;
-         
-         System.out.println("\n\n\n=============== Order Summary ===============\n\n\n");
-         System.out.println("Food     " + "Quantity       " + "Price (RM)  \n");
-     //    for(int y = 0; y < orders.size();y++)
-     //    System.out.println(orders.get(y).getname()+ "           " +  orders.get(y).getquantity() +"              "+ (orders.get(y).getprice()*orders.get(y).getquantity())+ "\n");
-         
-         System.out.println("=============== Total amount need to pay : ===============\n");
-         System.out.println("                                          " + total);
-         
-         }else
-          { System.out.println("Please choose a sort options : 1. Sort By Name 2. Sort By Categories 3. Sort By Price");
+          System.out.println("Please choose a sort options : 1. Sort By Name 2. Sort By Categories 3. Sort By Price");
                           options=scan.nextLine();
                               BubbleSort bs = new BubbleSort();
                          switch(options)
@@ -473,7 +408,7 @@ public class FoodMenu {
                                  displayMenu();
                                  break;
                                   
-                         }}
+                         }
      
      
      }
