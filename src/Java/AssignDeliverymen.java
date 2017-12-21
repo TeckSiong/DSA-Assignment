@@ -8,6 +8,7 @@ package Java;
 
 import ADT.DelManADT;
 import Domain.DeliveryMan;
+import Domain.TotalAssign;
 import java.util.*;
 
 /**
@@ -18,53 +19,55 @@ public class AssignDeliverymen {
 
     public static DelManADT<Domain.DeliveryMan> ad = new DelManADT<>();
     public static DelManADT<Domain.ProductStatus> ps = new DelManADT<>();
+    public static DelManADT<Domain.foodDetails> od = new DelManADT<>();
+    public static DelManADT<Domain.TotalAssign> ta = new DelManADT<>();
    // public static ProductStatus<Domain.DeliveryMan> ad = new ProductStatus<>();
 
-    private final List<String> IDlist = new ArrayList<String>();
-    private final List<String> meallist = new ArrayList<String>();
-    private final List<String> adeliveryman = new ArrayList<String>();
+   // private final List<String> IDlist = new ArrayList<String>();
+    //private final List<String> meallist = new ArrayList<String>();
+   // private final List<String> adeliveryman = new ArrayList<String>();
 
-    private final List<String> orderlist = new ArrayList<String>();
+   // private final List<String> orderlist = new ArrayList<String>();
 
-    public String abc;
+    public int abc;
     public String def;
 
-    String[] ID = new String[]{"1001", "1002", "1003", "1004"};
-    String[] meal = new String[]{"Buger", "Roti", "Pepsi", "Cola"};
+    //String[] ID = new String[]{"1001", "1002", "1003", "1004"};
+    //String[] meal = new String[]{"Buger", "Roti", "Pepsi", "Cola"};
 
     public void Order() {
         Scanner scanner = new Scanner(System.in);
+        
+        if(od.isEmpty()){
+            Domain.foodDetails.fDetail();
+        }
+        od = DelManMaintain.fList;
 
         int no = 0;
 
-        System.out.println("No ID      Meal");
-        System.out.println("== =====   ==========");
+        System.out.println("No ID      ");
+        System.out.println("== =====   ");
 
-        if (IDlist.isEmpty()) {
-            for (int e = 0; e < ID.length; e++) {
-                IDlist.add(ID[e]);
-                meallist.add(meal[e]);
+        
+            for (int e = 0; e < od.getSize(); e++) {
+                System.out.println((e + 1) + "  " + od.getData(e).getOrderId());
             }
-        }
+        
 
-        for (int c = 0; c < IDlist.size(); c++) {
-            System.out.println((c + 1) + "  " + IDlist.get(c) + "    " + meallist.get(c));
-        }
+        
 
         System.out.println();
         System.out.print("Please enter No. of order: ");
         no = scanner.nextInt();
         System.out.println();
 
-        for (int l = 0; l < IDlist.size(); l++) {
+        for (int l = 0; l < od.getSize(); l++) {
 
             if (no == l + 1) {
-                System.out.println("Your selected ID : " + IDlist.get(l));
+                System.out.println("Your selected ID : " + od.getData(l).getOrderId());
                 System.out.println();
-                abc = IDlist.get(l);
-                orderlist.add(abc);
-                IDlist.remove(l);
-                meallist.remove(l);
+                abc = od.getData(l).getOrderId();
+                //delete order
             }
         }
 
@@ -124,6 +127,9 @@ public class AssignDeliverymen {
                     delivery();
 
                 } else {
+               
+                    
+                    ta.addData(new TotalAssign(abc,def));
 
                     System.out.println();
                     System.out.println("=====================================");
@@ -140,7 +146,7 @@ public class AssignDeliverymen {
                     System.out.print("Minute: ");
                     Scanner sm = new Scanner(System.in);
                     int ms = sm.nextInt();
-                    
+                             
                     
                     if(ps.isEmpty()){
                         Domain.ProductStatus.Status();
@@ -148,24 +154,20 @@ public class AssignDeliverymen {
                     ps = DelManMaintain.sList;
                     
                     for(int d = 0;d < ps.getSize();d++){
-                        if(ps.getData(d).getDelManId()==ad.getData(l).getDelmenId()){
+                        if(ps.getData(d).getOrderID()== abc){
+                            ps.getData(d).setDelManId(ad.getData(d).getDelmenId());
                             ps.getData(d).setMinute(ms);
                             ps.getData(d).setHour(hs);
                             
                             System.out.println(ad.getData(l).getTotalDistance());
                             System.out.println(ps.getData(d).getHour()+ps.getData(l).getMinute());
                         }
-                    }
-                    
-                    
-                    
-                    
+                    }   
                     
                     System.out.println("=====================================");
                     
                     String a = "Not Available";
                     def = ad.getData(l).getDelmenName();
-                    adeliveryman.add(def);
                     ad.getData(l).setStatus(a);
 
                     System.out.println();
@@ -186,6 +188,8 @@ public class AssignDeliverymen {
                     } else {
                         System.out.println();
                     }
+                    
+                    
                 }
 
             }
@@ -198,8 +202,8 @@ public class AssignDeliverymen {
         System.out.println("OrderID    Delivery man");
         System.out.println("=======    ===============");
 
-        for (int i = 0; i < orderlist.size(); i++) {
-            System.out.println(orderlist.get(i) + "       " + adeliveryman.get(i));
+        for (int i = 0; i < ta.getSize(); i++) {
+            System.out.println(ta.getData(i).getOrderId() + "       " + ta.getData(i).getDelName());
         }
 
         System.out.println();
@@ -208,7 +212,7 @@ public class AssignDeliverymen {
 
     }
 
-    public static void AssignDM() {
+    public  void AssignDM() {
 
         AssignDeliverymen o = new AssignDeliverymen();
         o.Order();
