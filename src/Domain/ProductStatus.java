@@ -71,7 +71,7 @@ public class ProductStatus {
         return hour;
     }
 
-    public void setTime(int hour) {
+    public void setHour(int hour) {
         this.hour = hour;
     }
 
