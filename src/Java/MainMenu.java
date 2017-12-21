@@ -147,6 +147,7 @@ public class MainMenu {
                 break;
 
             case "6":
+                System.out.println("");
                 dm.report();
                 break;
 

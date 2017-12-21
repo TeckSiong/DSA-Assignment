@@ -41,6 +41,7 @@ public class DelManMaintain {
         Domain.DeliveryMan.DeliveryMenDetails();
         Domain.ProductStatus.Status();
         Domain.foodDetails.fDetail();
+
         addDelMan();
     }
 
@@ -104,7 +105,7 @@ public class DelManMaintain {
                 System.out.println("");
 
                 if (checkInput(con) == 1) {
-                    dList.addData(new Domain.DeliveryMan(Domain.DeliveryMan.getDelmenID(), newDelMan.getIcNum(), newDelMan.getIcNum(), newDelMan.getDelmenName(), newDelMan.getContactNum(), newDelMan.getHomeAddress(), newDelMan.getJoinDate(), "Available", 0, "Activated", 0));
+                    dList.addData(new Domain.DeliveryMan(Domain.DeliveryMan.getDelmenID(), newDelMan.getIcNum(), newDelMan.getIcNum(), newDelMan.getDelmenName(), newDelMan.getContactNum(), newDelMan.getHomeAddress(), newDelMan.getJoinDate(), "Available", "Activated", 0));
                     break;
                 } else if (checkInput(con) == -1) {
                     System.out.println("Invalid Input");
@@ -121,6 +122,7 @@ public class DelManMaintain {
                 } else if (checkInput(more) == 0) {
                     System.out.println("Registration Cancel!");
                     cont = false;
+                    System.out.println("");
                     MainMenu m = new MainMenu();
                     m.staffMenu();
                     break;
@@ -471,72 +473,77 @@ public class DelManMaintain {
         System.out.println("==================================================");
         System.out.print("Selection: ");
         String s = scan.nextLine();
-
         switch (s) {
             case "1":
                 do {
                     SortList sl = new SortList();
                     sl.bubble_srt(sList);
+                    System.out.println("");
                     System.out.print("Date: ");
                     String date = scan.nextLine();
-                    System.out.println("====================================================================================================");
+                    System.out.println("");
+                    System.out.println("======================================================================");
                     System.out.println("ID          Name            Contact Number          Total Deliveries");
-                    System.out.println("====================================================================================================");
+                    System.out.println("======================================================================");
                     for (int j = 0; j < sList.getSize(); j++) {
                         for (int k = 0; k < dList.getSize(); k++) {
                             if (date.equals(sList.getData(j).getDate()) && sList.getData(j).getStatus().equals("Delivered")) {
                                 int id = sList.getData(j).getDelManId();
                                 int t = sList.getData(j).getTrip();
                                 if (id == dList.getData(k).getDelmenId()) {
-                                    System.out.printf("%1s %20s %20S %20d \n", dList.getData(k).getDelmenId(), dList.getData(k).getDelmenName(), dList.getData(k).getContactNum(), t);
+                                    System.out.printf("%1s %13s %20S %15d \n", dList.getData(k).getDelmenId(), dList.getData(k).getDelmenName(), dList.getData(k).getContactNum(), t);
                                     checkDate = true;
                                 }
-
                             }
                         }
                     }
-                    again();
-
                     if (checkDate == false) {
+                        System.out.println("");
                         System.out.println("No Data found!");
                     }
-                } while (checkDate == false);
 
+                } while (checkDate == false);
+                System.out.println("");
+                again();
                 break;
 
             case "2":
                 do {
+                    System.out.println("");
                     System.out.print("Date: ");
                     String date = scan.nextLine();
-                    System.out.println("====================================================================================================");
-                    System.out.println("ID          Name            Contact Number          Total Distance");
-                    System.out.println("====================================================================================================");
+                    System.out.println("");
+                    System.out.println("======================================================================");
+                    System.out.println("ID       Name            Contact Number          Total Distance");
+                    System.out.println("======================================================================");
                     for (int j = 0; j < sList.getSize(); j++) {
                         for (int k = 0; k < dList.getSize(); k++) {
                             if (date.equals(sList.getData(j).getDate()) && sList.getData(j).getStatus().equals("Delivered")) {
                                 int id = sList.getData(j).getDelManId();
                                 if (id == dList.getData(k).getDelmenId()) {
-                                    System.out.printf("%1s %10s %20s %.2f \n", dList.getData(k).getDelmenId(), dList.getData(k).getDelmenName(), dList.getData(k).getContactNum(), dList.getData(k).getTotalDistance());
+                                    System.out.printf("%1s %10s %20s %15.2f \n", dList.getData(k).getDelmenId(), dList.getData(k).getDelmenName(), dList.getData(k).getContactNum(), dList.getData(k).getTotalDistance());
                                     checkDate = true;
                                 }
 
                             }
                         }
                     }
-                    again();
-
                     if (checkDate == false) {
+                        System.out.println("");
                         System.out.println("No Data found!");
                     }
                 } while (checkDate == false);
+                again();
                 break;
 
             case "3":
+                System.out.println("");
                 MainMenu m = new MainMenu();
                 m.staffMenu();
                 break;
 
             default:
+                System.out.println("");
                 System.out.println("Invalid Input!");
                 report();
                 break;
@@ -551,14 +558,17 @@ public class DelManMaintain {
 
         switch (a) {
             case "Y":
+                System.out.println("");
                 m.staffMenu();
                 break;
 
             case "N":
+                System.out.println("");
                 m.MainMenu();
                 break;
 
             default:
+                System.out.println("");
                 System.out.println("Invalid Input!");
                 again();
                 break;

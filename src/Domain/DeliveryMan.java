@@ -24,7 +24,7 @@ public class DeliveryMan {
         
     }
 
-    public DeliveryMan(int delmenId, String icNum, String password, String delmenName, String ContactNum, String homeAddress, String jonDate, String status, int trip, String acc, double totalDistance) {
+    public DeliveryMan(int delmenId, String icNum, String password, String delmenName, String ContactNum, String homeAddress, String jonDate, String status, String acc, double totalDistance) {
         this.delmenId = delmenId;
         this.icNum = icNum;
         this.password = password;
@@ -33,18 +33,17 @@ public class DeliveryMan {
         this.homeAddress = homeAddress;
         this.joinDate = jonDate;
         this.status = status;
-        this.trip = trip;
         this.acc = acc;
         this.totalDistance = totalDistance;
         delmenID++;
     }
     
     public static void DeliveryMenDetails() {
-        DelManMaintain.dList.addData(new DeliveryMan(601001,"930616-03-6131", "ABC123", "Jorn Lim", "011-12345678", "Pertaling Jaya", "13/11/2016", "Available",5, "Active", 10.6));
-        DelManMaintain.dList.addData(new DeliveryMan(601002,"961007-03-7163", "Hii123", "Mark    ", "018-1234567", "Wangsa Maju", "10/11/2016", "Available",1, "Active", 7.5));
-        DelManMaintain.dList.addData(new DeliveryMan(601003,"963031-03-7361", "Waa123", "Jolin   ", "017-1234567", "Setapak", "17/11/2016", "Available",3, "Active", 11.3));
-        DelManMaintain.dList.addData(new DeliveryMan(601004,"310317-03-3311", "Qzz123", "Sam     ", "016-1234567", "Seremban", "21/11/2016", "Available",4, "Active", 10.6));
-        DelManMaintain.dList.addData(new DeliveryMan(601005,"980103-03-1378", "Zaa123", "Zack    ", "013-1234567", "Port Dickson", "30/11/2016", "Available",5, "Active", 3.0));
+        DelManMaintain.dList.addData(new DeliveryMan(601001,"930616-03-6131", "ABC123", "Jorn Lim", "011-12345678", "Pertaling Jaya", "13/11/2016", "Available", "Active", 10.6));
+        DelManMaintain.dList.addData(new DeliveryMan(601002,"961007-03-7163", "Hii123", "Mark    ", "018-1234567", "Wangsa Maju", "10/11/2016", "Available", "Active", 7.5));
+        DelManMaintain.dList.addData(new DeliveryMan(601003,"963031-03-7361", "Waa123", "Jolin   ", "017-1234567", "Setapak", "17/11/2016", "Available", "Active", 11.3));
+        DelManMaintain.dList.addData(new DeliveryMan(601004,"310317-03-3311", "Qzz123", "Sam     ", "016-1234567", "Seremban", "21/11/2016", "Available", "Active", 10.6));
+        DelManMaintain.dList.addData(new DeliveryMan(601005,"980103-03-1378", "Zaa123", "Zack    ", "013-1234567", "Port Dickson", "30/11/2016", "Available", "Active", 3.0));
     }
 
     public int getDelmenId() {
@@ -119,15 +118,6 @@ public class DeliveryMan {
 
     public void setStatus(String status) {
         this.status = status;
-    }
-    
-    public int getTrip(){
-        return trip;
-    }
-    
-    public void setTrip(int trip){
-        this.trip = trip;
-        
     }
 
     public String getAcc() {

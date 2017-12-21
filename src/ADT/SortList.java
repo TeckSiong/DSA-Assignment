@@ -20,7 +20,7 @@ public class SortList<T> implements SortInterface<T>{
             for (int i = 0; i < n - 1; i++) {
                 k = i + 1;
             
-                if (ds.getData(i).getTrip() < ds.getData(k).getTrip()) {
+                if (ds.getData(i).getTrip()< ds.getData(k).getTrip()) {
                     swap(i, k, (DelManADT<ProductStatus>) ds);
                 }
             }
@@ -28,20 +28,11 @@ public class SortList<T> implements SortInterface<T>{
         }
     }
   
-    private void swap(int i, int j, DelManADT<ProductStatus> ls) {
+    private void swap(int i, int j, DelManADT<ProductStatus> ds) {
   
         ProductStatus temp;
-        temp = ls.getData(i);
-        ls.setItem(i, ls.getData(j)); 
-        ls.setItem(j, temp); 
+        temp = ds.getData(i);
+        ds.setItem(i, ds.getData(j)); 
+        ds.setItem(j, temp); 
     }
-    
-  
-    private  void printList(DelManADT<ProductStatus> input) {
-          
-        for (int i = 0; i < input.getSize(); i++) {
-            System.out.print(input.getData(i).getTrip());
-        }
-        System.out.println("\n");
-    } 
 }

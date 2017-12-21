@@ -28,11 +28,11 @@ public class ProductStatus {
     }
 
     public static void Status() {
-        DelManMaintain.sList.addData(new ProductStatus(601001, 1001, "Delivered", 3, 1, 0, "21/12/2017"));
-        DelManMaintain.sList.addData(new ProductStatus(601002, 1002, "Pending", 5, 1, 0, "21/12/2017"));
-        DelManMaintain.sList.addData(new ProductStatus(601003, 1003, "Delivered", 7, 1, 0, "21/12/2017"));
-        DelManMaintain.sList.addData(new ProductStatus(601004, 1004, "Pending", 9, 1, 0, "21/12/2017"));
-        DelManMaintain.sList.addData(new ProductStatus(601005, 1005, "Delivered", 11, 1, 0, "21/12/2017"));
+        DelManMaintain.sList.addData(new ProductStatus(601001, 1001, "Delivered",5, 1, 0, "21/12/2017"));
+        DelManMaintain.sList.addData(new ProductStatus(601002, 1002, "Pending",3, 1, 0, "21/12/2017"));
+        DelManMaintain.sList.addData(new ProductStatus(601003, 1003, "Delivered",6, 1, 0, "21/12/2017"));
+        DelManMaintain.sList.addData(new ProductStatus(601004, 1004, "Pending",7, 1, 0, "21/12/2017"));
+        DelManMaintain.sList.addData(new ProductStatus(601005, 1005, "Delivered",1, 1, 0, "21/12/2017"));
     }
 
     public int getDelManId() {
@@ -55,16 +55,16 @@ public class ProductStatus {
         return status;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
     public int getTrip() {
         return trip;
     }
 
     public void setTrip(int trip) {
         this.trip = trip;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public int getHour() {
