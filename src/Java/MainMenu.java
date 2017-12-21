@@ -56,10 +56,7 @@ public class MainMenu {
                 custL.Login();
                 break;
 
-            case "4":
-                System.out.println("");
-                deliveryman();
-                break;
+            
                 
                 default:
                 System.out.println("Invalid Input [1/2/3]");
