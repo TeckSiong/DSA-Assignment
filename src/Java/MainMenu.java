@@ -199,17 +199,15 @@ public class MainMenu {
                 u.UpdateSchedule();
                 customer();
                 break;
-
+*/
             case 4:
                 System.out.println("");
 
                 TrackOrderStatus a1 = new TrackOrderStatus();
-                a1.d();
-                ;
                 a1.OrderStatus();
 
                 break;
-
+/*
             case 5:
                 System.out.println("");
                 u.cancelSchedule();

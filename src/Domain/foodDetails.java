@@ -16,12 +16,14 @@ public class foodDetails {
     int foodId;
     String foodName;
     int quantity;
+    String ci;
 
-    public foodDetails(int orderId, int foodId, String foodName, int quantity) {
+    public foodDetails(int orderId, int foodId, String foodName, int quantity, String custID) {
         this.orderId = orderId;
         this.foodId = foodId;
         this.foodName = foodName;
         this.quantity = quantity;
+        this.ci = custID;
     }
     
     public foodDetails() {
@@ -29,11 +31,11 @@ public class foodDetails {
     }
     
     public static void fDetail() {
-        DelManMaintain.fList.addData(new foodDetails(1001, 3001, "Burger", 3));
-        DelManMaintain.fList.addData(new foodDetails(1001, 3002, "Ice Cream", 1));
-        DelManMaintain.fList.addData(new foodDetails(1002, 3003, "Cake", 3));
-        DelManMaintain.fList.addData(new foodDetails(1002, 3004, "Apple", 1));
-        DelManMaintain.fList.addData(new foodDetails(1002, 3005, "Meat", 3));
+        DelManMaintain.fList.addData(new foodDetails(1001, 3001, "Burger", 3,"101001"));
+        DelManMaintain.fList.addData(new foodDetails(1001, 3002, "Ice Cream", 1,"101001"));
+        DelManMaintain.fList.addData(new foodDetails(1002, 3003, "Cake", 3,"101001"));
+        DelManMaintain.fList.addData(new foodDetails(1002, 3004, "Apple", 1,"101002"));
+        DelManMaintain.fList.addData(new foodDetails(1002, 3005, "Meat", 3,"101002"));
     }
 
 
@@ -67,5 +69,13 @@ public class foodDetails {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+    
+    public String getCustID() {
+        return ci;
+    }
+
+    public void setCustID(String ci) {
+        this.ci =ci;
     }
 }

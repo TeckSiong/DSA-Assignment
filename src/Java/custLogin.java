@@ -23,6 +23,7 @@ public class custLogin {
     public Scanner scan = new Scanner(System.in);
 
     public static ADTOrder<custinfo> custinfo = new ADTOrder<>();
+    public static int id1;
 
     public void Login() {
 
@@ -35,6 +36,8 @@ public class custLogin {
                 Login();
             } else if (choose.equals("2")) {
                 boolean login = false;
+                
+                Domain.custinfo.Customer();
 
                 System.out.println("Login Page");
                 System.out.println("==========");
@@ -42,6 +45,8 @@ public class custLogin {
                 String ID = scan.nextLine();
                 System.out.print("Please input a Password : ");
                 String pass = scan.nextLine();
+                
+                id1 = Integer.parseInt(ID);
                 /*
                 System.out.print(custinfo.getEntry(0).getId() + "  "+ custinfo.getEntry(0).getpass());
                 System.out.print(ID + pass);

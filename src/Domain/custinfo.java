@@ -5,6 +5,9 @@
  */
 package Domain;
 
+import Java.custLogin;
+import Domain.custinfo;
+
 /**
  *
  * @author User
@@ -29,6 +32,11 @@ public class custinfo {
         this.phone = ph;
         this.gender = gen;
         this.address = add;
+    }
+    
+    public static void Customer(){
+        custLogin.custinfo.add(new custinfo("101001", "ABC123", "King","010-4234234", "Male", "sdasdasd"));
+        
     }
 
     public String getId() {
