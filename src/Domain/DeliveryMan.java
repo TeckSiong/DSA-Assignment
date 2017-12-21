@@ -16,7 +16,6 @@ public class DeliveryMan {
     private String homeAddress;
     private String joinDate;
     private String status;
-    private int trip;
     private String acc;
     private double totalDistance;
     
