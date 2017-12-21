@@ -43,38 +43,6 @@ public class DelManADT<T> implements DelManInterface<T> {
     }
 
     @Override
-    public boolean removeData(T anEntry) {
-        if (!isEmpty()) {
-            if (firstNode.data.equals(anEntry)) {
-                firstNode = firstNode.next;
-                if (firstNode == null) {
-                    lastNode = null;
-                } else {
-                    firstNode.previous = null;
-                }
-                size--;
-                return true;
-            }
-            Node temp = firstNode;
-            while (temp != null && !temp.data.equals(anEntry)) {
-                temp = temp.next;
-                if (temp != null && temp.data.equals(anEntry)) {
-                    if (temp == lastNode) {
-                        lastNode = temp.previous;
-                        lastNode.next = null;
-                    } else {
-                        temp.previous.next = temp.next;
-                        temp.next.previous = temp.previous;
-                    }
-                    size--;
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
-
-    @Override
     public T getData(int element) {
         Node tmp = firstNode;
         T tmp1 = null;
@@ -93,17 +61,6 @@ public class DelManADT<T> implements DelManInterface<T> {
     @Override
     public boolean isEmpty() {
         return firstNode == null;
-    }
-
-    @Override
-    public String toStringReverse() {
-        String str = "";
-        Node temp = lastNode;
-        while (temp != null) {
-            str += temp.data + " ";
-            temp = temp.previous;
-        }
-        return str;
     }
 
     

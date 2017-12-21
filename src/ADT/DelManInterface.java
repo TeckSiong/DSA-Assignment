@@ -13,11 +13,9 @@ import Domain.ProductStatus;
  */
 public interface DelManInterface<T> {
     void addData(T newEntry);
-    boolean removeData(T anEntry);
     T getData(int element);
     int getSize();
     boolean isEmpty();
-    String toStringReverse();
      boolean setItem(int index,T item);
     
 }
