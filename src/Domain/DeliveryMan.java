@@ -1,6 +1,5 @@
 package Domain;
 
-import ADT.DelManADT;
 import Java.DelManMaintain;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;

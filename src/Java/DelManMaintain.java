@@ -461,8 +461,9 @@ public class DelManMaintain {
 
 // Report
     public void report() {
+        boolean checkDate = false;
         System.out.println("==================================================");
-        System.out.println("Dily Report");
+        System.out.println("Daily Report");
         System.out.println("==================================================");
         System.out.println("1. Total Deleveries Completed");
         System.out.println("2. Distance Travelled");
@@ -470,27 +471,64 @@ public class DelManMaintain {
         System.out.println("==================================================");
         System.out.print("Selection: ");
         String s = scan.nextLine();
-        SortList b = new SortList();
-        b.bubble_srt(dList);
+
         switch (s) {
             case "1":
-                System.out.println("====================================================================================================");
-                System.out.println("ID          Name            Contact Number          Total Deliveries");
-                System.out.println("====================================================================================================");
-                for (int j = 0; j < dList.getSize(); j++) {
-                    System.out.printf("%1s %20s %20S %20d \n", dList.getData(j).getDelmenId(), dList.getData(j).getDelmenName(), dList.getData(j).getContactNum(), dList.getData(j).getTrip());
-                }
-                again();
+                do {
+                    SortList sl = new SortList();
+                    sl.bubble_srt(sList);
+                    System.out.print("Date: ");
+                    String date = scan.nextLine();
+                    System.out.println("====================================================================================================");
+                    System.out.println("ID          Name            Contact Number          Total Deliveries");
+                    System.out.println("====================================================================================================");
+                    for (int j = 0; j < sList.getSize(); j++) {
+                        for (int k = 0; k < dList.getSize(); k++) {
+                            if (date.equals(sList.getData(j).getDate()) && sList.getData(j).getStatus().equals("Delivered")) {
+                                int id = sList.getData(j).getDelManId();
+                                int t = sList.getData(j).getTrip();
+                                if (id == dList.getData(k).getDelmenId()) {
+                                    System.out.printf("%1s %20s %20S %20d \n", dList.getData(k).getDelmenId(), dList.getData(k).getDelmenName(), dList.getData(k).getContactNum(), t);
+                                    checkDate = true;
+                                }
+
+                            }
+                        }
+                    }
+                    again();
+
+                    if (checkDate == false) {
+                        System.out.println("No Data found!");
+                    }
+                } while (checkDate == false);
+
                 break;
 
             case "2":
-                System.out.println("====================================================================================================");
-                System.out.println("ID          Name            Contact Number          Total Distance");
-                System.out.println("====================================================================================================");
-                for (int j = 0; j < dList.getSize(); j++) {
-                    System.out.printf("%1s %20s %20S %20d \n", dList.getData(j).getDelmenId(), dList.getData(j).getDelmenName(), dList.getData(j).getContactNum(), dList.getData(j).getTotalDistance());
-                }
-                again();
+                do {
+                    System.out.print("Date: ");
+                    String date = scan.nextLine();
+                    System.out.println("====================================================================================================");
+                    System.out.println("ID          Name            Contact Number          Total Distance");
+                    System.out.println("====================================================================================================");
+                    for (int j = 0; j < sList.getSize(); j++) {
+                        for (int k = 0; k < dList.getSize(); k++) {
+                            if (date.equals(sList.getData(j).getDate()) && sList.getData(j).getStatus().equals("Delivered")) {
+                                int id = sList.getData(j).getDelManId();
+                                if (id == dList.getData(k).getDelmenId()) {
+                                    System.out.printf("%1s %10s %20s %.2f \n", dList.getData(k).getDelmenId(), dList.getData(k).getDelmenName(), dList.getData(k).getContactNum(), dList.getData(k).getTotalDistance());
+                                    checkDate = true;
+                                }
+
+                            }
+                        }
+                    }
+                    again();
+
+                    if (checkDate == false) {
+                        System.out.println("No Data found!");
+                    }
+                } while (checkDate == false);
                 break;
 
             case "3":
