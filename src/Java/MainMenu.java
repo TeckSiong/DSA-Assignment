@@ -43,6 +43,12 @@ public class MainMenu {
                 r.updDelMan();
                 break;
 
+            case "4":
+                System.out.println("");
+                DMLogin dm = new DMLogin();
+                dm.login();
+                break;
+
         }
     }
     
