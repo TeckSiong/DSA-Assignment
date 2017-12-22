@@ -40,8 +40,8 @@ public class MainMenu {
 
             case "2":
                 System.out.println("");
-                DelManMaintain r = new DelManMaintain();
-                r.updDelMan();
+                Restaurant r = new Restaurant();
+                r.Login();
                 break;
 
             case "4":
@@ -129,13 +129,12 @@ public class MainMenu {
                 dm.updDelMan();
                 break;
 
-//            case 3:
-//                System.out.println("");
-//                TrackDeliveryStatus a = new TrackDeliveryStatus();
-//                a.CheckStatus();
-//                RegisterDelMen r = new RegisterDelMen();
-//                r.menu();
-//                break;
+            case "3":
+                System.out.println("");
+                AssignDeliverymen a = new AssignDeliverymen();
+                a.AssignDM();
+                staffMenu();
+                break;
 //
 //            case 4:
 //                System.out.println("");

@@ -41,8 +41,12 @@ public class foodOrder {
 
         Calendar cal = Calendar.getInstance();
         int d = cal.get(Calendar.DAY_OF_WEEK);
+        
+        if(Restaurant.Ro.isEmpty()){
+            Domain.RestaurantOwner.RestList();
+        }
 
-        System.out.print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSelect Company Name : \n");
+       // System.out.print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSelect Company Name : \n");
 
         for (int i = 0; i < Restaurant.Ro.getSize(); i++) {
             System.out.print(i + " " + Restaurant.Ro.returnItem(i).getRestaurantName() + "\n");
@@ -54,6 +58,9 @@ public class foodOrder {
              scan.nextLine();
              
              main.customer();
+        }else{
+            System.out.println();
+            System.out.print("Select Company Name : ");
         }
         int x = 0;
 
@@ -157,7 +164,7 @@ public class foodOrder {
                             System.out.print("Kindly key in quantity :");
                             quant = scan.nextInt();
 
-                            orders od = new orders(classify, AllFood.returnItem(s).getCompanyID(), AllFood.returnItem(s).getFoodName(), quant, AllFood.returnItem(s).getPrice(), "Pending");
+                            orders od = new orders(classify, AllFood.returnItem(s).getCompanyID(), AllFood.returnItem(s).getFoodName(), quant, AllFood.returnItem(s).getPrice(), "Pending",301001);
 
                             orders1.add(od); //add to node
                             orders.add(od); //to display summary

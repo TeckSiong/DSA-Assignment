@@ -25,6 +25,8 @@ public interface ADTTheListInterface<T> {
     boolean contains(T element);
     void addFirst(T element);
     T deleteFirst();
+    void addNew(T newEntry);
+    boolean isEmpty();
 
 
     

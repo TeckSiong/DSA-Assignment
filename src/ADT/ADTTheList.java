@@ -30,15 +30,32 @@ public class ADTTheList<T> implements ADTTheListInterface<T>{
             this.data = data;
         }
 
-      
+        public Node(T data) {
+            this.data = data;
+        }
 
         public Node() {
         }
-        
+
+  
         
     }
     
-
+    
+    
+    @Override
+    public void addNew(T newEntry) {
+        Node newNode = new Node(newEntry);
+        if (isEmpty()) {
+            head = newNode;
+        } else {
+            tail.next = newNode;
+            newNode.prev = tail;
+        }
+        tail = newNode;
+        size++;
+    }
+    
     @Override
     public T returnItem(int index) {
         Node tmp = head;
@@ -235,6 +252,10 @@ public class ADTTheList<T> implements ADTTheListInterface<T>{
         size--;
         System.out.println("deleted: "+tmp.data);
         return tmp.data;
+    }
+     @Override
+    public boolean isEmpty() {
+        return head == null;
     }
 
      

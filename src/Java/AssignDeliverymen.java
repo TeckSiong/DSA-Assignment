@@ -6,9 +6,11 @@
 package Java;
 
 
+import ADT.ADTOrder;
 import ADT.DelManADT;
 import Domain.DeliveryMan;
 import Domain.TotalAssign;
+import Domain.orders;
 import java.util.*;
 
 /**
@@ -17,9 +19,12 @@ import java.util.*;
  */
 public class AssignDeliverymen {
 
+    public static int abc ;
+    public static String def;
+    
     public static DelManADT<Domain.DeliveryMan> ad = new DelManADT<>();
     public static DelManADT<Domain.ProductStatus> ps = new DelManADT<>();
-    public static DelManADT<Domain.foodDetails> od = new DelManADT<>();
+    public static ADTOrder<orders> od = new ADTOrder<>();
     public static DelManADT<Domain.TotalAssign> ta = new DelManADT<>();
    // public static ProductStatus<Domain.DeliveryMan> ad = new ProductStatus<>();
 
@@ -29,19 +34,25 @@ public class AssignDeliverymen {
 
    // private final List<String> orderlist = new ArrayList<String>();
 
-    public int abc;
-    public String def;
+    
 
     //String[] ID = new String[]{"1001", "1002", "1003", "1004"};
     //String[] meal = new String[]{"Buger", "Roti", "Pepsi", "Cola"};
 
     public void Order() {
         Scanner scanner = new Scanner(System.in);
-        
+        od = foodOrder.orders1;
         if(od.isEmpty()){
-            Domain.foodDetails.fDetail();
+            Domain.orders.OrderList();
         }
-        od = DelManMaintain.fList;
+        
+        ps = DelManMaintain.sList;
+        if (ps.isEmpty()) {
+            Domain.ProductStatus.Status();
+        }
+        
+        
+        
 
         int no = 0;
 
@@ -49,8 +60,11 @@ public class AssignDeliverymen {
         System.out.println("== =====   ");
 
         
-            for (int e = 0; e < od.getSize(); e++) {
-                System.out.println((e + 1) + "  " + od.getData(e).getOrderId());
+            for (int e = 0; e < ps.getSize(); e++) {
+                if(ps.getData(e).getStatus()=="Pending"){
+                    System.out.println((e+1) + "  " + ps.getData(e).getOrderID());
+                }
+                    
             }
         
 
@@ -64,10 +78,13 @@ public class AssignDeliverymen {
         for (int l = 0; l < od.getSize(); l++) {
 
             if (no == l + 1) {
-                System.out.println("Your selected ID : " + od.getData(l).getOrderId());
+                System.out.println("Your selected ID : " + ps.getData(l).getOrderID());
                 System.out.println();
-                abc = od.getData(l).getOrderId();
+                abc = od.getEntry(l).getclassify();
+                
                 //delete order
+                
+                delivery();
             }
         }
 
@@ -79,12 +96,14 @@ public class AssignDeliverymen {
         Scanner scanner4 = new Scanner(System.in);
 
         int no2 = 0;
+        
+        ad = DelManMaintain.dList;
 
         if (DelManMaintain.dList.isEmpty()) {
             Domain.DeliveryMan.DeliveryMenDetails();
         }
 
-        ad = DelManMaintain.dList;
+        
 
         System.out.println("Available delivery men");
         System.out.println();
@@ -129,7 +148,8 @@ public class AssignDeliverymen {
                 } else {
                
                     
-                    ta.addData(new TotalAssign(abc,def));
+                    
+                    int di = ad.getData(l).getDelmenId();
 
                     System.out.println();
                     System.out.println("=====================================");
@@ -148,29 +168,26 @@ public class AssignDeliverymen {
                     int ms = sm.nextInt();
                              
                     
-                    if(ps.isEmpty()){
-                        Domain.ProductStatus.Status();
-                    }
-                    ps = DelManMaintain.sList;
+                   
                     
                     for(int d = 0;d < ps.getSize();d++){
                         if(ps.getData(d).getOrderID()== abc){
-                            ps.getData(d).setDelManId(ad.getData(d).getDelmenId());
+                            ps.getData(d).setDelManId(di);
                             ps.getData(d).setMinute(ms);
                             ps.getData(d).setHour(hs);
-                            
-                            System.out.println(ad.getData(l).getTotalDistance());
-                            System.out.println(ps.getData(d).getHour()+ps.getData(l).getMinute());
+                            ps.getData(d).setStatus("Delivering");
                         }
                     }   
                     
                     System.out.println("=====================================");
                     
-                    String a = "Not Available";
+                    String a = "Delivery";
                     def = ad.getData(l).getDelmenName();
                     ad.getData(l).setStatus(a);
 
                     System.out.println();
+                    
+                    
 
                     System.out.println("Do you want to continue assign other jobs? ");
                     System.out.println("1. Yes");
@@ -187,6 +204,8 @@ public class AssignDeliverymen {
                         delivery();
                     } else {
                         System.out.println();
+                        ta.addData(new TotalAssign(abc,def));
+                        System.out.println("The delivery jobs have assigned!!");
                     }
                     
                     
@@ -194,6 +213,8 @@ public class AssignDeliverymen {
 
             }
         }
+        
+        
     }
 
     public void assignjob() {
@@ -202,8 +223,11 @@ public class AssignDeliverymen {
         System.out.println("OrderID    Delivery man");
         System.out.println("=======    ===============");
 
-        for (int i = 0; i < ta.getSize(); i++) {
-            System.out.println(ta.getData(i).getOrderId() + "       " + ta.getData(i).getDelName());
+        for (int i = 0; i <= ta.getSize(); ++i) {
+            
+  
+            System.out.println(ta.getData(i).getOrderId()+"       "+ta.getData(i).getDelName());
+           
         }
 
         System.out.println();
@@ -216,11 +240,13 @@ public class AssignDeliverymen {
 
         AssignDeliverymen o = new AssignDeliverymen();
         o.Order();
-        o.delivery();
-        o.assignjob();
-        
         DelManMaintain.dList = ad ;
         DelManMaintain.sList = ps;
+
+
+        
+        
+        
         
     }
 

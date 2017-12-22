@@ -18,12 +18,14 @@ public class foodDetails {
     int quantity;
     String ci;
 
+
     public foodDetails(int orderId, int foodId, String foodName, int quantity, String custID) {
         this.orderId = orderId;
         this.foodId = foodId;
         this.foodName = foodName;
         this.quantity = quantity;
         this.ci = custID;
+
     }
     
     public foodDetails() {
@@ -78,4 +80,6 @@ public class foodDetails {
     public void setCustID(String ci) {
         this.ci =ci;
     }
+    
+    
 }

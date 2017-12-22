@@ -5,11 +5,14 @@
  */
 package Java;
 
+import ADT.ADTOrder;
 import ADT.ADTTheList;
 import ADT.ADTTheListInterface;
 import ADT.DelManADT;
 import Domain.Food;
 import Domain.ProductStatus;
+import Domain.orders;
+import static Java.AssignDeliverymen.od;
 
 import java.util.*;
 import java.text.DateFormat;
@@ -21,14 +24,26 @@ public class TrackOrderStatus {
     Scanner scanner1 = new Scanner(System.in);
     Scanner scanner2 = new Scanner(System.in);
     public static DelManADT<Domain.ProductStatus> ps = new DelManADT<>();
-    public static DelManADT<Domain.foodDetails> od = new DelManADT<>();
+    //public static DelManADT<Domain.foodDetails> od = new DelManADT<>();
+    public static ADTOrder<orders> od = new ADTOrder<>();
+    
+    public static int cid;
 
     public void OrderStatus() {
+        
+        custLogin cl = new custLogin();
+        
+        ps = DelManMaintain.sList;
 
         if (ps.isEmpty()) {
             Domain.ProductStatus.Status();
         }
-        ps = DelManMaintain.sList;
+        
+        od = foodOrder.orders1;
+        if(od.isEmpty()){
+            Domain.orders.OrderList();
+        }
+        
 
         Calendar cal = Calendar.getInstance();
 
@@ -50,22 +65,19 @@ public class TrackOrderStatus {
         System.out.println();
         System.out.println("Order ID");
         System.out.println("========");
-        
-        if(od.isEmpty()){
-            Domain.foodDetails.fDetail();
-        }
-        od = DelManMaintain.fList;
 
+        int dd = cl.id1;
         for (int i = 0; i < od.getSize(); i++) {
-            int cid = Integer.parseInt(od.getData(i).getCustID());
-            if (cid == Java.custLogin.id1) {
-                int a = ps.getData(i).getOrderID();
-               System.out.println(a);
-               
+            
+            if (od.getEntry(i).getcustID() == dd) {
+                
+                
+                cid = od.getEntry(i).getcustID();
 
+                System.out.println(od.getEntry(i).getclassify());
             }
-
         }
+        
 
         System.out.println();
 
@@ -122,6 +134,8 @@ public class TrackOrderStatus {
         if (scanner1.nextInt() == 1) {
             OrderStatus();
         }
+        
+         foodOrder.orders1 = od;
 
     }
 

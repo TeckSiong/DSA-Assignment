@@ -5,9 +5,13 @@
  */
 package Java;
 
+import ADT.ADTOrder;
 import ADT.DelManADT;
 import Domain.ClockIO;
 import Domain.ProductStatus;
+import Domain.orders;
+import static Java.AssignDeliverymen.od;
+import static Java.AssignDeliverymen.ps;
 import java.util.Scanner;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -23,7 +27,9 @@ public class ClockInClockOut {
     Scanner ans = new Scanner(System.in);
 
     public static DelManADT<Domain.DeliveryMan> dm = new DelManADT<>();
+    public static DelManADT<Domain.ProductStatus> ps = new DelManADT<>();
     public static DelManADT<Domain.ClockIO> cio = new DelManADT<>();
+    public static ADTOrder<orders> od = new ADTOrder<>();
 
     public static int hour;
     public static int min;
@@ -34,12 +40,28 @@ public class ClockInClockOut {
         //  AssignDeliveryJob ad = new AssignDeliveryJob();
 
         Calendar cal = Calendar.getInstance();
+        dm = DelManMaintain.dList;
 
         if (DelManMaintain.dList.isEmpty()) {
             Domain.DeliveryMan.DeliveryMenDetails();
         }
-
-        dm = DelManMaintain.dList;
+        
+        ps = DelManMaintain.sList;
+        if (ps.isEmpty()) {
+            Domain.ProductStatus.Status();
+        }
+        
+        
+        if (cio.isEmpty()) {
+            Domain.ClockIO.WorkingDuration();
+        }
+        
+        od = foodOrder.orders1;
+        if(od.isEmpty()){
+            Domain.orders.OrderList();
+        }
+        
+        
 
         //   for (int i = 0; i <= dm.getSize(); i++) {
         //       dm.getData(i).setStatus("Available");
@@ -68,14 +90,34 @@ public class ClockInClockOut {
         }
         
         
+        System.out.println();
+        
+        System.out.println("OrderID    Address");
+        System.out.println("=======    ======================");
         
         
+        int id1 = Integer.parseInt(dd.id);
+    
         
+           
+        for (int o = 0; o < ps.getSize(); o++) {
+            int idd =ps.getData(o).getDelManId(); 
+            if(ps.getData(o).getStatus()=="Delivering"){
+                if (idd == id1) {
+                    System.out.println(ps.getData(o).getOrderID() + "       " + ps.getData(o).getAddress());
+                } 
+            }
+            
+            
+        }
 
+        
         System.out.println();
-        System.out.println();
-        System.out.println("1. Refresh");
         System.out.println("0. Clock Out");
+        System.out.println("1. Refresh");
+        System.out.println("2. Exit");
+        
+        
         System.out.println();
         System.out.print("Enter Selection: ");
         int s2 = ans.nextInt();
@@ -86,8 +128,9 @@ public class ClockInClockOut {
         } else if (s2 == 0) {
 
             for (int a = 0; a < dm.getSize(); a++) {
-                int id1 = Integer.parseInt(dd.id);
+                
                 int id2 = dm.getData(a).getDelmenId();
+                dm.getData(a).setStatus("Not Available");
 
                 if (id1 == id2) {
 
@@ -110,9 +153,7 @@ public class ClockInClockOut {
                         System.out.println("Your working duration today: " + rhour + "hours " + rminute + "minutes ");
                         System.out.println();
 
-                        if (cio.isEmpty()) {
-                            Domain.ClockIO.WorkingDuration();
-                        }
+                        
 
                         for (int q = 0; q < cio.getSize(); q++) {
                             if (id1 == cio.getData(q).getDelmenId()) {
@@ -124,14 +165,29 @@ public class ClockInClockOut {
                         }
 
                     }
+                    
 
                 }
 
             }
+            
+           
 
-        } else {
+        } else if(s2 == 2){
+            for (int a = 0; a < dm.getSize(); a++) {
+                
+                int id2 = dm.getData(a).getDelmenId();
+                if(id1==id2){
+                    dm.getData(a).setStatus("Available");
+                }
+            MainMenu mm = new MainMenu();
+            mm.MainMenu();
+            }
+        }else
             System.out.println("Invalid !!");
-        }
+        
+        
+        DelManMaintain.dList=dm;
 
     }
 

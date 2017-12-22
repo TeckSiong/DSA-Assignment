@@ -14,25 +14,27 @@ public class ProductStatus {
     private int hour;
     private int minute;
     private String date;
+    private String add;
 
     public ProductStatus() {
     }
 
-    public ProductStatus(int delManId, int id, String status, int trip, int hour, int minute, String date) {
+    public ProductStatus(int delManId, int id, String status, int trip, int hour, int minute, String date,String add) {
         this.delManId = delManId;
         this.orderID = id;
         this.status = status;
         this.trip = trip;
         this.hour = hour;
         this.minute = minute;
+        this.add = add;
     }
 
     public static void Status() {
-        DelManMaintain.sList.addData(new ProductStatus(601001, 1001, "Delivered",5, 1, 0, "21/12/2017"));
-        DelManMaintain.sList.addData(new ProductStatus(601002, 1002, "Pending",3, 1, 0, "21/12/2017"));
-        DelManMaintain.sList.addData(new ProductStatus(601003, 1003, "Delivered",6, 1, 0, "21/12/2017"));
-        DelManMaintain.sList.addData(new ProductStatus(601004, 1004, "Pending",7, 1, 0, "21/12/2017"));
-        DelManMaintain.sList.addData(new ProductStatus(601005, 1005, "Delivered",1, 1, 0, "21/12/2017"));
+        DelManMaintain.sList.addData(new ProductStatus(0, 1001, "Pending",5, 1, 0, "21/12/2017","fsdfds"));
+        DelManMaintain.sList.addData(new ProductStatus(601002, 1002, "Delivering",3, 1, 0, "21/12/2017","fsdfsdf"));
+        DelManMaintain.sList.addData(new ProductStatus(601003, 1003, "Delivered",6, 1, 0, "21/12/2017","fsfd"));
+        DelManMaintain.sList.addData(new ProductStatus(601004, 1004, "Pending",7, 1, 0, "21/12/2017","fdsfds"));
+        DelManMaintain.sList.addData(new ProductStatus(601005, 1005, "Delivered",1, 1, 0, "21/12/2017","fdsfdsf"));
     }
 
     public int getDelManId() {
@@ -91,6 +93,14 @@ public class ProductStatus {
 
     public void setDate(String date) {
         this.date = date;
+    }
+    
+    public String getAddress() {
+        return add;
+    }
+
+    public void setAddress(String add) {
+        this.add = add;
     }
 
 }
