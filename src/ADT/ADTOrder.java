@@ -62,7 +62,7 @@ public class ADTOrder<T> implements OrderInterface<T> {
 
     return result;
   }
-    
+     
     
     public final void clear() {
     firstNode = null;

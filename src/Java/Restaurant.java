@@ -314,8 +314,8 @@ public class Restaurant {
        }
        }else if(choose.equals("3"))
        {
-          // MainMenu m = new MainMenu();
-         //  m.main();
+           MainMenu m = new MainMenu();
+           m.MainMenu();
        }else
        {
            System.out.println("Invalid Input");
