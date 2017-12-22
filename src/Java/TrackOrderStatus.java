@@ -74,7 +74,7 @@ public class TrackOrderStatus {
                 
                 cid = od.getEntry(i).getcustID();
 
-                System.out.println(od.getEntry(i).getclassify());
+                System.out.println(od.getEntry(i).getorderID());
             }
         }
         

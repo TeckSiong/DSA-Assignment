@@ -80,7 +80,7 @@ public class AssignDeliverymen {
             if (no == l + 1) {
                 System.out.println("Your selected ID : " + ps.getData(l).getOrderID());
                 System.out.println();
-                abc = od.getEntry(l).getclassify();
+                abc = od.getEntry(l).getorderID();
                 
                 //delete order
                 

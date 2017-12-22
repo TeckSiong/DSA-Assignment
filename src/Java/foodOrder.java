@@ -26,7 +26,7 @@ public class foodOrder {
     ADTTheListInterface<Food> flist = new ADTTheList<>();
 
     public static ADTOrder<orders> orders1 = new ADTOrder<>();
-    ArrayList<orders> orders = new ArrayList<>();
+    
 
     MainMenu main = new MainMenu();
 
@@ -164,10 +164,12 @@ public class foodOrder {
                             System.out.print("Kindly key in quantity :");
                             quant = scan.nextInt();
 
-                            orders od = new orders(classify, AllFood.returnItem(s).getCompanyID(), AllFood.returnItem(s).getFoodName(), quant, AllFood.returnItem(s).getPrice(), "Pending",301001);
+                            custLogin cust = new custLogin();
+                            
+                            orders od = new orders(classify,AllFood.returnItem(s).getFoodID() ,AllFood.returnItem(s).getCompanyID(), AllFood.returnItem(s).getFoodName(), quant, AllFood.returnItem(s).getPrice(), "Pending",cust.getcustID());
 
                             orders1.add(od); //add to node
-                            orders.add(od); //to display summary
+                            
 
                             subtotal = subtotal + quant;
                             total = total + (quant * AllFood.returnItem(s).getPrice());
@@ -187,8 +189,8 @@ public class foodOrder {
 
             System.out.println("\n\n\n=============== Order Summary ===============\n\n\n");
             System.out.println("Food     " + "Quantity       " + "Price (RM)  \n");
-            for (int y = 0; y < orders.size(); y++) {
-                System.out.println(orders.get(y).getname() + "           " + orders.get(y).getquantity() + "              " + (orders.get(y).getprice() * orders.get(y).getquantity()) + "\n");
+            for (int y = 1; y <= orders1.getSize(); y++) {
+                System.out.println(orders1.getEntry(y).getname() + "           " + orders1.getEntry(y).getquantity() + "              " + (orders1.getEntry(y).getprice() * orders1.getEntry(y).getquantity()) + "\n");
             }
 
             System.out.println("=============== Total amount need to pay : ===============\n");

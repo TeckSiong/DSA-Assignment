@@ -10,6 +10,7 @@ import Java.MainMenu;
 import Domain.custinfo;
 import ADT.ADTOrder;
 import ADT.OrderInterface;
+import static java.lang.Integer.parseInt;
 
 /*
 import static Java.getPhone.custinfo;*/
@@ -20,11 +21,20 @@ import static Java.getPhone.custinfo;*/
  */
 public class custLogin {
 
+    private int custID;
     public Scanner scan = new Scanner(System.in);
 
     public static ADTOrder<custinfo> custinfo = new ADTOrder<>();
     public static int id1;
 
+    public int getcustID() {
+        return custID;
+    }
+
+    public void setCustID(int quantity) {
+        this.custID = quantity;
+    }
+    
     public void Login() {
 
         String choose;
@@ -58,6 +68,9 @@ public class custLogin {
 
                             System.out.println("\n\n\n======Login Sucessfully======");
 
+                            int id = parseInt(ID);
+                            setCustID(id);
+                            
                             MainMenu f = new MainMenu();
                             f.customer();
 
