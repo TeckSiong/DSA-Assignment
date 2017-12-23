@@ -213,7 +213,7 @@ public class Restaurant {
                     }
                  
                     
-                 }else{return;}
+                 }else{FoodMenu f = new FoodMenu(); f.MainMenu();}
            }
        }
        FoodMenu f = new FoodMenu();
@@ -323,6 +323,10 @@ public class Restaurant {
        
        
    }
-    
+    public static void main(String [] args)
+    {
+       Restaurant m = new Restaurant();
+        m.Login();
+    }
     
 }
