@@ -35,7 +35,7 @@ public class custinfo {
     }
     
     public static void Customer(){
-        custLogin.custinfo.add(new custinfo("101001", "ABC123", "King","010-4234234", "Male", "sdasdasd"));
+        custLogin.custinfo.add(new custinfo("101001", "ABC123", "King","010-4234234", "Male", "Wangsa Maju"));
         
     }
 

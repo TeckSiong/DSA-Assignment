@@ -31,11 +31,11 @@ public class ProductStatus {
     }
 
     public static void Status() {
-        DelManMaintain.sList.addData(new ProductStatus(601001, 1001, "Pending",5, 1, 0, "21/12/2017","fsdfds"));
-        DelManMaintain.sList.addData(new ProductStatus(601002, 1002, "Delivering",3, 1, 0, "21/12/2017","fsdfsdf"));
-        DelManMaintain.sList.addData(new ProductStatus(601003, 1003, "Delivered",6, 1, 0, "21/12/2017","fsfd"));
-        DelManMaintain.sList.addData(new ProductStatus(601004, 1004, "Pending",7, 1, 0, "21/12/2017","fdsfds"));
-        DelManMaintain.sList.addData(new ProductStatus(601005, 1005, "Delivered",1, 1, 0, "21/12/2017","fdsfdsf"));
+        DelManMaintain.sList.addData(new ProductStatus(601001, 1001, "Pending",5, 1, 0, "21/12/2017","Wangsa Maju"));
+        DelManMaintain.sList.addData(new ProductStatus(601002, 1002, "Delivering",3, 1, 0, "21/12/2017","Wangsa Maju"));
+        DelManMaintain.sList.addData(new ProductStatus(601003, 1003, "Delivered",6, 1, 0, "21/12/2017","Wangsa Maju"));
+        DelManMaintain.sList.addData(new ProductStatus(601004, 1004, "Pending",7, 1, 0, "21/12/2017","Wangsa Maju"));
+        DelManMaintain.sList.addData(new ProductStatus(601005, 1005, "Delivered",1, 1, 0, "21/12/2017","Wangsa Maju"));
     }
 
     public int getDelManId() {

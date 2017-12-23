@@ -92,19 +92,18 @@ public class ClockInClockOut {
         
         System.out.println();
         
-        System.out.println("OrderID    Address");
-        System.out.println("=======    ======================");
+        System.out.println("OrderID    Address              Reach Time");
+        System.out.println("=======    ===============      ==========");
         
         
         int id1 = Integer.parseInt(dd.id);
-    
-        
-           
+  
         for (int o = 0; o < ps.getSize(); o++) {
             int idd =ps.getData(o).getDelManId(); 
             if(ps.getData(o).getStatus()=="Delivering"){
                 if (idd == id1) {
-                    System.out.println(ps.getData(o).getOrderID() + "       " + ps.getData(o).getAddress());
+                    System.out.println(ps.getData(o).getOrderID() + "       " + ps.getData(o).getAddress()+"         "
+                            +ps.getData(o).getHour()+":"+ps.getData(o).getMinute());
                 } 
             }
             
