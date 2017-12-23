@@ -44,21 +44,21 @@ public class MainMenu {
                 r.Login();
                 break;
 
-            case "4":
-                System.out.println("");
-                DMLogin dm = new DMLogin();
-                dm.login();
-                break;
-
             case "3":
                 System.out.println("");
                 custLogin custL = new custLogin();
                 custL.Login();
                 break;
 
-            
-                
-                default:
+            case "4":
+                System.out.println("");
+                deliveryman();
+                /*
+                DMLogin dm = new DMLogin();
+                dm.login();*/
+                break;
+
+            default:
                 System.out.println("Invalid Input [1/2/3]");
                 System.out.println("");
                 MainMenu();
@@ -192,14 +192,14 @@ public class MainMenu {
                 foodOrder f = new foodOrder();
                 f.order();
                 break;
-/*
+            /*
             case 3:
                 System.out.println("");
 
                 u.UpdateSchedule();
                 customer();
                 break;
-*/
+             */
             case 4:
                 System.out.println("");
 
@@ -207,7 +207,7 @@ public class MainMenu {
                 a1.OrderStatus();
 
                 break;
-/*
+            /*
             case 5:
                 System.out.println("");
                 u.cancelSchedule();
@@ -217,7 +217,7 @@ public class MainMenu {
 
             case 0:
                 System.out.println("");
-                
+
                 MainMenu();
                 break;
 

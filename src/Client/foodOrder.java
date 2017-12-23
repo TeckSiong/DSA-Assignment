@@ -26,11 +26,12 @@ public class foodOrder {
     ADTTheListInterface<Food> flist = new ADTTheList<>();
 
     public static ADTOrder<orders> orders1 = new ADTOrder<>();
-    
 
+    custLogin cust = new custLogin();
     MainMenu main = new MainMenu();
 
     int classify = 1;
+    int chk1 = 1;
 
     public void order() {
 
@@ -41,24 +42,23 @@ public class foodOrder {
 
         Calendar cal = Calendar.getInstance();
         int d = cal.get(Calendar.DAY_OF_WEEK);
-        
-        if(Restaurant.Ro.isEmpty()){
+
+        if (Restaurant.Ro.isEmpty()) {
             Domain.RestaurantOwner.RestList();
         }
 
-       // System.out.print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSelect Company Name : \n");
-
+        // System.out.print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSelect Company Name : \n");
         for (int i = 0; i < Restaurant.Ro.getSize(); i++) {
             System.out.print(i + " " + Restaurant.Ro.returnItem(i).getRestaurantName() + "\n");
             resno++;
         }
-        if(resno == 0){
-        
-             System.out.println("Sorry, non restaurant is serving currently...");
-             scan.nextLine();
-             
-             main.customer();
-        }else{
+        if (resno == 0) {
+
+            System.out.println("Sorry, non restaurant is serving currently...");
+            scan.nextLine();
+
+            main.customer();
+        } else {
             System.out.println();
             System.out.print("Select Company Name : ");
         }
@@ -164,12 +164,9 @@ public class foodOrder {
                             System.out.print("Kindly key in quantity :");
                             quant = scan.nextInt();
 
-                            custLogin cust = new custLogin();
-                            
-                            orders od = new orders(classify,AllFood.returnItem(s).getFoodID() ,AllFood.returnItem(s).getCompanyID(), AllFood.returnItem(s).getFoodName(), quant, AllFood.returnItem(s).getPrice(), "Pending",cust.getcustID());
+                            orders od = new orders(classify, AllFood.returnItem(s).getFoodID(), AllFood.returnItem(s).getCompanyID(), AllFood.returnItem(s).getFoodName(), quant, AllFood.returnItem(s).getPrice(), "Pending", cust.getcustID());
 
                             orders1.add(od); //add to node
-                            
 
                             subtotal = subtotal + quant;
                             total = total + (quant * AllFood.returnItem(s).getPrice());
@@ -190,7 +187,11 @@ public class foodOrder {
             System.out.println("\n\n\n=============== Order Summary ===============\n\n\n");
             System.out.println("Food     " + "Quantity       " + "Price (RM)  \n");
             for (int y = 1; y <= orders1.getSize(); y++) {
-                System.out.println(orders1.getEntry(y).getname() + "           " + orders1.getEntry(y).getquantity() + "              " + (orders1.getEntry(y).getprice() * orders1.getEntry(y).getquantity()) + "\n");
+
+                if (y == chk1) {
+                    System.out.println(orders1.getEntry(y).getname() + "           " + orders1.getEntry(y).getquantity() + "              " + (orders1.getEntry(y).getprice() * orders1.getEntry(y).getquantity()) + "\n");
+                    chk1 = chk1 + 1;
+                }
             }
 
             System.out.println("=============== Total amount need to pay : ===============\n");
