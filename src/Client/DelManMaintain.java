@@ -169,7 +169,7 @@ public class DelManMaintain {
 
     public void exit() {
         System.out.println("You have cancel the Update~");
-        System.out.print("Do You want to Update again? (Y/N)");
+        System.out.print("Do You want to Update again? (Y/N) ");
         ans = scan.nextLine();
         String ans1 = ans.toLowerCase();
         switch (ans1) {
@@ -186,7 +186,7 @@ public class DelManMaintain {
                 break;
             default:
                 System.out.println("");
-                System.out.println("Invalid input! (Y/N)");
+                System.out.println("Invalid input! (Y/N) ");
                 System.out.println("");
                 exit();
                 break;
@@ -286,15 +286,17 @@ public class DelManMaintain {
                     case "3":
                         System.out.println("");
                         System.out.print("Others > ");
-                        String other = scan.nextLine();
-                        other = scan.nextLine();
+                        String other = scan.next();
                         dList.getData(i).setStatus(other);
                         System.out.println("");
                         System.out.println("Account status > ");
                         System.out.println("1. Active");
                         System.out.println("2. Deactive");
                         System.out.println("0. Cancel");
-                        acc = scan.nextLine();
+                        System.out.println("");
+                        System.out.print("Selection : ");
+                        scan.nextLine();
+                        acc = scan.next();
                         System.out.println("");
                         account();
 
@@ -430,8 +432,8 @@ public class DelManMaintain {
 
                 for (int B = 0; B < sList.getSize(); B++) {
                     for (int q = 0; q < oList.getSize(); q++) {
-                        if (sList.getData(B).getOrderID() == oList.getData(q).getorderID()&& oList.getData(q).getStatus().equals("Pending") && sList.getData(B).getDelManId() == id) {
-                            System.out.printf("%1d %10d %15s %10d \n", oList.getData(q).getorderID(), oList.getData(q).getfoodId(),oList.getData(q).getname(), oList.getData(q).getquantity());
+                        if (sList.getData(B).getOrderID() == oList.getData(q).getorderID() && oList.getData(q).getStatus().equals("Pending") && sList.getData(B).getDelManId() == id) {
+                            System.out.printf("%1d %10d %15s %10d \n", oList.getData(q).getorderID(), oList.getData(q).getfoodId(), oList.getData(q).getname(), oList.getData(q).getquantity());
                             foundData = true;
                         }
                     }
@@ -456,12 +458,12 @@ public class DelManMaintain {
         switch (c1) {
             case "y":
                 System.out.println("");
-                m.staffMenu();
+                trackStatus();
                 break;
 
             case "n":
                 System.out.println("");
-                m.MainMenu();
+                m.staffMenu();
                 break;
 
             default:

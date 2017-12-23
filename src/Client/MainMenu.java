@@ -30,9 +30,9 @@ public class MainMenu {
         System.out.println("3. Customer");
         System.out.println("4. Delivey Men");
         System.out.println("==================================================");
-        System.out.println("");
         System.out.print("Please select your status : ");
         String status = scan.nextLine();
+        System.out.println("");
         switch (status) {
             case "1":
                 addStaff();
@@ -77,13 +77,13 @@ public class MainMenu {
         System.out.println("==================================================");
         System.out.println("Staff Login (e - exit)");
         System.out.println("==================================================");
-        System.out.print("ID Number: ");
+        System.out.print("ID Number     : ");
         id = scan.next();
         String id1 = id.toLowerCase();
         if (!id1.equals("e")) {
             for (i = 0; i < hList.getSize(); i++) {
                 if (Integer.parseInt(id) == hList.getData(i).getHrID()) {
-                    System.out.print("Enter your password : ");
+                    System.out.print("Password      : ");
                     psw = scan.next();
                     if (psw.equals(hList.getData(i).getHrPassword())) {
                         System.out.println("");
@@ -106,9 +106,9 @@ public class MainMenu {
 
     public void staffMenu() {
         DelManMaintain dm = new DelManMaintain();
-        System.out.println("====================================================");
+        System.out.println("==================================================");
         System.out.println("Select Your Action~");
-        System.out.println("====================================================");
+        System.out.println("==================================================");
         System.out.println("1. Register Delivery Men");
         System.out.println("2. Update Delivery Men Information");
         System.out.println("3. Assign Jobs");
@@ -116,7 +116,7 @@ public class MainMenu {
         System.out.println("5. Check Pending Delivery");
         System.out.println("6. Report");
         System.out.println("0. Exit");
-        System.out.println("====================================================");
+        System.out.println("==================================================");
         System.out.print("Enter Your Action : ");
         String s = scan.next();
         switch (s) {
