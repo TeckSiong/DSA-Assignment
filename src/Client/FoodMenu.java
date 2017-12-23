@@ -378,7 +378,7 @@ public class FoodMenu {
            
                          }  
         
-          System.out.println("Please choose a sort options : 1. Sort By Name 2. Sort By Categories 3. Sort By Price");
+          System.out.println("Please choose a sort options : 1. Sort By Name 2. Sort By Categories 3. Sort By Price 4.Exit");
                           options=scan.nextLine();
                               BubbleSort bs = new BubbleSort();
                          switch(options)
@@ -397,11 +397,16 @@ public class FoodMenu {
                                  flist.clearAll();
                                  displayMenu();
                                  break;
-                             default:
+                             case "3":
                                   if(!AllFood.checkEmpty())
                                   bs.bubble_srt(AllFood,3);
                                  flist.clearAll();
                                  displayMenu();
+                                 break;
+                             default:
+                                 if(!AllFood.checkEmpty())
+                                 flist.clearAll();
+                                 MainMenu();
                                  break;
                                   
                          }
