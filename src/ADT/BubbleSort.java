@@ -10,75 +10,69 @@ import ADT.ADTTheList;
 import Domain.Food;
 
 
-public class BubbleSort<T> implements BubbleSortInterface<T>{
+public class BubbleSort<T> implements BubbleSortInterface<T>{ // class to implement bubble sort list
     
 
-    public void bubble_srt(ADTTheListInterface<Food> ls, int option) {
+    public void bubble_srt(ADTTheListInterface<Food> ls, int option) { //method of bubble sort to sort 
+                                                                         //the food menu that display to customer
         
-        if(option==1)
+        if(option==1) //if option 1 then sort the food name
         {
-            int n = ls.getSize();
+            int n = ls.getSize(); //get the list size
         int k;
         
-        for (int m = n; m >= 0; m--) {
+        for (int m = n; m >= 0; m--) {  
             for (int i = 0; i < n - 1; i++) {
                 k = i + 1;
             
-                if (ls.returnItem(i).getFoodName().toUpperCase().compareTo(ls.returnItem(k).getFoodName().toUpperCase())>0) {
-                    swap(i, k, (ADTTheList<Food>) ls);
+          if (ls.returnItem(i).getFoodName().toUpperCase().compareTo(ls.returnItem(k).getFoodName().toUpperCase())>0) {
+                    swap(i, k, (ADTTheList<Food>) ls); //swap position between two elements if the elements 
+                                                        // on left hands side if bigger than right side
                 }
             }
             
         }
-        }else if(option==2)
+        }else if(option==2) //if option 2 then sort the food category
         {
             int n = ls.getSize();
         int k;
         
-        for (int m = n; m >= 0; m--) {
+        for (int m = n; m >= 0; m--) { //serach and sort in the list
             for (int i = 0; i < n - 1; i++) {
                 k = i + 1;
             
-                if (ls.returnItem(i).getCategory().toUpperCase().compareTo(ls.returnItem(k).getCategory().toUpperCase())>0) {
-                    swap(i, k, (ADTTheList<Food>) ls);
+          if (ls.returnItem(i).getCategory().toUpperCase().compareTo(ls.returnItem(k).getCategory().toUpperCase())>0) {
+                    swap(i, k, (ADTTheList<Food>) ls); //swap position between two elements if the elements 
+                                                        // on left hands side if bigger than right side
                 }
             }}
-        }else{
-        int n = ls.getSize();
-        int k;
+        }else{ //if other opptions then sort the food price
+        int n = ls.getSize(); //get food size
+        int k; 
         
-        for (int m = n; m >= 0; m--) {
+        for (int m = n; m >= 0; m--) {  //serach and sort in the list
             for (int i = 0; i < n - 1; i++) {
                 k = i + 1;
             
                 if (ls.returnItem(i).getPrice() > ls.returnItem(k).getPrice()) {
-                    swap(i, k, (ADTTheList<Food>) ls);
+                    swap(i, k, (ADTTheList<Food>) ls); //swap position between two elements if the elements 
+                                                        // on left hands side if bigger than right side
                 }
             }
            
         }}
-         //printList((ADTTheList<Food>) ls);
+       
     }
   
-    private void swap(int i, int j, ADTTheList<Food> ls) {
+    private void swap(int i, int j, ADTTheList<Food> ls) { //swap the postion in the list according to order 
   
-        Food temp;
-        temp = ls.returnItem(i);
-        ls.setItem(i, ls.returnItem(j)); 
-        ls.setItem(j, temp); 
+        Food temp; //declare a temp food object
+        temp = ls.returnItem(i); //set the food item that high order in the temp
+        ls.setItem(i, ls.returnItem(j)); // set the item with low order to the front position
+        ls.setItem(j, temp); // set the item with high order to the back position
     }
     
   
-    private  void printList(ADTTheList<Food> input) {
-          
-        for (int i = 0; i < input.getSize(); i++) {
-            System.out.print(input.returnItem(i).getFoodName() + ", ");
-        }
-        System.out.println("\n");
-    }
 
-   
-   
-    
    
 }
