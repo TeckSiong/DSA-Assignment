@@ -15,19 +15,21 @@ public class DelManADT<T> implements DelManInterface<T> {
     private Node firstNode, lastNode;
     private int size;
 
+    // Add data to the list
     @Override
     public void addData(T newEntry) {
-        Node newNode = new Node(newEntry);
+        Node newNode = new Node(newEntry); // add newNode
         if (isEmpty()) {
-            firstNode = newNode;
+            firstNode = newNode; // assign newNode  to firstNode
         } else {
             lastNode.next = newNode;
             newNode.previous = lastNode;
         }
-        lastNode = newNode;
+        lastNode = newNode; // assign lastNodeto newNode
         size++;
     }
 
+    // display data
     @Override
     public String toString() {
         String str = "";
@@ -39,28 +41,30 @@ public class DelManADT<T> implements DelManInterface<T> {
         return str;
     }
 
+    //get data from list
     @Override
     public T getData(int element) {
-        Node tmp = firstNode;
-        T tmp1 = null;
+        Node tmp = firstNode; //assign firstNode to tmp
+        T tmpN = null; //set tmpN to null
         for (int i = 0; i <= element; i++) {
-            tmp1 = tmp.data;
+            tmpN = tmp.data; //get the tmp data
             tmp = tmp.next;
         }
-        return tmp1;
+        return tmpN;
     }
 
+    //get the list size
     @Override
     public int getSize() {
         return size;
     }
 
+    //check the list is empty or not
     @Override
     public boolean isEmpty() {
         return firstNode == null;
     }
 
-    
     private class Node {
 
         T data;
@@ -76,23 +80,21 @@ public class DelManADT<T> implements DelManInterface<T> {
             this.previous = previous;
         }
     }
-    
-     @Override
-    public boolean setItem(int index,T item) {
-       boolean isSuccessful = true;
 
-    if ((index >= 0) && (index < size)) {
-      Node currentNode = firstNode;
-      for (int i = 0; i < index ; ++i) {
-        // System.out.println("Trace| currentNode.data = " + currentNode.data + "\t, i = " + i);
-        currentNode = currentNode.next;		// advance currentNode to next node
-      }
-      currentNode.data = item;	// currentNode is pointing to the node at givenPosition
-    } else {
-      isSuccessful = false;
-    }
+    @Override
+    public boolean setItem(int index, T item) {
+        boolean suc = true;
 
-    return isSuccessful;
+        if ((index >= 0) && (index < size)) {
+            Node currentNode = firstNode; // assign the firstNode to currentNode
+            for (int i = 0; i < index; ++i) {
+                currentNode = currentNode.next;	// assign currentNode to next node
+            }
+            currentNode.data = item; // currentNode data is point to the item position
+        } else {
+            suc = false;
+        }
+        return suc;
     }
 
 }

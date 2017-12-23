@@ -19,7 +19,7 @@ public class DelManMaintain {
 
     public static DelManADT<Domain.DeliveryMan> dList = new DelManADT<>();
     public static DelManADT<Domain.ProductStatus> sList = new DelManADT<>();
-    public static DelManADT<Domain.foodDetails> fList = new DelManADT<>();
+    public static DelManADT<Domain.orders> oList = new DelManADT<>();
     Scanner scan = new Scanner(System.in);
     private String answer;
 
@@ -40,7 +40,7 @@ public class DelManMaintain {
     public void addInitial() {
         Domain.DeliveryMan.DeliveryMenDetails();
         Domain.ProductStatus.Status();
-        Domain.foodDetails.fDetail();
+        Domain.orders.OrderList1();
         addDelMan();
     }
 
@@ -395,6 +395,7 @@ public class DelManMaintain {
         do {
 
             do {
+                System.out.println("");
                 System.out.print("Delvery Man's ID: ");
                 id = scan.nextInt();
                 for (j = 0; j < dList.getSize(); j++) {
@@ -403,6 +404,7 @@ public class DelManMaintain {
                     }
                 }
                 if (foundID == false) {
+                    System.out.println("");
                     System.out.println("Delivery Man ID not found");
                 }
             } while (foundID == false);
@@ -416,19 +418,20 @@ public class DelManMaintain {
 
                 }
                 if (foundData == false) {
+                    System.out.println("");
                     System.out.println("No data found!");
                 }
             } while (foundData == false);
-
-            System.out.println("OrderID     FoodID      FoodName        Qauntity");
-            System.out.println("-------------------------------------------------");
+            System.out.println("");
+            System.out.println("OrderID     FoodID    Food Name      Qauntity");
+            System.out.println("------------------------------------------------");
 
             do {
 
                 for (int B = 0; B < sList.getSize(); B++) {
-                    for (int q = 0; q < fList.getSize(); q++) {
-                        if (sList.getData(B).getOrderID() == fList.getData(q).getOrderId() && sList.getData(B).getStatus().equals("Pending") && sList.getData(B).getDelManId() == id) {
-                            System.out.printf("%5d %5d %5s %5d \n", fList.getData(q).getOrderId(), fList.getData(q).getFoodId(), fList.getData(q).getFoodName(), fList.getData(q).getQuantity());
+                    for (int q = 0; q < oList.getSize(); q++) {
+                        if (sList.getData(B).getOrderID() == oList.getData(q).getorderID()&& oList.getData(q).getStatus().equals("Pending") && sList.getData(B).getDelManId() == id) {
+                            System.out.printf("%1d %10d %10s %13d \n", oList.getData(q).getorderID(), oList.getData(q).getfoodId(),oList.getData(q).getname(), oList.getData(q).getquantity());
                             foundData = true;
                         }
                     }
@@ -446,19 +449,23 @@ public class DelManMaintain {
 
     public void cont() {
         MainMenu m = new MainMenu();
-        System.out.println("Do you want continue? (Y/N)");
+        System.out.println("");
+        System.out.print("Do you want continue? (Y/N) ");
         String c = scan.next();
         String c1 = c.toLowerCase();
         switch (c1) {
             case "y":
+                System.out.println("");
                 m.staffMenu();
                 break;
 
             case "n":
+                System.out.println("");
                 m.MainMenu();
                 break;
 
             default:
+                System.out.println("");
                 System.out.println("Invalid Input!");
                 cont();
                 break;
