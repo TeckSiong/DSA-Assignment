@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Java;
+package Client;
 
-import ADT.MainMenuADT;
-import ADT.MenuInterface;
+import ADT.DelManADT;
+import ADT.DelManInterface;
 import java.util.Scanner;
 
 /**
@@ -15,7 +15,7 @@ import java.util.Scanner;
  */
 public class MainMenu {
 
-    public static MenuInterface<Domain.HRExecutive> hList = new MainMenuADT<>();
+    public static DelManInterface<Domain.HRExecutive> hList = new DelManADT<>();
     Scanner scan = new Scanner(System.in);
     String id, psw;
     int count = 1;
@@ -79,7 +79,8 @@ public class MainMenu {
         System.out.println("==================================================");
         System.out.print("ID Number: ");
         id = scan.next();
-        if (!id.equals("e")) {
+        String id1 = id.toLowerCase();
+        if (!id1.equals("e")) {
             for (i = 0; i < hList.getSize(); i++) {
                 if (Integer.parseInt(id) == hList.getData(i).getHrID()) {
                     System.out.print("Enter your password : ");

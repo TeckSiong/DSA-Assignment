@@ -1,6 +1,6 @@
 package Domain;
 
-import Java.DelManMaintain;
+import Client.DelManMaintain;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -26,11 +26,12 @@ public class ProductStatus {
         this.trip = trip;
         this.hour = hour;
         this.minute = minute;
+        this.date = date;
         this.add = add;
     }
 
     public static void Status() {
-        DelManMaintain.sList.addData(new ProductStatus(0, 1001, "Pending",5, 1, 0, "21/12/2017","fsdfds"));
+        DelManMaintain.sList.addData(new ProductStatus(601001, 1001, "Pending",5, 1, 0, "21/12/2017","fsdfds"));
         DelManMaintain.sList.addData(new ProductStatus(601002, 1002, "Delivering",3, 1, 0, "21/12/2017","fsdfsdf"));
         DelManMaintain.sList.addData(new ProductStatus(601003, 1003, "Delivered",6, 1, 0, "21/12/2017","fsfd"));
         DelManMaintain.sList.addData(new ProductStatus(601004, 1004, "Pending",7, 1, 0, "21/12/2017","fdsfds"));
@@ -83,6 +84,10 @@ public class ProductStatus {
 
     public void setMinute(int minute) {
         this.minute = minute;
+    }
+    
+    public String getDate1(){
+        return date;
     }
 
     public String getDate() {

@@ -1,6 +1,6 @@
 package Domain;
 
-import Java.ClockInClockOut;
+import Client.ClockInClockOut;
 
 public class ClockIO {
 

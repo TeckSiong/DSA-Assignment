@@ -5,7 +5,7 @@
  */
 package Domain;
 
-import Java.DelManMaintain;
+import Client.DelManMaintain;
 
 /**
  *

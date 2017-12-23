@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Java;
+package Client;
 
 import ADT.ADTOrder;
 import ADT.ADTTheList;
@@ -11,7 +11,7 @@ import ADT.ADTTheListInterface;
 import ADT.BubbleSort;
 import Domain.Food;
 import Domain.orders;
-import static Java.FoodMenu.AllFood;
+import static Client.FoodMenu.AllFood;
 /*
 import static Java.FoodMenu.orders;*/
 import java.util.*;

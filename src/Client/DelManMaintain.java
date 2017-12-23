@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Java;
+package Client;
 
 import ADT.SortList;
 import ADT.DelManADT;
@@ -41,7 +41,6 @@ public class DelManMaintain {
         Domain.DeliveryMan.DeliveryMenDetails();
         Domain.ProductStatus.Status();
         Domain.foodDetails.fDetail();
-
         addDelMan();
     }
 
@@ -147,7 +146,8 @@ public class DelManMaintain {
         System.out.println("----------------------------------------------------");
         System.out.print("Enter Delivery men's ID : ");
         ans = scan.nextLine();
-        if (!ans.equals("exit")) {
+        String ans1 = ans.toLowerCase();
+        if (!ans1.equals("exit")) {
             for (i = 0; i < dList.getSize(); i++) {
                 if (Integer.parseInt(ans) == dList.getData(i).getDelmenId()) {
                     System.out.println("");
@@ -171,17 +171,18 @@ public class DelManMaintain {
         System.out.println("You have cancel the Update~");
         System.out.print("Do You want to Update again? (Y/N)");
         ans = scan.nextLine();
-        switch (ans) {
-            case "Y":
+        String ans1 = ans.toLowerCase();
+        switch (ans1) {
+            case "y":
                 System.out.println("");
                 updDelMan();
                 break;
-            case "N":
+            case "n":
                 System.out.println("");
                 System.out.println("Thanks for using our system~");
                 System.out.println("");
                 MainMenu mm = new MainMenu();
-                mm.MainMenu();
+                mm.staffMenu();
                 break;
             default:
                 System.out.println("");
@@ -219,7 +220,8 @@ public class DelManMaintain {
                 System.out.println("'exit' to exit the update~");
                 System.out.print("Enter new contact number : ");
                 String upd = scan.nextLine();
-                if (!upd.equals("exit")) {
+                String upd1 = upd.toLowerCase();
+                if (!upd1.equals("exit")) {
 
                     Pattern pattern = Pattern.compile("\\d{3}-\\d{7,8}");
                     Matcher matcher = pattern.matcher(upd);
@@ -365,11 +367,12 @@ public class DelManMaintain {
         System.out.println("****************************************************");
         String con = scan.nextLine();
         System.out.println("");
-        switch (con) {
-            case "Y":
+        String con1 = con.toLowerCase();
+        switch (con1) {
+            case "y":
                 result();
                 break;
-            case "N":
+            case "n":
                 System.out.println("Thanks for using our system~");
                 System.out.println("");
                 count = 0;
@@ -445,12 +448,13 @@ public class DelManMaintain {
         MainMenu m = new MainMenu();
         System.out.println("Do you want continue? (Y/N)");
         String c = scan.next();
-        switch (c) {
-            case "Y":
+        String c1 = c.toLowerCase();
+        switch (c1) {
+            case "y":
                 m.staffMenu();
                 break;
 
-            case "N":
+            case "n":
                 m.MainMenu();
                 break;
 
@@ -479,7 +483,8 @@ public class DelManMaintain {
                     SortList sl = new SortList();
                     sl.bubble_srt(sList);
                     System.out.println("");
-                    System.out.print("Date: ");
+                    System.out.println("Date ");
+                    System.out.print("xx/xx/xxxx : ");
                     String date = scan.nextLine();
                     System.out.println("");
                     System.out.println("======================================================================");
@@ -487,7 +492,7 @@ public class DelManMaintain {
                     System.out.println("======================================================================");
                     for (int j = 0; j < sList.getSize(); j++) {
                         for (int k = 0; k < dList.getSize(); k++) {
-                            if (date.equals(sList.getData(j).getDate()) && sList.getData(j).getStatus().equals("Delivered")) {
+                            if (date.equals(sList.getData(j).getDate1()) && sList.getData(j).getStatus().equals("Delivered")) {
                                 int id = sList.getData(j).getDelManId();
                                 int t = sList.getData(j).getTrip();
                                 if (id == dList.getData(k).getDelmenId()) {
@@ -518,7 +523,7 @@ public class DelManMaintain {
                     System.out.println("======================================================================");
                     for (int j = 0; j < sList.getSize(); j++) {
                         for (int k = 0; k < dList.getSize(); k++) {
-                            if (date.equals(sList.getData(j).getDate()) && sList.getData(j).getStatus().equals("Delivered")) {
+                            if (date.equals(sList.getData(j).getDate1()) && sList.getData(j).getStatus().equals("Delivered")) {
                                 int id = sList.getData(j).getDelManId();
                                 if (id == dList.getData(k).getDelmenId()) {
                                     System.out.printf("%1s %10s %20s %15.2f \n", dList.getData(k).getDelmenId(), dList.getData(k).getDelmenName(), dList.getData(k).getContactNum(), dList.getData(k).getTotalDistance());
@@ -553,18 +558,19 @@ public class DelManMaintain {
 
     public void again() {
         MainMenu m = new MainMenu();
+        System.out.println("");
         System.out.print("Do you want to continue? (Y/N) ");
         String a = scan.nextLine();
-
-        switch (a) {
-            case "Y":
+        String a1 = a.toLowerCase();
+        switch (a1) {
+            case "y":
                 System.out.println("");
                 m.staffMenu();
                 break;
 
-            case "N":
+            case "n":
                 System.out.println("");
-                m.MainMenu();
+                m.staffMenu();
                 break;
 
             default:

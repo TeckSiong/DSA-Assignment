@@ -5,7 +5,7 @@
  */
 package Domain;
 
-import Java.custLogin;
+import Client.custLogin;
 import Domain.custinfo;
 
 /**

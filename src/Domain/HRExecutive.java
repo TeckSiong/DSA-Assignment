@@ -1,6 +1,6 @@
 package Domain;
 
-import Java.MainMenu;
+import Client.MainMenu;
 
 public class HRExecutive {
     private int hrID;

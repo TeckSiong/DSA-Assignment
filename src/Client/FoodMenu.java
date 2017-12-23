@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Java;
+package Client;
 
 import ADT.ADTTheListInterface;
 import ADT.ADTTheList;
 import ADT.BubbleSort;
 import Domain.Food;
-import Java.Restaurant;
+import Client.Restaurant;
 import Domain.RestaurantOwner;
 //import Domain.orders;
 import java.util.*;

@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Java;
+package Client;
 
 import java.util.*;
-import Java.MainMenu;
+import Client.MainMenu;
 import Domain.custinfo;
 import ADT.ADTOrder;
 import ADT.OrderInterface;

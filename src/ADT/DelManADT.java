@@ -5,9 +5,6 @@
  */
 package ADT;
 
-import Domain.ClockIO;
-
-
 /**
  *
  * @author Teck Siong

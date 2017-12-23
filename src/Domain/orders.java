@@ -5,7 +5,7 @@
  */
 package Domain;
 
-import Java.foodOrder;
+import Client.foodOrder;
 
 /**
  *

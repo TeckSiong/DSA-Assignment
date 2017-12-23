@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Java;
+package Client;
 
-import Java.ClockInClockOut;
+import Client.ClockInClockOut;
 import ADT.DelManADT;
 import java.util.Scanner;
 

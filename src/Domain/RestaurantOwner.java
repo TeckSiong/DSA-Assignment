@@ -5,7 +5,7 @@
  */
 package Domain;
 
-import Java.Restaurant;
+import Client.Restaurant;
 
 /**
  *

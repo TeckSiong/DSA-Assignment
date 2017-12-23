@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Java;
+package Client;
 import ADT.ADTTheListInterface;
 import ADT.ADTTheList;
 import java.util.*;
 import Domain.RestaurantOwner;
-import Java.FoodMenu;
+import Client.FoodMenu;
 
 /**
  *

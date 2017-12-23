@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Java;
+package Client;
 
 import ADT.ADTOrder;
 import ADT.ADTTheList;
@@ -12,7 +12,7 @@ import ADT.DelManADT;
 import Domain.Food;
 import Domain.ProductStatus;
 import Domain.orders;
-import static Java.AssignDeliverymen.od;
+import static Client.AssignDeliverymen.od;
 
 import java.util.*;
 import java.text.DateFormat;
