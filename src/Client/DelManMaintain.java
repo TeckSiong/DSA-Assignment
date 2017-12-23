@@ -431,7 +431,7 @@ public class DelManMaintain {
                 for (int B = 0; B < sList.getSize(); B++) {
                     for (int q = 0; q < oList.getSize(); q++) {
                         if (sList.getData(B).getOrderID() == oList.getData(q).getorderID()&& oList.getData(q).getStatus().equals("Pending") && sList.getData(B).getDelManId() == id) {
-                            System.out.printf("%1d %10d %10s %13d \n", oList.getData(q).getorderID(), oList.getData(q).getfoodId(),oList.getData(q).getname(), oList.getData(q).getquantity());
+                            System.out.printf("%1d %10d %15s %10d \n", oList.getData(q).getorderID(), oList.getData(q).getfoodId(),oList.getData(q).getname(), oList.getData(q).getquantity());
                             foundData = true;
                         }
                     }
@@ -557,6 +557,7 @@ public class DelManMaintain {
             default:
                 System.out.println("");
                 System.out.println("Invalid Input!");
+                System.out.println("");
                 report();
                 break;
         }

@@ -39,15 +39,15 @@ public class orders {
     } 
     
     public static void OrderList1(){
-        DelManMaintain.oList.addData(new orders(1001,11,3001,"KK",1,12.0,"Pending",101001));
-        DelManMaintain.oList.addData(new orders(1001,22,3002,"KK",1,12.0,"Pending",101001));
-        DelManMaintain.oList.addData(new orders(1002,33,3001,"KK",1,12.0,"Pending",101002));
-        DelManMaintain.oList.addData(new orders(1003,33,3003,"KK",1,12.0,"Pending",101003));
-        DelManMaintain.oList.addData(new orders(1003,55,3004,"KK",1,12.0,"Pending",101003));
-        DelManMaintain.oList.addData(new orders(1004,6,3005,"KK",1,12.0,"Pending",101001));
-        DelManMaintain.oList.addData(new orders(1004,77,3001,"KK",1,12.0,"Pending",101001));
-        DelManMaintain.oList.addData(new orders(1004,88,3002,"KK",1,12.0,"Pending",101001));
-        DelManMaintain.oList.addData(new orders(1005,99,3004,"KK",1,12.0,"Pending",101005));
+        DelManMaintain.oList.addData(new orders(1001,11,3001,"Burger",1,12.0,"Pending",101001));
+        DelManMaintain.oList.addData(new orders(1001,22,3002,"Ice Cream",1,12.0,"Pending",101001));
+        DelManMaintain.oList.addData(new orders(1002,33,3001,"Nasi Lemak",1,12.0,"Pending",101002));
+        DelManMaintain.oList.addData(new orders(1003,33,3003,"Orange Juice",1,12.0,"Pending",101003));
+        DelManMaintain.oList.addData(new orders(1003,55,3004,"Apple Pie",1,12.0,"Pending",101003));
+        DelManMaintain.oList.addData(new orders(1004,6,3005,"Papaya Milk",1,12.0,"Pending",101001));
+        DelManMaintain.oList.addData(new orders(1004,77,3001,"Pizza",1,12.0,"Pending",101001));
+        DelManMaintain.oList.addData(new orders(1004,88,3002,"Plasta",1,12.0,"Pending",101001));
+        DelManMaintain.oList.addData(new orders(1005,99,3004,"Mee Goreng",1,12.0,"Pending",101005));
         
     } 
     
