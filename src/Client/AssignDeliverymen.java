@@ -24,8 +24,8 @@ public class AssignDeliverymen {
     
     public static DelManADT<Domain.DeliveryMan> ad = new DelManADT<>();
     public static DelManADT<Domain.ProductStatus> ps = new DelManADT<>();
-    public static ADTOrder<orders> od = new ADTOrder<>();
-    public static DelManADT<Domain.TotalAssign> ta = new DelManADT<>();
+    public static DelManADT<Domain.orders> od = new DelManADT<>();
+    
    // public static ProductStatus<Domain.DeliveryMan> ad = new ProductStatus<>();
 
    // private final List<String> IDlist = new ArrayList<String>();
@@ -41,9 +41,9 @@ public class AssignDeliverymen {
 
     public void Order() {
         Scanner scanner = new Scanner(System.in);
-        od = foodOrder.orders1;
+        od = DelManMaintain.oList;
         if(od.isEmpty()){
-            Domain.orders.OrderList();
+            Domain.orders.OrderList1();
         }
         
         ps = DelManMaintain.sList;
@@ -66,7 +66,8 @@ public class AssignDeliverymen {
                 }
                     
             }
-        
+        System.out.println();
+        System.out.println("00 Exit");
 
         
 
@@ -74,6 +75,7 @@ public class AssignDeliverymen {
         System.out.print("Please enter No. of order: ");
         no = scanner.nextInt();
         System.out.println();
+        
 
         for (int l = 0; l < od.getSize(); l++) {
 
@@ -85,6 +87,9 @@ public class AssignDeliverymen {
                 //delete order
                 
                 delivery();
+            }else if(no == 00){
+                MainMenu mm = new MainMenu();
+                mm.MainMenu();
             }
         }
 
@@ -119,6 +124,8 @@ public class AssignDeliverymen {
             }
             //
         }
+        System.out.println();
+        System.out.println("00 Exit");
 
         System.out.println();
         System.out.print("Please enter No. of delivery man: ");
@@ -153,7 +160,7 @@ public class AssignDeliverymen {
 
                     System.out.println();
                     System.out.println("=====================================");
-                    System.out.print("Please Enter the devery distance: ");
+                    System.out.print("Please Enter the devery distance(km): ");
                     Scanner sc = new Scanner(System.in);
                     double distance = sc.nextDouble();
                     ad.getData(l).setTotalDistance(ad.getData(l).getTotalDistance() + distance);
@@ -166,8 +173,12 @@ public class AssignDeliverymen {
                     System.out.print("Minute: ");
                     Scanner sm = new Scanner(System.in);
                     int ms = sm.nextInt();
-                             
                     
+                    System.out.println();
+                    System.out.println("==========================");
+                    System.out.println("Order ID  : "+abc);
+                    System.out.println("Distance  : "+distance+"km");
+                    System.out.println("Reach Time: "+hs+":"+ms);
                    
                     
                     for(int d = 0;d < ps.getSize();d++){
@@ -201,39 +212,23 @@ public class AssignDeliverymen {
                     if (yn == 1) {
                         System.out.println();
                         Order();
-                        delivery();
+                        
                     } else {
-                        System.out.println();
-                        ta.addData(new TotalAssign(abc,def));
+                        System.out.println(); 
                         System.out.println("The delivery jobs have assigned!!");
+                        MainMenu mm = new MainMenu();
+                        mm.MainMenu();
                     }
                     
                     
                 }
 
+            }else if(no2 ==00){
+                Order();
             }
         }
         
         
-    }
-
-    public void assignjob() {
-        System.out.println("Total Job Assign");
-        System.out.println();
-        System.out.println("OrderID    Delivery man");
-        System.out.println("=======    ===============");
-
-        for (int i = 0; i <= ta.getSize(); ++i) {
-            
-  
-            System.out.println(ta.getData(i).getOrderId()+"       "+ta.getData(i).getDelName());
-           
-        }
-
-        System.out.println();
-        System.out.println("The delivery jobs have assigned!!");
-        System.out.println();
-
     }
 
     public  void AssignDM() {
