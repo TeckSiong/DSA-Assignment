@@ -200,6 +200,12 @@ public class MainMenu {
                 break;
             
 
+                 case 4:
+                System.out.println("");
+                ScheduleOrder test = new ScheduleOrder();
+                test.test();
+                customer();
+                break;
             case 0:
                 System.out.println("");
 

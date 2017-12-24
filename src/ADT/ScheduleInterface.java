@@ -19,11 +19,14 @@ public interface ScheduleInterface<T> {
     void clearAll ();
     int getSize ();
     
-    void minimunDistance(ADTTheListInterface<Schedule> Sch) ; 
+    float minimunDistance(ScheduleInterface<Schedule> Sch,String restaurant,String deliverAddress) ; 
     void distanceBetweenPlaces();
-    int calculateDistance(String restaurant,String deliverAddress);
+    float calculateDistance(String restaurant,String deliverAddress);
+    void sortByDate(ScheduleInterface<Schedule> schedule);
      //use to sorting the item based on condition such as
      //alphabetical order in descending or ascending order
+
+    public void addItem(int i, Schedule indexItem);
     
    
 }

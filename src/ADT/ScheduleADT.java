@@ -6,8 +6,12 @@
 package ADT;
 
 import Client.ScheduleOrder;
+import static Client.ScheduleOrder.SC;
 import Domain.Distance;
 import Domain.Schedule;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  *
@@ -63,7 +67,8 @@ public class ScheduleADT<T> implements ScheduleInterface<T>{
        lastNode=null;
        size=0;
     }
-    
+
+   
     private class Node {
 
         T data;
@@ -80,30 +85,92 @@ public class ScheduleADT<T> implements ScheduleInterface<T>{
             this.previous = previous;
         }
     }
-    
-     @Override
-    public void minimunDistance(ADTTheListInterface<Schedule> Sch) {
-        
-        
-        
-    }
-
     @Override
     public void distanceBetweenPlaces() {
-       ScheduleOrder.distanceList.addItem(new Distance("taman melawati","taruc",6));
-       ScheduleOrder.distanceList.addItem(new Distance("taman melawati","pv12",4));
-       ScheduleOrder.distanceList.addItem(new Distance("taman melawati","pv15",5));
-       ScheduleOrder.distanceList.addItem(new Distance("taman melawati","taman sentul utama",5));
-       ScheduleOrder.distanceList.addItem(new Distance("taruc","pv12",2));
-       ScheduleOrder.distanceList.addItem(new Distance("taruc","pv15",3));
-       ScheduleOrder.distanceList.addItem(new Distance("taruc","taman sentul utama",3));
-       ScheduleOrder.distanceList.addItem(new Distance("taman sentul utama","taruc",4));
-       ScheduleOrder.distanceList.addItem(new Distance("taman sentul utama","pv12",4));
-       ScheduleOrder.distanceList.addItem(new Distance("taman sentul utama","pv15",4));
+       ScheduleOrder.distanceList.addItem(new Distance("taman melawati","taruc", 4.3f));
+       ScheduleOrder.distanceList.addItem(new Distance("taman melawati","pv12",  5.6f));
+       ScheduleOrder.distanceList.addItem(new Distance("taman melawati","pv15",  5.7f));
+       ScheduleOrder.distanceList.addItem(new Distance("taman melawati","taman sentul utama",  8.3f));
+       ScheduleOrder.distanceList.addItem(new Distance("taruc","pv12",  2.2f));
+       ScheduleOrder.distanceList.addItem(new Distance("taruc","pv15", 2.3f));
+       ScheduleOrder.distanceList.addItem(new Distance("taruc","taman sentul utama",5.0f));
+       ScheduleOrder.distanceList.addItem(new Distance("taman sentul utama","pv12",  3.4f));
+       ScheduleOrder.distanceList.addItem(new Distance("taman sentul utama","pv15",  3.7f));
+       ScheduleOrder.distanceList.addItem(new Distance("pv12","pv15",1.0f));
+    }
+    
+    
+     
+
+    
+    
+    @Override
+    public void sortByDate(ScheduleInterface<Schedule> schedule){
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Date currentDate = new Date(); 
+        String currentDateFormat = dateFormat.format(currentDate);//stuck
+         int n = schedule.getSize();
+        int k;
+        
+        for (int m = n; m >= 0; m--) {
+            for (int i = 0; i < n - 1; i++) {
+                k = i + 1;
+            
+                if (schedule.getIndexItem(i).getTime()schedule.getIndexItem(i).getTime()) {
+                    swap(i, k, (ScheduleADT<Schedule>) schedule);
+                }
+            }
+            
+        }
+    }
+    public void viewTodayScheduleOrder(){
+       
+       
+           
+        if(!SC.isEmpty()){
+        for (int i = 0; i < SC.getSize(); i++) {
+        try {
+            Date comp1 = dateFormat.parse(SC.getIndexItem(i).getDate());
+            Date comp2 = dateFormat.parse(currentDateFormat);
+            if (comp1.compareTo(comp2) == 0)
+            {
+                System.out.printf("%15s %15s %15s %15s\n","Receiver Name","Receiver Address","Date","Time");
+                System.out.printf("================================================================\n");
+                System.out.printf("%15s %15s %15s %15s\n",SC.getIndexItem(i).getReceiverName(),SC.getIndexItem(i).getReceiverAddress(),SC.getIndexItem(i).getDate(),SC.getIndexItem(i).getTime());
+            }
+                
+        } catch (ParseException ex) {
+            Logger.getLogger(ScheduleOrder.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        
+       
+                    }
+        }else
+                System.out.println("Nothing to be deliver today");
+       
+       
+   }
+    
+  
+    private void swap(int i, int j, ScheduleInterface<Schedule> ds) {
+  
+        Schedule temp;
+        temp = ds.getIndexItem(i);
+        ds.addItem(i, ds.getIndexItem(j)); 
+        ds.addItem(j, temp); 
+    }
+    
+     @Override
+    public float minimunDistance(ADTTheListInterface<Schedule> Sch,String A, String B) {
+        
+        
+        return 3.2f;
     }
 
+    
+
     @Override
-    public int calculateDistance(String restaurant, String deliverAddress) {
+    public float calculateDistance(String restaurant, String deliverAddress) {
         for(int i = 0; i < ScheduleOrder.distanceList.getSize();i++){
             if((restaurant.toLowerCase().compareTo(ScheduleOrder.distanceList.getIndexItem(i).getPlaceA())==0
             &&deliverAddress.toLowerCase().compareTo(ScheduleOrder.distanceList.getIndexItem(i).getPlaceB())==0)||
