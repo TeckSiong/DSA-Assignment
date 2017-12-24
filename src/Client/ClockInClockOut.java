@@ -104,6 +104,8 @@ public class ClockInClockOut {
                 if (idd == id1) {
                     System.out.println(ps.getData(o).getOrderID() + "       " + ps.getData(o).getAddress()+"         "
                             +ps.getData(o).getHour()+":"+ps.getData(o).getMinute());
+                
+                    ps.getData(o).setDate(date);
                 } 
             }
             
@@ -197,8 +199,7 @@ public class ClockInClockOut {
     public void ClockInClockOut() {
 
         System.out.println("1.Clock in");
-        System.out.println("2.Update Personal Details");
-        System.out.println("3.Get customer details");
+        System.out.println("2.Get customer details");
 
         System.out.print("Enter Selection: ");
         int s1 = ans.nextInt();
@@ -206,10 +207,7 @@ public class ClockInClockOut {
 
         if (s1 == 1) {
             ClockIn();
-        } else if (s1 == 2) {
-            System.out.println("Update personal details");
-            System.out.println();
-        }else if(s1==3){
+        }else if(s1==2){
             System.out.println();
             MainMenu mm = new MainMenu();
             mm.deliveryman();
@@ -222,8 +220,5 @@ public class ClockInClockOut {
 
     }
 
-    // public static void main(String[] args) {
-    //     ClockInClockOut a = new ClockInClockOut();
-    //      a.ClockInClockOut();
-    //  }
+  
 }
