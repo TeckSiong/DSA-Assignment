@@ -198,7 +198,7 @@ public class ClockInClockOut {
 
         System.out.println("1.Clock in");
         System.out.println("2.Update Personal Details");
-        System.out.println();
+        System.out.println("3.Get customer details");
 
         System.out.print("Enter Selection: ");
         int s1 = ans.nextInt();
@@ -209,10 +209,15 @@ public class ClockInClockOut {
         } else if (s1 == 2) {
             System.out.println("Update personal details");
             System.out.println();
+        }else if(s1==3){
+            System.out.println();
+            MainMenu mm = new MainMenu();
+            mm.deliveryman();
         } else {
             System.out.println("Invalid !!");
             System.out.println();
-            ClockInClockOut();
+            MainMenu mm = new MainMenu();
+            mm.MainMenu();
         }
 
     }

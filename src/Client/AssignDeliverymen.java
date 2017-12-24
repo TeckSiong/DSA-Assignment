@@ -9,6 +9,7 @@ package Client;
 import ADT.ADTOrder;
 import ADT.DelManADT;
 import Domain.DeliveryMan;
+import Domain.ProductStatus;
 import Domain.TotalAssign;
 import Domain.orders;
 import java.util.*;
@@ -25,6 +26,7 @@ public class AssignDeliverymen {
     public static DelManADT<Domain.DeliveryMan> ad = new DelManADT<>();
     public static DelManADT<Domain.ProductStatus> ps = new DelManADT<>();
     public static DelManADT<Domain.orders> od = new DelManADT<>();
+    public static ADTOrder<orders> orders1 = new ADTOrder<>();
     
    // public static ProductStatus<Domain.DeliveryMan> ad = new ProductStatus<>();
 
@@ -46,11 +48,18 @@ public class AssignDeliverymen {
             Domain.orders.OrderList1();
         }
         
+        
         ps = DelManMaintain.sList;
         if (ps.isEmpty()) {
             Domain.ProductStatus.Status();
         }
         
+        
+      
+        orders1 = foodOrder.orders1;
+        for(int a =0;a<orders1.getSize();a++){
+            ps.addData(new ProductStatus(0, orders1.getEntry(a).getorderID(), "Pending",5, 0, 0, "21/12/2017","Wangsa Maju"));
+        }
         
         
 
@@ -77,14 +86,13 @@ public class AssignDeliverymen {
         System.out.println();
         
 
-        for (int l = 0; l < od.getSize(); l++) {
+        for (int l = 0; l < ps.getSize(); l++) {
 
             if (no == l + 1) {
                 System.out.println("Your selected ID : " + ps.getData(l).getOrderID());
                 System.out.println();
                 abc = ps.getData(l).getOrderID();
-                
-                //delete order
+
                 
                 delivery();
             }else if(no == 00){

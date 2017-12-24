@@ -28,11 +28,13 @@ public class DMLogin {
         int count = 0;
         if (!id.equals("exit")) {
             
+            dList = DelManMaintain.dList;
+            
             if(DelManMaintain.dList.isEmpty()){
                 Domain.DeliveryMan.DeliveryMenDetails(); 
             }
             
-            dList = DelManMaintain.dList;
+            
             
             for (int i = 0; i < dList.getSize(); i++) {
                 if (Integer.parseInt(id) == dList.getData(i).getDelmenId()) {

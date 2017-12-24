@@ -52,7 +52,7 @@ public class MainMenu {
 
             case "4":
                 System.out.println("");
-                deliveryman();
+                
                 
                 DMLogin dm = new DMLogin();
                 dm.login();
