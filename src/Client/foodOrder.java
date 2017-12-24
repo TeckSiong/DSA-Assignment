@@ -164,7 +164,7 @@ public class foodOrder {
                             System.out.print("Kindly key in quantity :");
                             quant = scan.nextInt();
 
-                            orders od = new orders(classify, AllFood.returnItem(s).getFoodID(), AllFood.returnItem(s).getCompanyID(), AllFood.returnItem(s).getFoodName(), quant, AllFood.returnItem(s).getPrice(), "Pending", cust.getcustID());
+                            orders od = new orders(classify, AllFood.returnItem(s).getFoodID(), AllFood.returnItem(s).getCompanyID(), AllFood.returnItem(s).getFoodName(), quant, AllFood.returnItem(s).getPrice(), "Pending", cust.id1);
 
                             orders1.add(od); //add to node
 

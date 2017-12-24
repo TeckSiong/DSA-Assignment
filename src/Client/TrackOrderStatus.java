@@ -67,14 +67,14 @@ public class TrackOrderStatus {
         System.out.println("========");
 
         int dd = cl.id1;
-        for (int i = 0; i < od.getSize(); i++) {
+        for (int i = 0; i < ps.getSize(); i++) {
             
-            if (od.getEntry(i).getcustID() == dd) {            
-                cid = od.getEntry(i).getcustID();
-                
-                if(od.getEntry(i).getorderID() != od.getEntry(i+1).getorderID()){
+            if (ps.getData(i).getCustID() == dd) {                
+               /* if(od.getEntry(i).getorderID() != od.getEntry(i+1).getorderID()){
                     System.out.println(od.getEntry(i).getorderID());
                 }
+*/
+               System.out.println(ps.getData(i).getOrderID());
             }
         }
         

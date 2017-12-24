@@ -15,11 +15,12 @@ public class ProductStatus {
     private int minute;
     private String date;
     private String add;
+    private int custID;
 
     public ProductStatus() {
     }
 
-    public ProductStatus(int delManId, int id, String status, int trip, int hour, int minute, String date,String add) {
+    public ProductStatus(int delManId, int id, String status, int trip, int hour, int minute, String date,String add,int id2) {
         this.delManId = delManId;
         this.orderID = id;
         this.status = status;
@@ -28,14 +29,15 @@ public class ProductStatus {
         this.minute = minute;
         this.date = date;
         this.add = add;
+        this.custID = id2;
     }
 
     public static void Status() {
-        DelManMaintain.sList.addData(new ProductStatus(601001, 1001, "Pending",5, 0, 0, "21/12/2017","Wangsa Maju"));
-        DelManMaintain.sList.addData(new ProductStatus(601002, 1002, "Delivering",3, 1, 0, "21/12/2017","Wangsa Maju"));
-        DelManMaintain.sList.addData(new ProductStatus(601003, 1003, "Delivered",6, 1, 0, "21/12/2017","Wangsa Maju"));
-        DelManMaintain.sList.addData(new ProductStatus(601004, 1004, "Pending",7, 0, 0, "21/12/2017","Wangsa Maju"));
-        DelManMaintain.sList.addData(new ProductStatus(601005, 1005, "Delivered",1, 1, 0, "21/12/2017","Wangsa Maju"));
+        DelManMaintain.sList.addData(new ProductStatus(601001, 1001, "Pending",5, 0, 0, "21/12/2017","Wangsa Maju",101001));
+        DelManMaintain.sList.addData(new ProductStatus(601002, 1002, "Delivering",3, 1, 0, "21/12/2017","Wangsa Maju",101002));
+        DelManMaintain.sList.addData(new ProductStatus(601003, 1003, "Delivered",6, 1, 0, "21/12/2017","Wangsa Maju",101003));
+        DelManMaintain.sList.addData(new ProductStatus(601004, 1004, "Pending",7, 0, 0, "21/12/2017","Wangsa Maju",101001));
+        DelManMaintain.sList.addData(new ProductStatus(601005, 1005, "Delivered",1, 1, 0, "21/12/2017","Wangsa Maju",101005));
     }
 
     public int getDelManId() {
@@ -106,6 +108,14 @@ public class ProductStatus {
 
     public void setAddress(String add) {
         this.add = add;
+    }
+    
+    public int getCustID() {
+        return custID;
+    }
+
+    public void setCustID(int id) {
+        this.custID = id;
     }
 
 }

@@ -22,7 +22,7 @@ public class AssignDeliverymen {
 
     public static int abc ;
     public static String def;
-    
+    public static int ab =0;
     public static DelManADT<Domain.DeliveryMan> ad = new DelManADT<>();
     public static DelManADT<Domain.ProductStatus> ps = new DelManADT<>();
     public static DelManADT<Domain.orders> od = new DelManADT<>();
@@ -57,8 +57,13 @@ public class AssignDeliverymen {
         
       
         orders1 = foodOrder.orders1;
+        
         for(int a =0;a<orders1.getSize();a++){
-            ps.addData(new ProductStatus(0, orders1.getEntry(a).getorderID(), "Pending",5, 0, 0, "21/12/2017","Wangsa Maju"));
+            
+            if(ab >=0){
+                ps.addData(new ProductStatus(0, orders1.getEntry(a).getorderID(), "Pending",5, 0, 0, "21/12/2017","Wangsa Maju",orders1.getEntry(a).getcustID()));
+                ab++;
+            }
         }
         
         
