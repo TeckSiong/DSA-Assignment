@@ -9,9 +9,12 @@ import ADT.ADTOrder;
 import ADT.ADTTheList;
 import ADT.ADTTheListInterface;
 import ADT.BubbleSort;
+import static Client.AssignDeliverymen.orders1;
+import static Client.AssignDeliverymen.ps;
 import Domain.Food;
 import Domain.orders;
 import static Client.FoodMenu.AllFood;
+import Domain.ProductStatus;
 /*
 import static Java.FoodMenu.orders;*/
 import java.util.*;
@@ -164,7 +167,7 @@ public class foodOrder {
                             System.out.print("Kindly key in quantity :");
                             quant = scan.nextInt();
 
-                            orders od = new orders(classify, AllFood.returnItem(s).getFoodID(), AllFood.returnItem(s).getCompanyID(), AllFood.returnItem(s).getFoodName(), quant, AllFood.returnItem(s).getPrice(), "Pending", cust.id1);
+                            orders od = new orders(classify, AllFood.returnItem(s).getFoodID(), AllFood.returnItem(s).getCompanyID(), AllFood.returnItem(s).getFoodName(), quant, AllFood.returnItem(s).getPrice(), "Pending", custLogin.id1);
 
                             orders1.add(od); //add to node
 
@@ -211,7 +214,11 @@ public class foodOrder {
                 }
 
             } while (aaa == 1);
-
+            
+                for(int a =0;a<orders1.getSize();a++){
+                ps.addData(new ProductStatus(0, orders1.getEntry(a).getorderID(), "Pending",5, 0, 0, "21/12/2017","Wangsa Maju",orders1.getEntry(a).getcustID()));
+                
+                }
             System.out.println("\nPress any key to continue");
             scan.nextLine();
             MainMenu m = new MainMenu();
