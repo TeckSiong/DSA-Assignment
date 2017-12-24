@@ -28,11 +28,11 @@ public class RestaurantOwner {
     }
     
     public static void RestList(){
-        Restaurant.Ro.addNew(new RestaurantOwner(3001,"Papa","010-91999292","ABC123","adsad","Thai Style","12:00 - 18:00"));
-        Restaurant.Ro.addNew(new RestaurantOwner(3002,"Mama","010-91999292","ABC123","adsad","Thai Style","12:00 - 18:00"));
-        Restaurant.Ro.addNew(new RestaurantOwner(3003,"Kaka","010-91999292","ABC123","adsad","Thai Style","12:00 - 18:00"));
-        Restaurant.Ro.addNew(new RestaurantOwner(3004,"Sasa","010-91999292","ABC123","adsad","Thai Style","12:00 - 18:00"));
-        Restaurant.Ro.addNew(new RestaurantOwner(3005,"caca","010-91999292","ABC123","adsad","Thai Style","12:00 - 18:00"));
+        Restaurant.Ro.addItem(new RestaurantOwner(3001,"Papa","010-91999292","ABC123","adsad","Thai Style","12:00 - 18:00"));
+        Restaurant.Ro.addItem(new RestaurantOwner(3002,"Mama","010-91999292","ABC123","adsad","Thai Style","12:00 - 18:00"));
+        Restaurant.Ro.addItem(new RestaurantOwner(3003,"Kaka","010-91999292","ABC123","adsad","Thai Style","12:00 - 18:00"));
+        Restaurant.Ro.addItem(new RestaurantOwner(3004,"Sasa","010-91999292","ABC123","adsad","Thai Style","12:00 - 18:00"));
+        Restaurant.Ro.addItem(new RestaurantOwner(3005,"caca","010-91999292","ABC123","adsad","Thai Style","12:00 - 18:00"));
     }
     
     public RestaurantOwner(int id,String RestaurantName,String ContactNo,String password, String address,String style,String AvailableTime)

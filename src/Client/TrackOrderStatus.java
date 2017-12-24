@@ -100,7 +100,6 @@ public class TrackOrderStatus {
                         setmin += 60;
                         sethour -= 1;
 
-                        //System.out.println("Remaining timme: " + remainhour +" hrs"+ remainmin+"mins");
                     }
                     rhour = sethour - hour;
                     rminute = setmin - min;
