@@ -8,6 +8,7 @@ package Client;
 
 import ADT.ADTOrder;
 import ADT.DelManADT;
+import ADT.TotalAssignJob;
 import Domain.DeliveryMan;
 import Domain.ProductStatus;
 import Domain.TotalAssign;
@@ -21,12 +22,14 @@ import java.util.*;
 public class AssignDeliverymen {
 
     public static int abc ;
+    public static String delname;
     public static String def;
     public final int ab =0;
     public static DelManADT<Domain.DeliveryMan> ad = new DelManADT<>();
     public static DelManADT<Domain.ProductStatus> ps = new DelManADT<>();
     public static DelManADT<Domain.orders> od = new DelManADT<>();
     public static ADTOrder<orders> orders1 = new ADTOrder<>();
+    public static TotalAssignJob<Domain.TotalAssign> ta = new TotalAssignJob<>();
     
    // public static ProductStatus<Domain.DeliveryMan> ad = new ProductStatus<>();
 
@@ -141,6 +144,7 @@ public class AssignDeliverymen {
 
         for (int l = 0; l < ad.getSize(); l++) {
             if (no2 == (l + 1)) {
+                delname =ad.getData(l).getDelmenName();
                 //System.out.print("Do you sure want "+deliveryman.get(l)+" to delivery order "+orderlist.get(l)+" ?");
                 System.out.print("Do you sure want ");
                 System.out.print(ad.getData(l).getDelmenName() + " ");
@@ -205,7 +209,7 @@ public class AssignDeliverymen {
 
                     System.out.println();
                     
-                    
+                    ta.add(new TotalAssign(abc,delname));
 
                     System.out.println("Do you want to continue assign other jobs? ");
                     System.out.println("1. Yes");
@@ -219,15 +223,25 @@ public class AssignDeliverymen {
                     if (yn == 1) {
                         System.out.println();
                         Order();
-                        
+
                     } else {
                         System.out.println(); 
+                        System.out.println("=============================");
+                        System.out.println("Order ID     Deliveryman Name");
+                        System.out.println("========     ================");
+                        for (int w = 0; w < ta.getSize(); w++) {
+                            
+                            System.out.println(ta.get(w).getOrderId() + "            " + ta.get(w).getDelName());
+                            System.out.println(); 
+                            
+                        }
+                        System.out.println("Total Assign: " + ta.getSize());
+                        System.out.println();
                         System.out.println("The delivery jobs have assigned!!");
                         MainMenu mm = new MainMenu();
                         mm.MainMenu();
                     }
-                    
-                    
+
                 }
 
             }else if(no2 ==00){
