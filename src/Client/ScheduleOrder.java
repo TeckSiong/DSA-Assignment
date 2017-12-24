@@ -14,6 +14,7 @@ import ADT.ScheduleADT;
 import ADT.ScheduleInterface;
 import static Client.FoodMenu.AllFood;
 import static Client.foodOrder.orders1;
+import Domain.Distance;
 import Domain.Food;
 import Domain.orders;
 import java.text.DateFormat;
@@ -31,6 +32,7 @@ public class ScheduleOrder {
     public static int count=0;
     public String temp;
     public static int id=7000;
+    public static ScheduleInterface<Distance> distanceList = new ScheduleADT<>();
     public ScheduleInterface<String> input = new ScheduleADT<>();
     public static ScheduleInterface<Schedule> SC = new ScheduleADT<>();
     public static ADTOrder<orders> orders1 = new ADTOrder<>();
@@ -47,6 +49,10 @@ public class ScheduleOrder {
 
     public int classify = 10001;
     
+    public void test(){
+        distanceList.distanceBetweenPlaces();
+        System.out.println(distanceList.calculateDistance("pv15", "taman melawati")+"please work");
+    }
    public void MakeScheduleOrder()
     {
         /*
@@ -276,17 +282,17 @@ public class ScheduleOrder {
         
          count=0;
          input.addItem(temp);
-        Schedule schedule = new Schedule(id,input.returnItem(0),input.returnItem(1),
-                input.returnItem(2),input.returnItem(3),classify);
+        Schedule schedule = new Schedule(id,input.getIndexItem(0),input.getIndexItem(1),
+                input.getIndexItem(2),input.getIndexItem(3),classify);
         SC.addItem(schedule);
         
          System.out.println("\nYou Are successfully Make a Schedule Order, Your ID Is "+id+"\n");
          id++;
         System.out.println("Summary Of Registration Of Restaurant Owner");
-        System.out.println("Receiver Name   : "+input.returnItem(0) );
-        System.out.println("Receiver Address: "+ input.returnItem(1));
-        System.out.println("Deliver Date    : "+ input.returnItem(2));
-        System.out.println("Deliver Time    :"+ input.returnItem(3));
+        System.out.println("Receiver Name   : "+input.getIndexItem(0) );
+        System.out.println("Receiver Address: "+ input.getIndexItem(1));
+        System.out.println("Deliver Date    : "+ input.getIndexItem(2));
+        System.out.println("Deliver Time    :"+ input.getIndexItem(3));
         System.out.println("\nPress any key to continue");
         input.clearAll();
         scan.nextLine();
@@ -302,13 +308,13 @@ public class ScheduleOrder {
         if(!SC.isEmpty()){
         for (int i = 0; i < SC.getSize(); i++) {
         try {
-            Date comp1 = dateFormat.parse(SC.returnItem(i).getDate());
+            Date comp1 = dateFormat.parse(SC.getIndexItem(i).getDate());
             Date comp2 = dateFormat.parse(currentDateFormat);
             if (comp1.compareTo(comp2) == 0)
             {
                 System.out.printf("%15s %15s %15s %15s\n","Receiver Name","Receiver Address","Date","Time");
                 System.out.printf("================================================================\n");
-                System.out.printf("%15s %15s %15s %15s\n",SC.returnItem(i).getReceiverName(),SC.returnItem(i).getReceiverAddress(),SC.returnItem(i).getDate(),SC.returnItem(i).getTime());
+                System.out.printf("%15s %15s %15s %15s\n",SC.getIndexItem(i).getReceiverName(),SC.getIndexItem(i).getReceiverAddress(),SC.getIndexItem(i).getDate(),SC.getIndexItem(i).getTime());
             }
                 
         } catch (ParseException ex) {
