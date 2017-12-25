@@ -46,9 +46,7 @@ public class foodOrder {
         Calendar cal = Calendar.getInstance();
         int d = cal.get(Calendar.DAY_OF_WEEK);
 
-        if (Restaurant.Ro.checkEmpty()) {
-            Domain.RestaurantOwner.RestList();
-        }
+       
 
         // System.out.print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSelect Company Name : \n");
         for (int i = 0; i < Restaurant.Ro.getSize(); i++) {
