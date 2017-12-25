@@ -53,9 +53,9 @@ public class AssignDeliverymen {
         
         
         ps = DelManMaintain.sList;
-        if (ps.isEmpty()) {
+        
             Domain.ProductStatus.Status();
-        }
+        
         
         
       
