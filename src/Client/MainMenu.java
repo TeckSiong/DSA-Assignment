@@ -112,9 +112,8 @@ public class MainMenu {
         System.out.println("1. Register Delivery Men");
         System.out.println("2. Update Delivery Men Information");
         System.out.println("3. Assign Jobs");
-        System.out.println("4. Get customer delivery information");
-        System.out.println("5. Check Pending Delivery");
-        System.out.println("6. Report");
+        System.out.println("4. Check Pending Delivery");
+        System.out.println("5. Report");
         System.out.println("0. Exit");
         System.out.println("==================================================");
         System.out.print("Enter Your Action : ");
@@ -136,17 +135,12 @@ public class MainMenu {
                 a.AssignDM();
                 staffMenu();
                 break;
-//
-//            case 4:
-//                System.out.println("");
-//                getDelivery g = new getDelivery();
-//                g.start();
-//                break;
-            case "5":
+                
+            case "4":
                 dm.trackStatus();
                 break;
 
-            case "6":
+            case "5":
                 System.out.println("");
                 dm.report();
                 break;
