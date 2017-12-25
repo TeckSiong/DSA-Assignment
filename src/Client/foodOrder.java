@@ -216,7 +216,7 @@ public class foodOrder {
             } while (aaa == 1);
             
                 for(int a =0;a<orders1.getSize();a++){
-                ps.addData(new ProductStatus(0, orders1.getEntry(a).getorderID(), "Pending",5, 0, 0, "21/12/2017","Wangsa Maju",orders1.getEntry(a).getcustID()));
+                DelManMaintain.sList.addData(new ProductStatus(0, orders1.getEntry(a).getorderID(), "Pending",5, 0, 0, "21/12/2017","Wangsa Maju",orders1.getEntry(a).getcustID()));
                 
                 }
             System.out.println("\nPress any key to continue");

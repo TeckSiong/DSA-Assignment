@@ -36,9 +36,9 @@ public class TrackOrderStatus {
         
         ps = DelManMaintain.sList;
 
-        if (ps.isEmpty()) {
+
             Domain.ProductStatus.Status();
-        }
+
         
         od = foodOrder.orders1;
         if(od.isEmpty()){
