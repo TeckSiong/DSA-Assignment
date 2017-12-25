@@ -35,9 +35,10 @@ public class TrackOrderStatus {
         custLogin cl = new custLogin();
         
         ps = DelManMaintain.sList;
-
-
+        if(ps.isEmpty()){
             Domain.ProductStatus.Status();
+            ps = DelManMaintain.sList;
+        }
 
         
         od = foodOrder.orders1;

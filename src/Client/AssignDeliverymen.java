@@ -51,10 +51,11 @@ public class AssignDeliverymen {
             Domain.orders.OrderList1();
         }
         
+        ps = DelManMaintain.sList;
         if(ps.isEmpty()){
             Domain.ProductStatus.Status();
+            ps = DelManMaintain.sList;
         }
-        ps = DelManMaintain.sList;
         
         
         
