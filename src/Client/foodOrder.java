@@ -29,12 +29,13 @@ public class foodOrder {
     ADTTheListInterface<Food> flist = new ADTTheList<>();
 
     public static ADTOrder<orders> orders1 = new ADTOrder<>();
+    ADTOrder<orders> orders = new ADTOrder<>();
 
     custLogin cust = new custLogin();
     MainMenu main = new MainMenu();
 
     int classify = 1;
-    int chk1 = 1;
+    
 
     public void order() {
 
@@ -168,7 +169,7 @@ public class foodOrder {
                             orders od = new orders(classify, AllFood.returnItem(s).getFoodID(), AllFood.returnItem(s).getCompanyID(), AllFood.returnItem(s).getFoodName(), quant, AllFood.returnItem(s).getPrice(), "Pending", custLogin.id1);
 
                             orders1.add(od); //add to node
-
+orders.add(od);
                             subtotal = subtotal + quant;
                             total = total + (quant * AllFood.returnItem(s).getPrice());
 
@@ -187,12 +188,11 @@ public class foodOrder {
 
             System.out.println("\n\n\n=============== Order Summary ===============\n\n\n");
             System.out.println("Food     " + "Quantity       " + "Price (RM)  \n");
-            for (int y = 1; y <= orders1.getSize(); y++) {
+            for (int y = 1; y <= orders.getSize(); y++) {
 
-                if (y == chk1) {
-                    System.out.println(orders1.getEntry(y).getname() + "           " + orders1.getEntry(y).getquantity() + "              " + (orders1.getEntry(y).getprice() * orders1.getEntry(y).getquantity()) + "\n");
-                    chk1 = chk1 + 1;
-                }
+                
+                    System.out.println(orders.getEntry(y).getname() + "           " + orders.getEntry(y).getquantity() + "              " + (orders.getEntry(y).getprice() * orders.getEntry(y).getquantity()) + "\n");
+                   
             }
 
             System.out.println("=============== Total amount need to pay : ===============\n");
