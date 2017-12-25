@@ -524,7 +524,8 @@ public class DelManMaintain {
             case "2":
                 do {
                     System.out.println("");
-                    System.out.print("Date: ");
+                    System.out.println("Date: ");
+                    System.out.print("xx/xx/xxxx : ");
                     String date = scan.nextLine();
                     System.out.println("");
                     System.out.println("======================================================================");

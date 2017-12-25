@@ -38,11 +38,11 @@ public class DeliveryMan {
     }
     
     public static void DeliveryMenDetails() {
-        DelManMaintain.dList.addData(new DeliveryMan(601001,"930616-03-6131", "ABC123", "Jorn Lim", "011-12345678", "Pertaling Jaya", "13/11/2016", "Not Available", "Active", 10.6));
-        DelManMaintain.dList.addData(new DeliveryMan(601002,"961007-03-7163", "Hii123", "Mark    ", "018-1234567", "Wangsa Maju", "10/11/2016", "Available", "Active", 7.5));
-        DelManMaintain.dList.addData(new DeliveryMan(601003,"963031-03-7361", "Waa123", "Jolin   ", "017-1234567", "Setapak", "17/11/2016", "Available", "Active", 11.3));
-        DelManMaintain.dList.addData(new DeliveryMan(601004,"310317-03-3311", "Qzz123", "Sam     ", "016-1234567", "Seremban", "21/11/2016", "Available", "Active", 10.6));
-        DelManMaintain.dList.addData(new DeliveryMan(601005,"980103-03-1378", "Zaa123", "Zack    ", "013-1234567", "Port Dickson", "30/11/2016", "Available", "Active", 3.0));
+        DelManMaintain.dList.addData(new DeliveryMan(601001,"930616-03-6131", "ABC123", "Jorn Lim", "011-3010581", "Pertaling Jaya", "13/11/2016", "Not Available", "Active", 10.6));
+        DelManMaintain.dList.addData(new DeliveryMan(601002,"961007-03-7163", "Hii123", "Mark    ", "018-3379131", "Wangsa Maju", "10/11/2016", "Available", "Active", 7.5));
+        DelManMaintain.dList.addData(new DeliveryMan(601003,"963031-03-7361", "Waa123", "Jolin   ", "017-3030111", "Setapak", "17/11/2016", "Available", "Active", 11.3));
+        DelManMaintain.dList.addData(new DeliveryMan(601004,"310317-03-3311", "Qzz123", "Sam     ", "016-7739130", "Seremban", "21/11/2016", "Available", "Active", 10.6));
+        DelManMaintain.dList.addData(new DeliveryMan(601005,"980103-03-1378", "Zaa123", "Zack    ", "013-6713178", "Port Dickson", "30/11/2016", "Available", "Active", 3.0));
     }
 
     public int getDelmenId() {
