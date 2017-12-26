@@ -57,7 +57,7 @@ public class MainMenu {
                 DMLogin dm = new DMLogin();
                 dm.login();
                 break;
-
+                
             default:
                 System.out.println("Invalid Input [1/2/3]");
                 System.out.println("");
@@ -199,13 +199,6 @@ public class MainMenu {
 
                 break;
             
-
-                 case 4:
-                System.out.println("");
-                ScheduleOrder test = new ScheduleOrder();
-                test.test();
-                customer();
-                break;
             case 0:
                 System.out.println("");
 
@@ -226,6 +219,7 @@ public class MainMenu {
         System.out.println("Select Your Action~");
         System.out.println("====================================================");
         System.out.println("1. Get customer details");
+        System.out.println("2. Get schedule delivery order");
 
         System.out.println("0. Exit");
         System.out.println("====================================================");
@@ -237,6 +231,14 @@ public class MainMenu {
                 System.out.println("");
                 custLogin dm = new custLogin();
                 dm.getno();
+                break;
+                
+            case 2:
+                System.out.println("");
+                ScheduleOrder test = new ScheduleOrder();
+                
+                test.viewTodayScheduleOrder();
+                deliveryman();
                 break;
 
             case 0:

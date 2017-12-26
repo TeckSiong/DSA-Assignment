@@ -10,8 +10,11 @@ import static Client.ScheduleOrder.SC;
 import Domain.Distance;
 import Domain.Schedule;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -34,13 +37,7 @@ public class ScheduleADT<T> implements ScheduleInterface<T>{
         }
         return  tmp1;
     }
-
-    @Override
-    public int timeSpentTravel() {
-        
-        
-        return 0; }
-
+    
     @Override
     public boolean isEmpty() {
         return firstNode ==null;
@@ -48,12 +45,15 @@ public class ScheduleADT<T> implements ScheduleInterface<T>{
 
     @Override
     public void addItem(T item) {
-       
        Node tmp = new Node(item, null, lastNode);
        
-        if(lastNode != null) {lastNode.next = tmp;}
+        if(lastNode != null) {
+            lastNode.next = tmp;
+        }
         lastNode = tmp;
-        if(firstNode == null) { firstNode = tmp;}
+        if(firstNode == null) {
+            firstNode = tmp;
+        }
         size++;
         
     }
@@ -67,8 +67,6 @@ public class ScheduleADT<T> implements ScheduleInterface<T>{
        lastNode=null;
        size=0;
     }
-
-   
     private class Node {
 
         T data;
@@ -99,76 +97,58 @@ public class ScheduleADT<T> implements ScheduleInterface<T>{
        ScheduleOrder.distanceList.addItem(new Distance("pv12","pv15",1.0f));
     }
     
-    
-     
-
-    
-    
     @Override
     public void sortByDate(ScheduleInterface<Schedule> schedule){
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        Date currentDate = new Date(); 
-        String currentDateFormat = dateFormat.format(currentDate);//stuck
-         int n = schedule.getSize();
+        int n = schedule.getSize();
         int k;
-        
         for (int m = n; m >= 0; m--) {
             for (int i = 0; i < n - 1; i++) {
                 k = i + 1;
-            
-                if (schedule.getIndexItem(i).getTime()schedule.getIndexItem(i).getTime()) {
-                    swap(i, k, (ScheduleADT<Schedule>) schedule);
+                if (schedule.getIndexItem(i).getTime().compareTo(schedule.getIndexItem(k).getTime())>0) {
+                        swap(i, k, (ScheduleADT<Schedule>) schedule);
                 }
             }
-            
         }
-    }
-    public void viewTodayScheduleOrder(){
-       
-       
-           
-        if(!SC.isEmpty()){
-        for (int i = 0; i < SC.getSize(); i++) {
-        try {
-            Date comp1 = dateFormat.parse(SC.getIndexItem(i).getDate());
-            Date comp2 = dateFormat.parse(currentDateFormat);
-            if (comp1.compareTo(comp2) == 0)
-            {
-                System.out.printf("%15s %15s %15s %15s\n","Receiver Name","Receiver Address","Date","Time");
-                System.out.printf("================================================================\n");
-                System.out.printf("%15s %15s %15s %15s\n",SC.getIndexItem(i).getReceiverName(),SC.getIndexItem(i).getReceiverAddress(),SC.getIndexItem(i).getDate(),SC.getIndexItem(i).getTime());
+        int z;
+        for (int x = n; x >= 0; x--) {
+            for (int y = 0; y < n - 1; y++) {
+                z = y + 1;
+                if (schedule.getIndexItem(y).getTime().compareTo(schedule.getIndexItem(z).getTime())==0) {
+                    if(schedule.getIndexItem(y).getDistance()>schedule.getIndexItem(z).getDistance())
+                        swap(y, z, (ScheduleADT<Schedule>) schedule);
+                }
             }
-                
-        } catch (ParseException ex) {
-            Logger.getLogger(ScheduleOrder.class.getName()).log(Level.SEVERE, null, ex);
-            }
+        }
         
-       
-                    }
-        }else
-                System.out.println("Nothing to be deliver today");
-       
-       
-   }
+        
+    }
     
-  
     private void swap(int i, int j, ScheduleInterface<Schedule> ds) {
   
         Schedule temp;
         temp = ds.getIndexItem(i);
-        ds.addItem(i, ds.getIndexItem(j)); 
-        ds.addItem(j, temp); 
+        ds.setItem(i, ds.getIndexItem(j)); 
+        ds.setItem(j, temp); 
     }
     
-     @Override
-    public float minimunDistance(ADTTheListInterface<Schedule> Sch,String A, String B) {
-        
-        
-        return 3.2f;
-    }
-
     
+    
+    @Override
+    public boolean setItem(int index, T item) {
+        boolean suc = true;
 
+        if ((index >= 0) && (index < size)) {
+            Node currentNode = firstNode; // assign the firstNode to currentNode
+            for (int i = 0; i < index; ++i) {
+                currentNode = currentNode.next;	// assign currentNode to next node
+            }
+            currentNode.data = item; // currentNode data is point to the item position
+        } else {
+            suc = false;
+        }
+        return suc;
+    }
+    
     @Override
     public float calculateDistance(String restaurant, String deliverAddress) {
         for(int i = 0; i < ScheduleOrder.distanceList.getSize();i++){
@@ -178,37 +158,12 @@ public class ScheduleADT<T> implements ScheduleInterface<T>{
             &&deliverAddress.toLowerCase().compareTo(ScheduleOrder.distanceList.getIndexItem(i).getPlaceA())==0)){
                 return ScheduleOrder.distanceList.getIndexItem(i).getDistance();//travered distance
             }else if(restaurant.toLowerCase().compareTo(deliverAddress.toLowerCase())==0){
-                return 0;//same place
-            }else if((restaurant.toLowerCase().compareTo(ScheduleOrder.distanceList.getIndexItem(i).getPlaceA())==0&&
-                deliverAddress.toLowerCase().compareTo(ScheduleOrder.distanceList.getIndexItem(i).getPlaceB())!=0)//first match condition
-                    ||(restaurant.toLowerCase().compareTo(ScheduleOrder.distanceList.getIndexItem(i).getPlaceB())==0
-            &&deliverAddress.toLowerCase().compareTo(ScheduleOrder.distanceList.getIndexItem(i).getPlaceA())!=0)//second match condition,either one correct
-                    ){//start if else comment
-                for(int m = 0 ; m< ScheduleOrder.distanceList.getSize();m++){//return whatever found
-                    if(restaurant.toLowerCase().compareTo(ScheduleOrder.distanceList.getIndexItem(i).getPlaceA())==0&&
-                deliverAddress.toLowerCase().compareTo(ScheduleOrder.distanceList.getIndexItem(i).getPlaceB())!=0){
-                        
-                    }
-                    
-                    /*if((restaurant.toLowerCase().compareTo(ScheduleOrder.distanceList.getIndexItem(m).getPlaceA())==0
-            &&deliverAddress.toLowerCase().compareTo(ScheduleOrder.distanceList.getIndexItem(m).getPlaceB())==0)||
-                    (restaurant.toLowerCase().compareTo(ScheduleOrder.distanceList.getIndexItem(m).getPlaceB())==0
-            &&deliverAddress.toLowerCase().compareTo(ScheduleOrder.distanceList.getIndexItem(m).getPlaceA())==0)){
-                        
-                        return ScheduleOrder.distanceList.getIndexItem(m).getDistance()+ScheduleOrder.distanceList.getIndexItem(i).getDistance();//travered distance
-                        }*/
-                    /*if(restaurant.toLowerCase().compareTo(ScheduleOrder.distanceList.getIndexItem(i).getPlaceA())==0&&
-                deliverAddress.toLowerCase().compareTo(ScheduleOrder.distanceList.getIndexItem(i).getPlaceB())!=0)//firstcorrect second wrong
-                    {
-                        
-                    }*/
-                
-                    }//inner forloop-close
-                }//else-if close
+                return 0.5f;//same place
+            }
         
         }
-        return -2;//error code finished loop
-            }
+        return -2;//error code finished loop not found
+    }
     
     
 }
