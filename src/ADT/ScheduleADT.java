@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ADT;
 
 import Client.ScheduleOrder;
@@ -30,12 +25,12 @@ public class ScheduleADT<T> implements ScheduleInterface<T>{
    @Override
     public T getIndexItem(int index) {
         Node tmp = firstNode;
-        T tmp1 = null;
+        T indexItem = null;
         for(int i=0;i<=index;i++){
-               tmp1=tmp.data;
+            indexItem= tmp.data;
             tmp = tmp.next;
         }
-        return  tmp1;
+        return  indexItem;
     }
     
     @Override
@@ -46,7 +41,6 @@ public class ScheduleADT<T> implements ScheduleInterface<T>{
     @Override
     public void addItem(T item) {
        Node tmp = new Node(item, null, lastNode);
-       
         if(lastNode != null) {
             lastNode.next = tmp;
         }
@@ -85,16 +79,26 @@ public class ScheduleADT<T> implements ScheduleInterface<T>{
     }
     @Override
     public void distanceBetweenPlaces() {
-       ScheduleOrder.distanceList.addItem(new Distance("taman melawati","taruc", 4.3f));
-       ScheduleOrder.distanceList.addItem(new Distance("taman melawati","pv12",  5.6f));
-       ScheduleOrder.distanceList.addItem(new Distance("taman melawati","pv15",  5.7f));
-       ScheduleOrder.distanceList.addItem(new Distance("taman melawati","taman sentul utama",  8.3f));
-       ScheduleOrder.distanceList.addItem(new Distance("taruc","pv12",  2.2f));
-       ScheduleOrder.distanceList.addItem(new Distance("taruc","pv15", 2.3f));
-       ScheduleOrder.distanceList.addItem(new Distance("taruc","taman sentul utama",5.0f));
-       ScheduleOrder.distanceList.addItem(new Distance("taman sentul utama","pv12",  3.4f));
-       ScheduleOrder.distanceList.addItem(new Distance("taman sentul utama","pv15",  3.7f));
-       ScheduleOrder.distanceList.addItem(new Distance("pv12","pv15",1.0f));
+       ScheduleOrder.distanceList.addItem(new Distance("taman "
+               + "melawati","taruc", 4.3f));
+       ScheduleOrder.distanceList.addItem(new Distance("taman "
+               + "melawati","pv12",  5.6f));
+       ScheduleOrder.distanceList.addItem(new Distance("taman "
+               + "melawati","pv15",  5.7f));
+       ScheduleOrder.distanceList.addItem(new Distance("taman "
+               + "melawati","taman sentul utama",  8.3f));
+       ScheduleOrder.distanceList.addItem(new Distance("taruc"
+               ,"pv12",  2.2f));
+       ScheduleOrder.distanceList.addItem(new Distance("taruc"
+               ,"pv15", 2.3f));
+       ScheduleOrder.distanceList.addItem(new Distance("taruc"
+               ,"taman sentul utama",5.0f));
+       ScheduleOrder.distanceList.addItem(new Distance("taman "
+               + "sentul utama","pv12",  3.4f));
+       ScheduleOrder.distanceList.addItem(new Distance("taman "
+               + "sentul utama","pv15",  3.7f));
+       ScheduleOrder.distanceList.addItem(new Distance("pv12",
+               "pv15",1.0f));
     }
     
     @Override
@@ -104,7 +108,8 @@ public class ScheduleADT<T> implements ScheduleInterface<T>{
         for (int m = n; m >= 0; m--) {
             for (int i = 0; i < n - 1; i++) {
                 k = i + 1;
-                if (schedule.getIndexItem(i).getTime().compareTo(schedule.getIndexItem(k).getTime())>0) {
+                if (schedule.getIndexItem(i).getTime().compareTo(
+                        schedule.getIndexItem(k).getTime())>0) {
                         swap(i, k, (ScheduleADT<Schedule>) schedule);
                 }
             }
@@ -113,14 +118,14 @@ public class ScheduleADT<T> implements ScheduleInterface<T>{
         for (int x = n; x >= 0; x--) {
             for (int y = 0; y < n - 1; y++) {
                 z = y + 1;
-                if (schedule.getIndexItem(y).getTime().compareTo(schedule.getIndexItem(z).getTime())==0) {
-                    if(schedule.getIndexItem(y).getDistance()>schedule.getIndexItem(z).getDistance())
+                if (schedule.getIndexItem(y).getTime().compareTo(
+                        schedule.getIndexItem(z).getTime())==0) {
+                    if(schedule.getIndexItem(y).getDistance()>
+                            schedule.getIndexItem(z).getDistance())
                         swap(y, z, (ScheduleADT<Schedule>) schedule);
                 }
             }
         }
-        
-        
     }
     
     private void swap(int i, int j, ScheduleInterface<Schedule> ds) {
@@ -138,11 +143,14 @@ public class ScheduleADT<T> implements ScheduleInterface<T>{
         boolean suc = true;
 
         if ((index >= 0) && (index < size)) {
-            Node currentNode = firstNode; // assign the firstNode to currentNode
+            Node currentNode = firstNode; 
+        // assign the firstNode to currentNode
             for (int i = 0; i < index; ++i) {
-                currentNode = currentNode.next;	// assign currentNode to next node
+                currentNode = currentNode.next;	
+        // point currentnode to get nextnode
             }
-            currentNode.data = item; // currentNode data is point to the item position
+            currentNode.data = item; 
+        // currentNode data is point to the item position
         } else {
             suc = false;
         }
@@ -150,14 +158,21 @@ public class ScheduleADT<T> implements ScheduleInterface<T>{
     }
     
     @Override
-    public float calculateDistance(String restaurant, String deliverAddress) {
+    public float calculateDistance(String restaurant,
+            String deliverAddress) {
         for(int i = 0; i < ScheduleOrder.distanceList.getSize();i++){
-            if((restaurant.toLowerCase().compareTo(ScheduleOrder.distanceList.getIndexItem(i).getPlaceA())==0
-            &&deliverAddress.toLowerCase().compareTo(ScheduleOrder.distanceList.getIndexItem(i).getPlaceB())==0)||
-                    (restaurant.toLowerCase().compareTo(ScheduleOrder.distanceList.getIndexItem(i).getPlaceB())==0
-            &&deliverAddress.toLowerCase().compareTo(ScheduleOrder.distanceList.getIndexItem(i).getPlaceA())==0)){
-                return ScheduleOrder.distanceList.getIndexItem(i).getDistance();//travered distance
-            }else if(restaurant.toLowerCase().compareTo(deliverAddress.toLowerCase())==0){
+            if((restaurant.toLowerCase().compareTo(ScheduleOrder.
+                    distanceList.getIndexItem(i).getPlaceA())==0
+            &&deliverAddress.toLowerCase().compareTo(ScheduleOrder
+                    .distanceList.getIndexItem(i).getPlaceB())==0)||
+                    (restaurant.toLowerCase().compareTo(ScheduleOrder
+                            .distanceList.getIndexItem(i).getPlaceB())==0
+            &&deliverAddress.toLowerCase().compareTo(ScheduleOrder
+                    .distanceList.getIndexItem(i).getPlaceA())==0)){
+                return ScheduleOrder.distanceList.getIndexItem(i)
+                        .getDistance();//travered distance
+            }else if(restaurant.toLowerCase().compareTo(deliverAddress.
+                    toLowerCase())==0){
                 return 0.5f;//same place
             }
         

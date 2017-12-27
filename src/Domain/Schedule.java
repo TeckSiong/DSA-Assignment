@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Domain;
 
 /**
@@ -17,12 +13,13 @@ public class Schedule {
     private String Time;
     private float distance;
     private int orderID;
-    
 
     public Schedule() {
     }
 
-    public Schedule(int schduleID, String receiverName, String receiverAddress, String Date, String Time, float distance, int orderID) {
+    public Schedule(int schduleID, String receiverName,
+            String receiverAddress, String Date, String Time,
+            float distance, int orderID) {
         this.schduleID = schduleID;
         this.receiverName = receiverName;
         this.receiverAddress = receiverAddress;
@@ -88,8 +85,4 @@ public class Schedule {
     public void setOrderID(int orderID) {
         this.orderID = orderID;
     }
-
-  
-    
-    
 }
